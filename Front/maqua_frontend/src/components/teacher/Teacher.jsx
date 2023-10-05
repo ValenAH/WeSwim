@@ -25,16 +25,19 @@ const Teacher = () => {
       ];
       const [teachers, setTeachers] = useState(TeacherData);
       const [showLoading, setShowLoading] = useState(true);
-      const apiUrl = "http://localhost:9009/";
-    
+      const apiUrl = "http://localhost:9009/api/teacherCustomAPI";
+
+
+  
       useEffect(() => {
         const fetchData = async () => {
-          const result = await axios("http://localhost:9009/api/teacherCustomAPI/getAllTeachers");
-          setTeachers(result.data.teacherList);
+           await axios.get("http://localhost:9009/api/teacherCustomAPI/getAllTeachers")
+          .then(result => setTeachers(result.data.teacherList))
+          .catch(err => console.log(err));
         };
         fetchData();
       }, []);
-    
+  
     
     
       const addTeacher = (teacher) => {
