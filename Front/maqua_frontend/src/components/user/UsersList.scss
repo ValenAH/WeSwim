@@ -1,0 +1,54 @@
+.table-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #FFF;
+    text-align: center;
+}
+
+.table {
+    display: block;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px #ccc;
+    white-space: nowrap;
+    width: 100em;
+    max-width: 80%;
+    margin: auto;
+}
+
+.table thead {
+    background-color: #ccc;
+    color: #222;
+}
+
+.table th,
+.table td {
+    padding: 0.8rem;
+}
+
+.table tbody tr:hover{
+    background-color: #eee;
+}
+
+.expand {
+    width: 100%;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-around;
+}
+
+.actions svg{
+    cursor: pointer;
+}
+
+.delete-btn{
+    color: #e10d05;
+}
+
+.edit-btn{
+    color: #0b1165;
+}

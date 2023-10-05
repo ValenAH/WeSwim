@@ -19,6 +19,9 @@ const Header = () => {
           <li>
             <a className="p-2" href="/Teacher">Profesor</a>
           </li>
+          <li>
+            <a className="p-2" href="/User">Usuarios</a>
+          </li>
         </ul>
         <div>
             <HiMenu className="header__icon p-2 rounded"></HiMenu>
