@@ -1,31 +1,31 @@
 import React from "react";
 import './Header.scss';
 import { Link } from "react-router-dom";
-//import logo from "../assets/static/logo.png";
+import logo from "../../assets/images/logo-maqua.svg";
+import {HiMenu} from "react-icons/hi";
 
-const Header = () => (
-  <header className="header">
-    <Link to="/">
-      <img className="header__img" src="{ logo }" alt="Logo" />
-    </Link>
-
-    <div className="header__menu">
-      <div className="header__menu--profile">
-        <img src="{ userIcon }" alt="" />
-        <p>Menu 1</p>
+const Header = () => {
+    return (
+      <section className="header">
+        <div className="container">
+        <header className="d-flex justify-content-between align-items-center">
+        <Link to="/">
+          <img className="header__img ms-2" src={logo} alt="Maqua" />
+        </Link>
+        <ul className="header__menu d-flex align-items-center p-0 m-0 gap-3">
+          <li>
+            <a className="p-2" href="/">Inicio</a>
+          </li>
+          <li>
+            <a className="p-2" href="/Teacher">Profesor</a>
+          </li>
+        </ul>
+        <div>
+            <HiMenu className="header__icon p-2 rounded"></HiMenu>
+          </div>
+      </header>
       </div>
-      <ul>
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="/Teacher">Link We Swim Profesor</a>
-        </li>
-        <li>
-          <Link to="/Teacher">Teacher</Link>
-        </li>
-      </ul>
-    </div>
-  </header>
-);
+      </section>
+    )
+};
 export default Header;

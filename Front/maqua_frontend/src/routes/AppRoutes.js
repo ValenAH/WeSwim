@@ -2,7 +2,7 @@ import React from "react";
 
 import { BrowserRouter as Router,Routes,Route, Link } from "react-router-dom";
 
-import Layout from "../containers/LayoutPrincipal/LayoutPrincipal";
+import Layout from "../containers/Layout/Layout";
 import Home from "../components/home/Home";
 import Teacher from "../components/Teacher/Teacher";
 import NotFound from "../components/notfound/Notfound";
