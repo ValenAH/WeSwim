@@ -2,7 +2,7 @@ import React from "react";
 import './Header.scss';
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo-maqua.svg";
-import {HiMenu} from "react-icons/hi";
+import {BiSolidUserCircle} from "react-icons/bi";
 
 const Header = () => {
     return (
@@ -13,8 +13,17 @@ const Header = () => {
           <img className="header__img ms-2" src={logo} alt="Maqua" />
         </Link>
         <ul className="header__menu d-flex align-items-center p-0 m-0 gap-3">
+        <li>
+            <a className="p-2" href="/login">Login</a>
+          </li>
+          <li>
+            <a className="p-2" href="/register-student">Registrar estudiante</a>
+          </li>
           <li>
             <a className="p-2" href="/">Inicio</a>
+          </li>
+          <li>
+            <a className="p-2" href="/Agenda">Agenda</a>
           </li>
           <li>
             <a className="p-2" href="/Teacher">Profesor</a>
@@ -23,9 +32,10 @@ const Header = () => {
             <a className="p-2" href="/User">Usuarios</a>
           </li>
         </ul>
-        <div>
-            <HiMenu className="header__icon p-2 rounded"></HiMenu>
-          </div>
+        <div className="profile d-flex align-items-center gap-2 px-2">
+            <BiSolidUserCircle className="profile__icon rounded"></BiSolidUserCircle>
+            <span>Valen</span>
+        </div>
       </header>
       </div>
       </section>
