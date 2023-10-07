@@ -1,4 +1,4 @@
-package com.demo.controller.AccountType;
+package com.backmaqua.controller.accountType;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.demo.entity.AccountType.AccountType;
-import com.demo.entity.AccountType.AccountTypes;
-import com.demo.repository.AccountType.AccountTypeCRUDRepository;
+import com.backmaqua.entities.accountType.AccountType;
+import com.backmaqua.entities.accountType.AccountTypes;
+import com.backmaqua.repository.accountType.AccountTypeCRUDRepository;
 
 public class AccountTypeController {
 

@@ -1,4 +1,4 @@
-package com.demo.entity.AccountType;
+package com.backmaqua.entities.accountType;
 
 import java.util.Objects;
 

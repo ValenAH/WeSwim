@@ -1,4 +1,4 @@
-package com.demo.controller.User;
+package com.backmaqua.controller.user;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.demo.entity.User.User;
-import com.demo.entity.User.Users;
-import com.demo.repository.User.UserCRUDRepository;
+import com.backmaqua.entities.user.User;
+import com.backmaqua.entities.user.Users;
+import com.backmaqua.repository.user.UserCRUDRepository;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")

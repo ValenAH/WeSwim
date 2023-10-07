@@ -1,10 +1,10 @@
-package com.demo.entity.PaymentPlan;
+package com.backmaqua.entities.paymentPlan;
 
 import java.util.Objects;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.demo.entity.User.User;
+import com.backmaqua.entities.user.User;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

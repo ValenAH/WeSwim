@@ -1,4 +1,4 @@
-package com.demo;
+package com.backmaqua;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 

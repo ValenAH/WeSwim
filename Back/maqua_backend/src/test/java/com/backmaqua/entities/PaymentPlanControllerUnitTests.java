@@ -1,4 +1,4 @@
-package com.demo;
+package com.backmaqua.entities;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -19,14 +19,14 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.demo.controller.PaymentPlan.PaymentPlanController;
-import com.demo.entity.AccountType.AccountType;
-import com.demo.entity.AccountType.AccountTypes;
-import com.demo.entity.PaymentPlan.PaymentPlan;
-import com.demo.entity.PaymentPlan.PaymentPlans;
-import com.demo.entity.User.User;
-import com.demo.repository.AccountType.AccountTypeCRUDRepository;
-import com.demo.repository.PaymentPlan.PaymentPlanCRUDRepository;
+import com.backmaqua.controller.paymentPlan.PaymentPlanController;
+import com.backmaqua.entities.accountType.AccountType;
+import com.backmaqua.entities.accountType.AccountTypes;
+import com.backmaqua.entities.paymentPlan.PaymentPlan;
+import com.backmaqua.entities.paymentPlan.PaymentPlans;
+import com.backmaqua.entities.user.User;
+import com.backmaqua.repository.accountType.AccountTypeCRUDRepository;
+import com.backmaqua.repository.paymentPlan.PaymentPlanCRUDRepository;
 
 @ExtendWith(MockitoExtension.class)
 public class PaymentPlanControllerUnitTests {
