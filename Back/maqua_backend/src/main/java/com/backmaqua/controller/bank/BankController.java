@@ -8,6 +8,7 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.backmaqua.entities.bank.Bank;
 import com.backmaqua.entities.bank.Banks;
 import com.backmaqua.repository.bank.BankCRUDRepository;
 

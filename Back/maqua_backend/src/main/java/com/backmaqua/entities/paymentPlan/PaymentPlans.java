@@ -1,4 +1,4 @@
-package com.demo.entity.PaymentPlan;
+package com.backmaqua.entities.paymentPlan;
 
 import java.util.ArrayList;
 import java.util.List;

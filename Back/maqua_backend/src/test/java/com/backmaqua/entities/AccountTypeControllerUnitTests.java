@@ -1,4 +1,4 @@
-package com.demo;
+package com.backmaqua.entities;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -18,13 +18,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import com.demo.controller.User.UserController;
-import com.demo.entity.AccountType.AccountType;
-import com.demo.entity.AccountType.AccountTypes;
-import com.demo.entity.User.User;
-import com.demo.entity.User.Users;
-import com.demo.repository.AccountType.AccountTypeCRUDRepository;
-import com.demo.controller.AccountType.*;
+import com.backmaqua.controller.user.UserController;
+import com.backmaqua.entities.accountType.AccountType;
+import com.backmaqua.entities.accountType.AccountTypes;
+import com.backmaqua.entities.user.User;
+import com.backmaqua.entities.user.Users;
+import com.backmaqua.repository.accountType.AccountTypeCRUDRepository;
+import com.backmaqua.controller.accountType.*;
 
 @ExtendWith(MockitoExtension.class)
 public class AccountTypeControllerUnitTests {

@@ -1,4 +1,4 @@
-package com.demo.entity.User;
+package com.backmaqua.entities.user;
 
 import java.util.ArrayList;
 import java.util.List;

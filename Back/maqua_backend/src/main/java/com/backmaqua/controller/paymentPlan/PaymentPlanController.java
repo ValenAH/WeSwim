@@ -1,4 +1,4 @@
-package com.demo.controller.PaymentPlan;
+package com.backmaqua.controller.paymentPlan;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.demo.entity.AccountType.AccountType;
-import com.demo.entity.AccountType.AccountTypes;
-import com.demo.entity.PaymentPlan.PaymentPlan;
-import com.demo.entity.PaymentPlan.PaymentPlans;
-import com.demo.repository.AccountType.AccountTypeCRUDRepository;
-import com.demo.repository.PaymentPlan.PaymentPlanCRUDRepository;
-import com.demo.repository.PaymentPlan.PaymentPlanQUERYRepository;
+import com.backmaqua.entities.accountType.AccountType;
+import com.backmaqua.entities.accountType.AccountTypes;
+import com.backmaqua.entities.paymentPlan.PaymentPlan;
+import com.backmaqua.entities.paymentPlan.PaymentPlans;
+import com.backmaqua.repository.accountType.AccountTypeCRUDRepository;
+import com.backmaqua.repository.paymentPlan.PaymentPlanCRUDRepository;
+import com.backmaqua.repository.paymentPlan.PaymentPlanQUERYRepository;
 
 public class PaymentPlanController {
 	@Autowired

@@ -28,8 +28,8 @@ const Customer = () => {
     
       useEffect(() => {
         const fetchData = async () => {
-          await axios.get("http://localhost:9009/api/CustomerAPI/getAllCustomers")
-          .then(result => setCustomer(result.data.CustomerList))
+          await axios.get(apiUrl+"api/CustomerAPI/getAllCustomers")
+          .then(result => setCustomer(result.data.customerList))
           .catch(err => console.log(err));
         };
         fetchData();

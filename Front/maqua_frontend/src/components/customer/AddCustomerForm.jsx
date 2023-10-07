@@ -91,7 +91,7 @@ const handleInputChange = (event) => {
       <label>Payment Plan Id</label>
       <input
         type="number"
-        name="paymentplantid"
+        name="paymentPlanId"
         value={customer.paymentPlanId}
         onChange={handleInputChange}
       />

@@ -75,9 +75,9 @@ public class BankControllerUnitTests {
 		// then
 		assertThat(result.getBankList().size()).isEqualTo(2);
 
-		assertThat(result.getBankList().get(0).getName()).isEqualTo(bank1.getName());
+		assertThat(result.getBankList().get(0).getNameBank()).isEqualTo(bank1.getNameBank());
 
-		assertThat(result.getBankList().get(1).getName()).isEqualTo(bank2.getName());
+		assertThat(result.getBankList().get(1).getNameBank()).isEqualTo(bank2.getNameBank());
 	}
 
 	
