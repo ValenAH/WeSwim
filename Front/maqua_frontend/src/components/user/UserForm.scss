@@ -5,20 +5,25 @@
     top: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-color: rgba(0,0,0,0.4);
 }
 
-.modal {
+.form {
     border-radius: 5px;
     padding: 2rem;
     background-color: white;
     width: 25rem;
+
+    &__close{
+        top: 0;
+        right: 15px;
+        font-size: 2rem;
+        color: #ccc;
+        cursor: pointer;
+    }
 }
 
-.modal .btn {
+.form .btn {
     display: block;
     margin: auto;
 }
