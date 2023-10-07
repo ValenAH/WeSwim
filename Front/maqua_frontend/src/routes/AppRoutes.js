@@ -5,7 +5,7 @@ import { BrowserRouter as Router,Routes,Route, Link } from "react-router-dom";
 import Layout from "../containers/Layout/Layout";
 import RegisterStudent from "../components/auth/registration/register-student";
 import RegisterTeacher from "../components/auth/registration/register-teacher";
-import Home from "../components/home/Home";
+import Profile from "../components/profile/profile";
 import Teacher from "../components/Teacher/Teacher";
 import Customer from "../components/Customer/Customer";
 import UsersList from "../components/User/UsersList";
@@ -24,6 +24,7 @@ const AppRoutes = () => (
             <Route path="/teacher" exact element={<Teacher/>}/>
             <Route path="/customer" exact element={<Customer/>}/>
             <Route path="/user" exact element={<UsersList/>}/>
+            <Route path="/profile" exact element={<Profile/>}/>
             <Route element={<NotFound/>}/>
         </Routes>
     </Layout>

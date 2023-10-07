@@ -8,7 +8,7 @@ export const UserForm = ({closeForm}) => {
     const [formState, setFormState] = useState({
         user: "",
         password: "",
-        rolId: ""
+        rolId: 0
     })
 
     const handleAddUser = async (user) => {
