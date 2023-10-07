@@ -20,10 +20,10 @@ const Header = () => {
             <a className="p-2" href="/register-student">Registrar estudiante</a>
           </li>
           <li>
-            <a className="p-2" href="/">Inicio</a>
+            <a className="p-2" href="/register-teacher">Registrar Profesor</a>
           </li>
           <li>
-            <a className="p-2" href="/Agenda">Agenda</a>
+            <a className="p-2" href="/">Agenda</a>
           </li>
           <li>
             <a className="p-2" href="/Teacher">Profesor</a>

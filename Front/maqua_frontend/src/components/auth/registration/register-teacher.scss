@@ -1,0 +1,18 @@
+.register-page{
+    height: 100%;
+    min-height: 100vh;
+    background-color: white;
+
+    .left-container{
+        background-color: var(--blue-bg);
+        width: 30%;
+
+        .welcome{
+            color: white;
+        }
+    }
+
+    .right-container{
+        width: 70%;
+    }
+}
