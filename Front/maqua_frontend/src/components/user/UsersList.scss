@@ -1,0 +1,36 @@
+.table {
+    border-collapse: collapse;
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px #ccc;
+    white-space: nowrap;
+    background-color: white;
+    min-height: 75vh;
+}
+
+.table thead {
+    background-color: #EAEAEA;
+    color: #424242;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.table th,
+.table td {
+    padding: 0.8rem;
+}
+
+.table tbody tr:hover{
+    background-color: #eee;
+}
+
+.actions svg{
+    cursor: pointer;
+}
+
+.delete-btn{
+    color: #e10d05;
+}
+
+.edit-btn{
+    color: #0b1165;
+}

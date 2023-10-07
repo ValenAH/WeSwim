@@ -1,0 +1,85 @@
+@import url('./assets/fonts/fonts.scss');
+
+h1{
+  font-family: 'AlfaSlabOne';
+  font-size: 2rem;
+  color: #0b1165;
+}
+
+h2{
+  font-family: 'AlfaSlabOne';
+  font-size: 1.6rem;
+  color: #0b1165;
+}
+
+h3{
+  font-size: 1.5rem;
+}
+
+h4{
+  font-size: 1.4rem;
+}
+
+h5{
+  font-size: 1.2rem;
+}
+
+*{
+  font-family: 'Poppins';
+}
+
+.btn {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    border: none;
+    background-color: var(--blue-secondary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0px 5px 5px #ccc;
+
+    &:hover{
+      background-color: var(--blue-secondary-hover);
+      color: white;
+    }
+
+    &__light {
+      background-color: var(--blue-primary);
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0px 5px 5px #ccc;
+
+      &:hover{
+        background-color: var(--blue-primary-hover);
+      }
+    }
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group input,
+  .form-group select {
+    border: 1px solid #ccc;
+    border-radius: 0.3rem;
+    padding: 0.3rem;
+    font-size: 1rem;
+  }
+
+
+
+  :root {
+    --blue-primary: #3DB8DF;
+    --blue-secondary: #0b1165;
+    --blue-bg: rgba(15,112,218,1);
+
+    --blue-primary-hover: #179dc5;
+    --blue-secondary-hover: #141d94;
+  }

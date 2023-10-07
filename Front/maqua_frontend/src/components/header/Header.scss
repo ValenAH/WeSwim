@@ -21,17 +21,16 @@
         }
       }
     }
-
-    &__icon{
-      font-size: 3rem;
-
-      &:hover {
-        border: 1px solid white;
-        cursor: pointer;
-      }
-    }
-
   }
   
+.profile {
+  &:hover{
+    border-bottom: 2px solid white;
+  }
 
+  &__icon{
+    font-size: 3rem;
 
+    
+  }
+}
