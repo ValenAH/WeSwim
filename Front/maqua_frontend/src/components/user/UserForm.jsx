@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import './UserForm.scss';
+import {IoIosCloseCircle} from 'react-icons/io';
 
 export const UserForm = ({closeForm}) => {
     const apiUsers = "http://localhost:9009/api/users";
@@ -31,9 +32,13 @@ export const UserForm = ({closeForm}) => {
 
 
     return (
-        <div className='modal-container' onClick={(e)=>{if (e.target.className==="modal-container")closeForm()}}>
-            <div className='modal'>
-                <form>
+        <div className='modal-container d-flex justify-content-center align-items-center'>
+            <div className='form position-relative'>
+                <div className='form__close position-absolute'>
+                    <IoIosCloseCircle onClick={()=>closeForm()}/>
+                </div>
+                <h5 className='text-center'>Crear usuario</h5>
+                <form className='mt-3'>
                     <div className='form-group '>
                         <label htmlFor='user'>Nombre de usuario</label>
                         <input name='user' type='text' value={formState.user}  onChange={handleChangeUser}/>

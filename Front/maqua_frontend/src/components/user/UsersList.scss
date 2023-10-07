@@ -1,26 +1,17 @@
-.table-wrapper{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background-color: #FFF;
-    text-align: center;
-}
-
 .table {
-    display: block;
-    table-layout: fixed;
     border-collapse: collapse;
     border-radius: 10px;
     box-shadow: 0px 10px 10px #ccc;
     white-space: nowrap;
-    width: 100em;
-    max-width: 80%;
-    margin: auto;
+    background-color: white;
+    min-height: 75vh;
 }
 
 .table thead {
-    background-color: #ccc;
-    color: #222;
+    background-color: #EAEAEA;
+    color: #424242;
+    font-size: 1rem;
+    text-transform: uppercase;
 }
 
 .table th,
@@ -30,15 +21,6 @@
 
 .table tbody tr:hover{
     background-color: #eee;
-}
-
-.expand {
-    width: 100%;
-}
-
-.actions {
-    display: flex;
-    justify-content: space-around;
 }
 
 .actions svg{
