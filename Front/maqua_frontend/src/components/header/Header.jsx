@@ -29,6 +29,9 @@ const Header = () => {
             <a className="p-2" href="/Teacher">Profesor</a>
           </li>
           <li>
+            <a className="p-2" href="/Customer">Cliente</a>           
+          </li>
+          <li>
             <a className="p-2" href="/User">Usuarios</a>
           </li>
         </ul>
