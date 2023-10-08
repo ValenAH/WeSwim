@@ -2,13 +2,13 @@
 
 h1{
   font-family: 'AlfaSlabOne';
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #0b1165;
 }
 
 h2{
   font-family: 'AlfaSlabOne';
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: #0b1165;
 }
 
@@ -26,6 +26,7 @@ h5{
 
 *{
   font-family: 'Poppins';
+  font-size: 1rem;
 }
 
 .btn {
@@ -45,6 +46,8 @@ h5{
     }
 
     &__light {
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
       background-color: var(--blue-primary);
       border: none;
       color: white;
@@ -67,7 +70,7 @@ h5{
   
   .form-group input,
   .form-group select {
-    border: 1px solid #ccc;
+    border: 1px solid var(--gray-light);
     border-radius: 0.3rem;
     padding: 0.3rem;
     font-size: 1rem;
@@ -82,5 +85,10 @@ h5{
 
     --blue-primary-hover: #179dc5;
     --blue-secondary-hover: #141d94;
+<<<<<<< HEAD
     --red:#f01e17;
+=======
+
+    --gray-light: #ccc;
+>>>>>>> 8c3044a14615bc75a0a04a3dfa74c2c2b3014d5c
   }
