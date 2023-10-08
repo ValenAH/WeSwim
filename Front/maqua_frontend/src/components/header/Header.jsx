@@ -34,6 +34,9 @@ const Header = () => {
           <li>
             <a className="p-2" href="/User">Usuarios</a>
           </li>
+          <li>
+            <a className="p-2" href="/Bank">Bancos</a>
+          </li>
         </ul>
         <div className="profile d-flex align-items-center gap-2 px-2">
           <a className="text-decoration-none text-light" href="/profile">
