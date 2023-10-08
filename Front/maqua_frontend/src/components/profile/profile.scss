@@ -1,0 +1,14 @@
+.profile-page{
+    background-color: white;
+    width: 80%;
+    min-height: 75vh;
+
+    .left-container{
+        width: 40%;
+        border-right: 1px solid #ccc;
+    }
+
+    .right-container{
+        width: 60%;
+    }
+}
