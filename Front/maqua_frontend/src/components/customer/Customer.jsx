@@ -28,13 +28,13 @@ const Customer = () => {
     
       useEffect(() => {
         const fetchData = async () => {
-          await axios.get(apiUrl+"api/CustomerAPI/getAllCustomers")
-          .then(result => setCustomer(result.data.customerList))
-          .catch(err => console.log(err));
+          const result= await axios(apiUrl+"api/CustomerAPI/getAllCustomers");
+          setCustomer(result.data.customerList);
         };
         fetchData();
       }, []);
     
+
     
     
       const addCustomer = (customer) => {
@@ -54,34 +54,15 @@ const Customer = () => {
         axios
           .post("http://localhost:9009/api/CustomerAPI/addnewcustomer", data)
           .then((result) => {
-            setcustomers([...customers, result.data]);
+            setCustomer([...customers, result.data]);
           })
           .catch((error) => setShowLoading(false));
     
-        /*
-        employee.id = employees.length + 1;
-        setEmployees([...employees, employee]);
-    
-        const data = {
-          id: parseInt(employee.id),
-          firstName: employee.firstName,
-          lastName: employee.lastName,
-          email: employee.email,
-        };
-    
-        axios
-          .post(apiUrl, data)
-          .then((result) => {
-            //props.history.push('/show/' + result.data._id)
-            console.log("Consumo del Servicio 2");
-            console.log(result);
-          })
-          .catch((error) => setShowLoading(false));
-    */
+       
       };
     
       const deleteCustomer = (id) => {
-        setcustomers(customers.filter((customer) => customer.id !== id));
+        setCustomer(customers.filter((customer) => customer.id !== id));
         const data = {
           id: id,
           name: "",
@@ -134,7 +115,7 @@ const Customer = () => {
     
       const updateCustomer = (id, updatedCustomer) => {
         setEditing(false);
-        setCustomers(
+        setCustomer(
           customers.map((customer) =>
             customer.id === id ? updatedCustomer : customer
           )
@@ -182,7 +163,7 @@ const Customer = () => {
     
             <div className="flex-large">
               <h2>View Customers</h2>
-              <customerTable
+              <CustomerTable
                 customers={customers}
                 deleteCustomer={deleteCustomer}
                 editRow={editRow}
