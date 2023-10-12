@@ -32,7 +32,7 @@ const Header = () => {
             <a className="p-2" href="/Customer">Cliente</a>           
           </li>
           <li>
-            <a className="p-2" href="/User">Usuarios</a>
+            <a className="p-2" href="/user">Usuarios</a>
           </li>
           <li>
             <a className="p-2" href="/Bank">Bancos</a>
