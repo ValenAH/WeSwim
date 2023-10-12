@@ -14,25 +14,31 @@ import NotFound from "../components/notfound/Notfound";
 import Login from "../components/auth/login/login";
 import Bank from "../components/bank/Bank";
 import UserForm from "../components/user/UserForm";
+import { AuthProvider } from "../components/auth/Auth";
 
-const AppRoutes = () => (
-<Router>
-    <Layout>
-        <Routes>
-            <Route path="/register-student" exact element={<RegisterStudent/>}/>
-            <Route path="/register-teacher" exact element={<RegisterTeacher/>}/>
-            <Route path="/login" exact element={<Login/>}/>
-            <Route path="/" exact element={<Planner/>}/>
-            <Route path="/teacher" exact element={<Teacher/>}/>
-            <Route path="/customer" exact element={<Customer/>}/>
-            <Route path="/user" exact element={<UsersList/>}/>
-            <Route path="/user/:id" exact element={<UserForm/>}/>
-            <Route path="/profile" exact element={<Profile/>}/>
-            <Route path="/bank" exact element={<Bank/>}/>
-            <Route element={<NotFound/>}/>
-        </Routes>
-    </Layout>
-</Router>
-); 
+const AppRoutes = () => {
+    return (
+        <AuthProvider>
+            <Router>
+                
+                    <Routes>
+                        <Route path="/register-student" element={<RegisterStudent/>}/>
+                        <Route path="/register-teacher" element={<RegisterTeacher/>}/>
+                        <Route path="/login" element={<Login/>}/>
+                        <Route path="/" element={<Planner/>}/>
+                        <Route path="/teacher" element={<Teacher/>}/>
+                        <Route path="/customer" element={<Customer/>}/>
+                        <Route path="/user" element={<UsersList/>}/>
+                        <Route path="/user/:id" element={<UserForm/>}/>     
+                        <Route path="/profile" element={<Profile/>}/>
+                        <Route path="/bank" element={<Bank/>}/>
+                        <Route path="*" element={<NotFound/>}/>
+                    </Routes>
+                
+            </Router>
+        </AuthProvider>
+        );
+}
+ 
 
 export default AppRoutes;

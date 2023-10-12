@@ -1,8 +1,24 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useReducer } from "react";
 import './login.scss'
 import logo from "../../../assets/images/logo-maqua.svg";
+import { useNavigate } from "react-router-dom";
+import { AuthData } from "../Auth";
 
 const Login = () =>{
+
+    const [user, setUser] = useState({user: "", password: ""})
+    const auth = AuthData()
+    const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState(null)
+
+    const handleLogin = async () => {
+        try {
+            await auth.login(user)
+            navigate("/")
+        }catch ( error ){
+            setErrorMessage(error)
+        }
+    }
 
     return (
         <div className="container-fluid">
@@ -15,15 +31,15 @@ const Login = () =>{
                     <form className="p-5">
                         <div className="form-group">
                             <label>Nombre de usuario</label>
-                            <input></input>
+                            <input value={user.user} onChange={(e)=>setFormData({user:e.target.value})} type="text"></input>
                         </div>
                         <div className="form-group">
                             <label>Contraseña</label>
-                            <input></input>
+                            <input value={user.password} onChange={(e)=>setFormData({password:e.target.value})} type="password"></input>
                         </div>
                         <div className="d-flex flex-column mt-5">
-                            <button className="btn__light">Iniciar sesión</button>
-                            <button className="btn">Registrarse</button>
+                            <button className="btn__light" onClick={handleLogin}>Iniciar sesión</button>
+                            <button className="btn" onClick={()=>navigate("/register-student")}>Registrarse</button>
                         </div>                
                     </form>
                 </div>
