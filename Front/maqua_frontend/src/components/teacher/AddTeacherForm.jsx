@@ -96,7 +96,7 @@ const handleInputChange = (event) => {
         onChange={handleInputChange}
       />
 
-      <button>Add new Teacher</button>
+      <button className="btn">Add new Teacher</button>
     </form>
   );
 };
