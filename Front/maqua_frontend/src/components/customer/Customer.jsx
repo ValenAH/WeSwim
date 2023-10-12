@@ -67,12 +67,12 @@ const Customer = () => {
           id: id,
           name: "",
           email: "",
-          documentTypeid : documentTypeid,
+          documentTypeid : "",
           documentNumber: "",
           address: "",
           phone: "",
-          userid: userid,
-          paymentPlanId: paymentPlanId
+          userid: "",
+          paymentPlanId: ""
         };
         axios
           .post("http://localhost:9009/api/CustomerAPI/customerremove", data)

@@ -1,4 +1,6 @@
 import React from "react";
+import "./TeacherTable.scss";
+import {BsFillPencilFill,BsFillTrashFill} from "react-icons/bs";
 
 const TeacherTable = (props) => (
     <table>
@@ -25,26 +27,22 @@ const TeacherTable = (props) => (
               <td>{teacher.email}</td>
               <td>{teacher.documentTypeid}</td>
               <td>{teacher.documentNumber}</td>
-              <td>{teacher.Phone}</td>
+              <td>{teacher.phone}</td>
               <td>{teacher.userid}</td>
-              <td>{teacher.Bankid}</td>
-              <td>{teacher.AccountType}</td>
-              <td>{teacher.AccountNumber}</td>
+              <td>{teacher.bankid}</td>
+              <td>{teacher.accountType}</td>
+              <td>{teacher.accountNumber}</td>
               <td>
-                <button
-                  onClick={() => {
-                    props.editRow(teacher);
-                  }}
-                  className="button muted-button"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => props.deleteTeacher(teacher.id)}
-                  className="button muted-button"
-                >
-                  Delete
-                </button>
+              <BsFillPencilFill
+                className="icon icon--edit"
+                onClick={() => {
+                  props.editRow(teacher);
+                }}
+              ></BsFillPencilFill>
+               <BsFillTrashFill
+                className="icon icon--delete"
+                onClick={() => props.deleteTeacher(teacher.id)}
+              ></BsFillTrashFill>
               </td>
             </tr>
           ))
