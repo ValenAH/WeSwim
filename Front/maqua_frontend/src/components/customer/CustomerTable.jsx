@@ -3,18 +3,19 @@ import "./CustomerTable.scss";
 import {BsFillPencilFill,BsFillTrashFill} from "react-icons/bs";
 
 const CustomerTable = (props) => (
-  <table>
+  <table  className="table mx-auto mt-3 text-center ">
     <thead>
       <tr>
         <th>id</th>
-        <th>name</th>
+        <th >name</th>
         <th>email</th>
-        <th>documentTypeid</th>
+        <th>documentTypeId</th>
         <th>documentNumber</th>
         <th>address</th>
         <th>phone</th>
         <th>userId</th>
         <th>paymentPlanId</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -24,7 +25,7 @@ const CustomerTable = (props) => (
             <td>{customer.id}</td>
             <td>{customer.name}</td>
             <td>{customer.email}</td>
-            <td>{customer.documentTypeid}</td>
+            <td>{customer.documentTypeId}</td>
             <td>{customer.documentNumber}</td>
             <td>{customer.address}</td>
             <td>{customer.phone}</td>
