@@ -61,27 +61,6 @@ const Teacher = () => {
             setTeachers([...teachers, result.data]);
           })
           .catch((error) => setShowLoading(false));
-    
-        /*
-        employee.id = employees.length + 1;
-        setEmployees([...employees, employee]);
-    
-        const data = {
-          id: parseInt(employee.id),
-          firstName: employee.firstName,
-          lastName: employee.lastName,
-          email: employee.email,
-        };
-    
-        axios
-          .post(apiUrl, data)
-          .then((result) => {
-            //props.history.push('/show/' + result.data._id)
-            console.log("Consumo del Servicio 2");
-            console.log(result);
-          })
-          .catch((error) => setShowLoading(false));
-    */
       };
     
       const deleteTeacher = (id) => {
@@ -90,18 +69,17 @@ const Teacher = () => {
           id: id,
           name: "",
           email: "",
-          documentTypeid : documentTypeid,
+          documentTypeid : "",
           documentNumber: "",
           phone: "",
-          userid: userid,
-          bankid: bankid,
+          userid: "",
+          bankid: "",
           accountType: "",
           accountNumber: ""
         };
         axios
           .post("http://localhost:9009/api/teacherCustomAPI/teacherremove", data)
           .then((result) => {
-            //console.log(result);
           })
           .catch((error) => setShowLoading(false));
       };
@@ -161,7 +139,6 @@ const Teacher = () => {
         axios
           .post("http://localhost:9009/api/teacherCustomAPI/updateteacher", data)
           .then((result) => {
-            //console.log("Updated");
           })
           .catch((error) => setShowLoading(false));
       };
