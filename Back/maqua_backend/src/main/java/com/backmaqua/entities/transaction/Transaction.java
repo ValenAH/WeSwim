@@ -21,15 +21,17 @@ public class Transaction {
     private Integer quantity;
     private String paymentMethod;
     private Date date;
+    private String idUser;
 
     public Transaction() { }
 
-    public Transaction(Long id, Integer status, Integer quantity, String paymentMethod, Date date) {
+    public Transaction(Long id, Integer status, Integer quantity, String paymentMethod, Date date, String idUser) {
         this.id = id;
         this.status = status;
         this.quantity = quantity;
         this.paymentMethod = paymentMethod;
         this.date = date;
+        this.idUser = idUser;
     }
 
     // Getters and Setters
@@ -74,7 +76,15 @@ public class Transaction {
         this.date = date;
     }
 
-    @Override
+    public String getIdUser() {
+		return idUser;
+	}
+
+	public void setIdUser(String idUser) {
+		this.idUser = idUser;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -99,6 +109,7 @@ public class Transaction {
                 ", quantity=" + quantity +
                 ", paymentMethod='" + paymentMethod + '\'' +
                 ", date=" + date +
+                ", idUser='" + idUser + '\'' +
                 '}';
     }
 }
