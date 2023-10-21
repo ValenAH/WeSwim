@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CSVLink } from 'react-csv';
-import './Transaction.scss'
+//import './Transaction.scss';
 
 const statusMap = {
   0: 'Completado',
@@ -44,13 +44,16 @@ const TransactionTable = (props) => {
     setSelectedRows([]);
   };
 
-  const filteredTransactions = props.transactions.filter((transaction) =>
-    transaction.id.toString().includes(searchTerm) ||
-    statusMap[transaction.status].toLowerCase().includes(searchTerm) ||
-    formatCurrency(transaction.quantity).includes(searchTerm) ||
-    transaction.paymentMethod.toString().includes(searchTerm) ||
-    formatDate(transaction.date).includes(searchTerm)
-  );
+  const filteredTransactions = props.transactions.filter((transaction) => {
+    const searchTermLower = searchTerm.toLowerCase();
+    return (
+      transaction.id.toString().includes(searchTermLower) ||
+      statusMap[transaction.status].toLowerCase().includes(searchTermLower) ||
+      formatCurrency(transaction.quantity).toLowerCase().includes(searchTermLower) ||
+      transaction.paymentMethod.toLowerCase().includes(searchTermLower) ||
+      formatDate(transaction.date).toLowerCase().includes(searchTermLower)
+    );
+  });  
 
   const exportData = props.transactions
     .filter((transaction) => selectedRows.includes(transaction.id.toString()))
@@ -101,7 +104,7 @@ const TransactionTable = (props) => {
         <tbody>
           {filteredTransactions.length > 0 ? (
             filteredTransactions.map((transaction) => (
-              <tr key={transaction.id.toString()}>
+              <tr className='tr-transactions' key={transaction.id.toString()}>
                 <td>
                 <input
                   type="checkbox"
@@ -110,8 +113,11 @@ const TransactionTable = (props) => {
                 />
                 {transaction.id}
               </td>
-                <td style={{ backgroundColor: statusColors[transaction.status] }}>
+              
+                <td>
+                  <span className='p-2 rounded'  style={{ backgroundColor: statusColors[transaction.status] }}>
                   {statusMap[transaction.status]}
+                  </span>
                 </td>
                 <td>{formatCurrency(transaction.quantity)}</td>
                 <td>{transaction.paymentMethod}</td>
