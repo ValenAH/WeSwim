@@ -14,6 +14,7 @@ import Planner from "../components/planner/Planner";
 import NotFound from "../components/notfound/Notfound";
 import Login from "../components/auth/login/login";
 import Bank from "../components/bank/Bank";
+import UserForm from "../components/user/UserForm";
 
 const AppRoutes = () => (
 <Router>
@@ -26,6 +27,7 @@ const AppRoutes = () => (
             <Route path="/teacher" exact element={<Teacher/>}/>
             <Route path="/customer" exact element={<Customer/>}/>
             <Route path="/user" exact element={<UsersList/>}/>
+            <Route path="/user/:id" exact element={<UserForm/>}/>
             <Route path="/profile" exact element={<Profile/>}/>
             <Route path="/bank" exact element={<Bank/>}/>
             <Route element={<NotFound/>}/>
