@@ -7,6 +7,7 @@ import RegisterStudent from "../components/auth/registration/register-student";
 import RegisterTeacher from "../components/auth/registration/register-teacher";
 import Profile from "../components/profile/profile";
 import Teacher from "../components/Teacher/Teacher";
+//import TeacherList from "../components/teacher/TeacherList"
 import Customer from "../components/Customer/Customer";
 import UsersList from "../components/User/UsersList";
 import Planner from "../components/planner/Planner";

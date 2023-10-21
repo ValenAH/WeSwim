@@ -52,7 +52,8 @@ const Teacher = () => {
           userid: teacher.userid,
           bankid: teacher.bankid,
           accountType: teacher.accountType,
-          accountNumber: teacher.accountNumber
+          accountNumber: teacher.accountNumber,
+          password: teacher.password
 
         };
         axios
@@ -75,7 +76,8 @@ const Teacher = () => {
           userid: "",
           bankid: "",
           accountType: "",
-          accountNumber: ""
+          accountNumber: "",
+          password:""
         };
         axios
           .post("http://localhost:9009/api/teacherCustomAPI/teacherremove", data)
@@ -96,7 +98,8 @@ const Teacher = () => {
         userid: null,
         bankid: null,
         accountType: "",
-        accountNumber: ""
+        accountNumber: "",
+        password: ""
       };
     
       const [currentTeacher, setCurrentTeacher] = useState(initialFormState);
@@ -113,7 +116,8 @@ const Teacher = () => {
             userid: teacher.userid,
             bankid: teacher.bankid,
             accountType: teacher.accountType,
-            accountNumber: teacher.accountNumber
+            accountNumber: teacher.accountNumber,
+            password: teacher.password
         });
       };
     
@@ -134,7 +138,8 @@ const Teacher = () => {
             userid: updatedTeacher.userid,
             bankid: updatedTeacher.bankid,
             accountType: updatedTeacher.accountType,
-            accountNumber: updatedTeacher.accountNumber
+            accountNumber: updatedTeacher.accountNumber,
+            password: updatedTeacher.password
         };
         axios
           .post("http://localhost:9009/api/teacherCustomAPI/updateteacher", data)

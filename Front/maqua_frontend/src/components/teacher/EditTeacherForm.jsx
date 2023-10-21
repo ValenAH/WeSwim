@@ -59,14 +59,6 @@ const EditTeacherForm = (props) => {
         onChange={handleInputChange}
       />
 
-<label>user id</label>
-      <input
-        type="number"
-        name="userid"
-        value={teacher.userid}
-        onChange={handleInputChange}
-      />
-
 <label>Bank id</label>
       <input
         type="number"
@@ -87,6 +79,13 @@ const EditTeacherForm = (props) => {
         type="number"
         name="accountNumber"
         value={teacher.accountNumber}
+        onChange={handleInputChange}
+      />
+      <label>Contraseña</label>
+      <input
+        type="text"
+        name="password"
+        value={teacher.password}
         onChange={handleInputChange}
       />
 

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const AddTeacherForm = (props) => {
 
 const initialFormState = { id: null, name: "", email: "",documentTypeid:0,documentNumber: "",
-                    phone:"",userid:0,bankid:0, accountType: "",accountNumber: ""};
+                    phone:"",userid:1,bankid:0, accountType: "",accountNumber: "",password:""};
 const [teacher, setTeacher] = useState(initialFormState);
 
 const handleInputChange = (event) => {
@@ -18,7 +18,7 @@ const handleInputChange = (event) => {
         event.preventDefault();
         if (!teacher.name || !teacher.email || !teacher.documentTypeid || !teacher.documentNumber
             || !teacher.phone || !teacher.userid || !teacher.bankid || !teacher.accountType 
-            || !teacher.accountNumber )
+            || !teacher.accountNumber || !teacher.password )
           return;
 
         props.addTeacher(teacher);
@@ -65,13 +65,7 @@ const handleInputChange = (event) => {
         onChange={handleInputChange}
       />
 
-<label>user id</label>
-      <input
-        type="number"
-        name="userid"
-        value={teacher.userid}
-        onChange={handleInputChange}
-      />
+
 
 <label>Bank id</label>
       <input
@@ -95,6 +89,14 @@ const handleInputChange = (event) => {
         value={teacher.accountNumber}
         onChange={handleInputChange}
       />
+      <label>Contraseña </label>
+      <input
+        type="password"
+        name="password"
+        value={teacher.password}
+        onChange={handleInputChange}
+      />
+    
 
       <button className="btn">Add new Teacher</button>
     </form>

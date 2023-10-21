@@ -3,11 +3,14 @@ import "./TeacherTable.scss";
 import {BsFillPencilFill,BsFillTrashFill} from "react-icons/bs";
 
 const TeacherTable = (props) => (
-    <table>
-      <thead>
-        <tr>
+  <div className="table-wrapper container w-100 d-flex justify-content-center flex-column">
+     <div className="table mx-auto mt-3">
+     <h3 className="text-center my-2">Administrar Profesores</h3>
+    <table  >
+      <thead >
+        <tr >
         <th>id</th>
-        <th>name</th>
+        <th className="w-100 text-center">name</th>
         <th>email</th>
         <th>documentTypeid</th>
         <th>documentNumber</th>
@@ -16,9 +19,11 @@ const TeacherTable = (props) => (
         <th>Bankid</th>
         <th>AccountType</th>
         <th>AccountNumber</th>
+        <th>Password</th>
+        <th>Acciones</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className="table mx-auto mt-3">
         {undefined !== props.teachers && props.teachers.length > 0 ? (
           props.teachers.map((teacher) => (
             <tr key={teacher.id.toString()}>
@@ -32,6 +37,7 @@ const TeacherTable = (props) => (
               <td>{teacher.bankid}</td>
               <td>{teacher.accountType}</td>
               <td>{teacher.accountNumber}</td>
+              <td>{teacher.password}</td>
               <td>
               <BsFillPencilFill
                 className="icon icon--edit"
@@ -53,6 +59,8 @@ const TeacherTable = (props) => (
         )}
       </tbody>
     </table>
+    </div>
+    </div>
   );
   
   export default TeacherTable;
