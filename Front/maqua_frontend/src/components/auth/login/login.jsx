@@ -1,23 +1,24 @@
 import React, { useRef, useState, useEffect, useReducer } from "react";
 import './login.scss'
 import logo from "../../../assets/images/logo-maqua.svg";
-import { useNavigate } from "react-router-dom";
-import { AuthData } from "../Auth";
+
+import { useAuth } from "../Auth";
+import { Navigate } from "react-router-dom";
 
 const Login = () =>{
 
-    const [user, setUser] = useState({user: "", password: ""})
-    const auth = AuthData()
-    const navigate = useNavigate();
-    const [errorMessage, setErrorMessage] = useState(null)
+    const auth = useAuth();
 
-    const handleLogin = async () => {
-        try {
-            await auth.login(user)
-            navigate("/")
-        }catch ( error ){
-            setErrorMessage(error)
-        }
+    if(auth.user){
+        return <Navigate to="/planner"/>
+    }
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        auth.login({username, password})
     }
 
     return (
@@ -31,11 +32,11 @@ const Login = () =>{
                     <form className="p-5">
                         <div className="form-group">
                             <label>Nombre de usuario</label>
-                            <input value={user.user} onChange={(e)=>setFormData({user:e.target.value})} type="text"></input>
+                            <input value={username} onChange={(e)=>setUsername(e.target.value)} type="text"></input>
                         </div>
                         <div className="form-group">
                             <label>Contraseña</label>
-                            <input value={user.password} onChange={(e)=>setFormData({password:e.target.value})} type="password"></input>
+                            <input value={password} onChange={(e)=>setPassword(e.target.value)} type="password"></input>
                         </div>
                         <div className="d-flex flex-column mt-5">
                             <button className="btn__light" onClick={handleLogin}>Iniciar sesión</button>
@@ -48,4 +49,4 @@ const Login = () =>{
     )
 }
 
-export default Login;
+export { Login };

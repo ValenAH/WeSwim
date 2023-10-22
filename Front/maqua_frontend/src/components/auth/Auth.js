@@ -1,26 +1,46 @@
 import React,{ Children, createContext, useContext, useState } from "react";
-import Layout from "../../containers/Layout/Layout";
+import { Navigate, useNavigate } from "react-router-dom";
 
+const AuthContext = createContext();
 
-const AuthContext = createContext(null);
+function AuthProvider({children}) {
+    const navigate = useNavigate();
+    const[user, setUser]= useState();
 
-export const AuthProvider = () => {
-
-    const [user, setUser] = useState(null)
-
-    const login = (user)=> {
-       setUser(user)
+    const login = ({username, password})=>{
+        setUser({username,password});
+        navigate("/planner")
+    }
+    const logout= ()=>{
+        setUser(null);
+        navigate("/")
     }
 
-    const logout = () => {
-        setUser(null)
-    }
+    const auth = { user, login, logout };
 
     return (
-        <AuthContext.Provider value= {{user,login,logout}}>
-            <Layout/>
+        <AuthContext.Provider value= {auth}>
+            {children}
         </AuthContext.Provider>
     )
 }
 
-export const AuthData = () => useContext(AuthContext);
+function useAuth() {
+    const auth = useContext(AuthContext);
+    return auth;
+}
+
+function PrivateRoute(props) {
+    const auth = useAuth();
+
+    if(!auth.user){
+        return <Navigate to="/login"/>;
+    }
+    return props.children
+}
+
+export {
+    AuthProvider,
+    useAuth,
+    PrivateRoute
+};
