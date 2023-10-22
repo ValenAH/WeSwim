@@ -25,12 +25,13 @@ public class Teacher {
 	private Long Bankid;
 	private String AccountType;
 	private String AccountNumber;
+	private String password;
 
 	
 	public Teacher() {}
 
 	public Teacher(Long id, String name, String email, Long documentTypeid,String documentNumber,
-			String Phone,Long userid, Long Bankid, String AccountType, String AccountNumber ) {
+			String Phone,Long userid, Long Bankid, String AccountType, String AccountNumber,String password ) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -42,6 +43,7 @@ public class Teacher {
 		this.Bankid = Bankid;
 		this.AccountType = AccountType;
 		this.AccountNumber = AccountNumber;
+		this.password = password;
 		
 	}
 	
@@ -59,13 +61,14 @@ public class Teacher {
 			Objects.equals(userid, teacher.userid)&&
 			Objects.equals(Bankid, teacher.Bankid)&&
 			Objects.equals(AccountType, teacher.AccountType)&&
+			Objects.equals(AccountNumber, teacher.AccountNumber)&&
 			Objects.equals(AccountNumber, teacher.AccountNumber);
 	}
 	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id, name, email, documentTypeid,documentNumber,Phone,
-				             userid,Bankid,AccountType,AccountNumber);
+				             userid,Bankid,AccountType,AccountNumber,password);
 	}
 	
 	
@@ -149,12 +152,20 @@ public class Teacher {
 	public void setAccountNumber(String AccountNumber) {
 		this.AccountNumber = AccountNumber;
 	}
+	
+	public String getpassword() {
+		return password;
+	}
+
+	public void setpassword(String password) {
+		this.password = password;
+	}
 
 	@Override
 	public String toString() {
 		return "Teacher [id=" + id + ", name=" + name + ", email=" + email + ", documentTypeid=" + documentTypeid
 				+ ", documentNumber=" + documentNumber + ", Phone=" + Phone + ", userid=" + userid + ", Bankid="
-				+ Bankid + ", AccountType=" + AccountType + ", AccountNumber=" + AccountNumber + "]";
+				+ Bankid + ", AccountType=" + AccountType + ", AccountNumber=" + AccountNumber +",password="+password+ "]";
 	}
 	
 	
