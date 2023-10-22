@@ -1,12 +1,12 @@
 import React, { useState, useEffect} from "react";
-import Teacherformadd from './Teacherformadd';
 import axios from 'axios';
 import {BsFillPencilFill, BsFillTrashFill} from "react-icons/bs"
 import './TeacherList.scss';
+import { useNavigate } from "react-router-dom";
 
 const TeacherList = () => {
     const TeacherUrl = "http://localhost:9009/api/teacherCustomAPI";
-
+    const navigate=useNavigate();
     const [teachers, setTeacher] = useState([]);
     const [openTeacherformadd, setOpen] = useState(false);
 
@@ -30,12 +30,8 @@ const TeacherList = () => {
     return (
         <div className="table-wrapper container w-100 d-flex justify-content-center flex-column">
             <div className="row justify-content-end">
-                <button className='btn col-2' onClick={() =>setOpen(true)}>Nuevo Profesor</button>
+                <button className='btn col-2' onClick={()=>navigate('/teacher/new')}>Nuevo Profesor</button>
             </div>
-            {openTeacherformadd && <Teacherformadd closeForm={()=>{
-            setOpen(false)
-            }}/>
-            }
             <div className="table mx-auto mt-3">
                 <h3 className="text-center my-2">Administrar Profesores</h3>
                 <table>
@@ -72,7 +68,7 @@ const TeacherList = () => {
                                     <td>{teacher.password}</td>
                                     <td>
                                         <span className="actions d-flex justify-content-around">
-                                            <BsFillPencilFill className="edit-btn"/>
+                                            <BsFillPencilFill className="edit-btn" onClick={() => navigate(`/teacher/${teacher.id}`)}/>
                                             <BsFillTrashFill className="delete-btn" onClick={() => handleDeleteTeacher(teacher)}/>
                                         </span>
                                     </td>

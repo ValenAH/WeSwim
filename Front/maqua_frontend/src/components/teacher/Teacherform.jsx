@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import './Teacherformadd.scss';
+import './Teacherform.scss';
 import {IoIosCloseCircle} from 'react-icons/io';
+import { useNavigate, useParams } from "react-router-dom";
 
-export const Teacherformadd = ({closeForm}) => {
+const Teacherform = () => {
+    const {id}=useParams();
+    const navigate=useNavigate();
     const apiTeachers = "http://localhost:9009/api/teacherCustomAPI";
     const [formState, setFormState] = useState({
-        id: null,
+        //id: null,
         name: "",
         email: "",
         documentTypeid:0,
@@ -18,11 +21,31 @@ export const Teacherformadd = ({closeForm}) => {
         accountNumber: "",
         password:""
     })
-
-    const handleAddTeacher = async (teacher) => {
-        await axios.post(apiTeachers + "/addnewteacher", teacher)
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
+    useEffect(()=>{
+        if (id==='new')return;
+        const fetchTeacher = async ()=>{
+            await axios.get(`${apiTeachers}/getTeacherById?id=${id}`)
+            .then(response=>{
+                setFormState(response.data)
+            })
+            .catch(error=>console.log(error))
+        }
+        fetchTeacher();
+    },[])
+    const handlesubmit = async (e) => {
+        e.preventDefault();
+        if(id==='new'){
+            await axios.post(apiTeachers + "/addnewteacher", formState)
+            .catch(err => console.log(err))
+            return navigate('/teacher');
+        }
+        else{
+            let data={id:id,...formState}
+            await axios.post(apiTeachers + "/updateteacher", data)
+            .then(response=>{setFormState(response)})
+            .catch(err => console.log(err))
+            return navigate('/teacher');
+        }
     }
 
     const handleChangeTeacher = (e) => {
@@ -36,9 +59,9 @@ export const Teacherformadd = ({closeForm}) => {
         <div className='modal-container d-flex justify-content-center align-items-center'>
             <div className='form position-relative'>
                 <div className='form__close position-absolute'>
-                    <IoIosCloseCircle onClick={()=>closeForm()}/>
+                    <IoIosCloseCircle onClick={()=>navigate('/teacher')}/>
                 </div>
-                <h5 className='text-center'>Crear Profesor</h5>
+                <h5 className='text-center'>{id==='new'?'Crear':'Editar'} Profesor</h5>
                 <form className='mt-3'>
                     <div className='form-group '>
                         <label htmlFor='name'>Nombre Completo</label>
@@ -87,7 +110,7 @@ export const Teacherformadd = ({closeForm}) => {
                         <label htmlFor='password'>Contraseña</label>
                         <input name='password' value={formState.password} onChange={handleChangeTeacher}/>
                     </div>
-                    <button type='submit' className='btn' onClick={()=>handleAddTeacher(formState)} >Enviar</button>
+                    <button type='submit' className='btn' onClick={handlesubmit} >{id==='new'?'Crear':'Editar'}</button>
                 </form>
             </div>
         </div>
@@ -95,4 +118,4 @@ export const Teacherformadd = ({closeForm}) => {
 
 }
 
-export default Teacherformadd;
+export {Teacherform};

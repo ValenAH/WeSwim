@@ -1,10 +1,10 @@
 .table {
-    border-collapse: collapse;
-    border-radius: 10px;
-    box-shadow: 0px 10px 10px #ccc;
-    white-space: nowrap;
-    background-color: white;
-    min-height: 75vh;
+    width: 100%; /* Hacer que la tabla ocupe el 100% del ancho de la pantalla */
+  max-width: 100%; /* Establecer un ancho máximo para la tabla */
+  overflow-x: auto; /* Agregar una barra de desplazamiento horizontal si la tabla es más ancha que la pantalla */
+  overflow-y: auto;
+  white-space: nowrap; /* Evitar el ajuste de texto automático en las celdas */
+  border-collapse: collapse; /* Colapsar los bordes de las celdas para un aspecto más limpio */
 }
 
 .table thead {

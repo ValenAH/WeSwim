@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -81,6 +82,12 @@ public class TeacherController {
 			response.setTeacherList(list);
 	        return response;
 	    }
+		
+		@GetMapping(path = "getTeacherById", produces = "application/json")
+		public Teacher getTeacherById(@RequestParam(value="id") Long id) {
+		    Teacher teacher = teacherRepository.findById(id).get();
+		    return teacher;
+		}
 		
 		//Actualizar profesor
 	    //***Api Final Front
