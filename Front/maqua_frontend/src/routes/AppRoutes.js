@@ -6,7 +6,8 @@ import Layout from "../containers/Layout/Layout";
 import RegisterStudent from "../components/auth/registration/register-student";
 import RegisterTeacher from "../components/auth/registration/register-teacher";
 import Profile from "../components/profile/profile";
-import Teacher from "../components/Teacher/Teacher";
+import { Teacherform } from "../components/teacher/Teacherform";
+import TeacherList from "../components/teacher/TeacherList";
 import Customer from "../components/Customer/Customer";
 import UsersList from "../components/User/UsersList";
 import Planner from "../components/planner/Planner";
@@ -23,7 +24,8 @@ const AppRoutes = () => (
             <Route path="/register-teacher" exact element={<RegisterTeacher/>}/>
             <Route path="/login" exact element={<Login/>}/>
             <Route path="/" exact element={<Planner/>}/>
-            <Route path="/teacher" exact element={<Teacher/>}/>
+            <Route path="/teacher" exact element={<TeacherList/>}/>
+            <Route path="/teacher/:id" exact element={<Teacherform/>}/>
             <Route path="/customer" exact element={<Customer/>}/>
             <Route path="/user" exact element={<UsersList/>}/>
             <Route path="/user/:id" exact element={<UserForm/>}/>

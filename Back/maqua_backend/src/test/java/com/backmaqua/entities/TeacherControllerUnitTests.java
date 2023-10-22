@@ -49,7 +49,7 @@ public class TeacherControllerUnitTests {
 		
 		
 		// Entonces Realizo la prueba si es verdadera
-		Teacher teacherToAdd = new Teacher((long) 0, "Lokesh", "howtodoinjava@gmail.com",(long) 1,"001","666",(long) 002,(long) 156789,"Ahorro","10098");
+		Teacher teacherToAdd = new Teacher((long) 0, "Lokesh", "howtodoinjava@gmail.com",(long) 1,"001","666",(long) 002,(long) 156789,"Ahorro","10098","queso");
 		ResponseEntity<Object> responseEntity = teacherController.addTeacher(teacherToAdd);
 
 		
@@ -61,8 +61,8 @@ public class TeacherControllerUnitTests {
 	@Test
 	public void testFindAll() {
 		// given
-		Teacher teacher1 = new Teacher((long) 0, "Fox", "howtodoinjava@gmail.com",(long) 4,"001","555",(long) 003,(long) 157643,"Ahorro","10123");
-		Teacher teacher2 = new Teacher((long) 0, "Wolf", "wolfverinea@gmail.com",(long) 7,"002","666",(long) 006,(long) 156456,"Ahorro","10098");
+		Teacher teacher1 = new Teacher((long) 0, "Fox", "howtodoinjava@gmail.com",(long) 4,"001","555",(long) 003,(long) 157643,"Ahorro","10123","queso");
+		Teacher teacher2 = new Teacher((long) 0, "Wolf", "wolfverinea@gmail.com",(long) 7,"002","666",(long) 006,(long) 156456,"Ahorro","10098","queso");
 		List<Teacher> list = new ArrayList<Teacher>();
 		list.addAll(Arrays.asList(teacher1, teacher2));
 
@@ -94,10 +94,10 @@ public class TeacherControllerUnitTests {
 		when(teacherRepositoryMock.save(any(Teacher.class))).thenReturn(teacher);
 
 		// Entonces Realizo la prueba si es verdadera
-		Teacher teacherToAdd = new Teacher((long) 0, "Warpig", "warpig@gmail.com",(long) 1,"003","888",(long) 033,(long) 1333459,"Ahorro","10678");
+		Teacher teacherToAdd = new Teacher((long) 0, "Warpig", "warpig@gmail.com",(long) 1,"003","888",(long) 033,(long) 1333459,"Ahorro","10678","queso");
 		ResponseEntity<Object> responseEntityCreate = teacherController.addTeacher(teacherToAdd);
 		
-		Teacher teacherToUpdate = new Teacher((long) 0, "Rhino", "rhino@gmail.com",(long) 1,"004","999",(long) 002,(long) 1565314,"Ahorro","10555774");
+		Teacher teacherToUpdate = new Teacher((long) 0, "Rhino", "rhino@gmail.com",(long) 1,"004","999",(long) 002,(long) 1565314,"Ahorro","10555774","queso");
 		Teacher responseEntityUpdate = teacherController.updateTeacher(teacherToUpdate);
 		
 		assertThat(responseEntityUpdate.equals(teacherToUpdate));
@@ -117,7 +117,7 @@ public class TeacherControllerUnitTests {
 		when(teacherRepositoryMock.save(any(Teacher.class))).thenReturn(teacherBase);
 
 		// Entonces Realizo la prueba si es verdadera
-		Teacher teacher = new Teacher((long) 0, "Warpig", "warpig@gmail.com",(long) 1,"003","888",(long) 033,(long) 1333459,"Ahorro","10678");
+		Teacher teacher = new Teacher((long) 0, "Warpig", "warpig@gmail.com",(long) 1,"003","888",(long) 033,(long) 1333459,"Ahorro","10678","queso");
 		ResponseEntity<Object> responseEntityCreate = teacherController.addTeacher(teacher);
 		
 		ResponseEntity<String> responseEntityUpdate = teacherController.deleteTeacherApi(teacher);
