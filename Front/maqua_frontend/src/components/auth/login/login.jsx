@@ -1,8 +1,25 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useReducer } from "react";
 import './login.scss'
 import logo from "../../../assets/images/logo-maqua.svg";
 
+import { useAuth } from "../Auth";
+import { Navigate } from "react-router-dom";
+
 const Login = () =>{
+
+    const auth = useAuth();
+
+    if(auth.user){
+        return <Navigate to="/planner"/>
+    }
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        auth.login({username, password})
+    }
 
     return (
         <div className="container-fluid">
@@ -15,15 +32,15 @@ const Login = () =>{
                     <form className="p-5">
                         <div className="form-group">
                             <label>Nombre de usuario</label>
-                            <input></input>
+                            <input value={username} onChange={(e)=>setUsername(e.target.value)} type="text"></input>
                         </div>
                         <div className="form-group">
                             <label>Contraseña</label>
-                            <input></input>
+                            <input value={password} onChange={(e)=>setPassword(e.target.value)} type="password"></input>
                         </div>
                         <div className="d-flex flex-column mt-5">
-                            <button className="btn__light">Iniciar sesión</button>
-                            <button className="btn">Registrarse</button>
+                            <button className="btn__light" onClick={handleLogin}>Iniciar sesión</button>
+                            <button className="btn" onClick={()=>navigate("/register-student")}>Registrarse</button>
                         </div>                
                     </form>
                 </div>
@@ -32,4 +49,4 @@ const Login = () =>{
     )
 }
 
-export default Login;
+export { Login };

@@ -3,8 +3,6 @@ import './Planner.scss';
 import {BiSolidUserCircle} from "react-icons/bi";
 
 const Planner = () => {
-
-
     return (
         <section className="planner py-5">
             <div className="container d-flex">
