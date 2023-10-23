@@ -27,7 +27,7 @@ const UsersList = () => {
     } 
 
     return (
-    <div className="table-wrapper container w-100 d-flex justify-content-center flex-column">
+        <div className="table-wrapper container w-100 d-flex justify-content-center flex-column">
         <div className="row justify-content-end">
             <button className='btn col-2' onClick={() =>navigate('/user/new')}>Nuevo usuario</button>
         </div>
