@@ -4,7 +4,7 @@ import './UserForm.scss';
 import {IoIosCloseCircle} from 'react-icons/io';
 import { useNavigate, useParams } from 'react-router-dom';
 
-export const UserForm = ({closeForm}) => {
+export const UserForm = () => {
     const apiUsers = "http://localhost:9009/api/users";
 
     const {id} = useParams();
