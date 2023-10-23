@@ -19,6 +19,8 @@ const EditCustomerForm = (props) => {
         props.updateCustomer(customer.id, customer);
       }}
     >
+      <div className="row">
+      <div className="form-group col-md-6 mb-3">
       <label>Name</label>
       <input
         type="text"
@@ -26,7 +28,8 @@ const EditCustomerForm = (props) => {
         value={customer.name}
         onChange={handleInputChange}
       />
-
+    </div>
+    <div className="form-group col-md-6 mb-3">
       <label>email</label>
       <input
         type="text"
@@ -34,15 +37,17 @@ const EditCustomerForm = (props) => {
         value={customer.email}
         onChange={handleInputChange}
       />
-
+        </div>
+        <div className="form-group col-md-6 mb-3">
       <label>Document Type id</label>
       <input
         type="number"
-        name="documentTypeid"
-        value={customer.documentTypeid}
+        name="documentTypeId"
+        value={customer.documentTypeId}
         onChange={handleInputChange}
       />
-
+</div>
+<div className="form-group col-md-6 mb-3">
       <label>Document Number</label>
       <input
         type="number"
@@ -50,7 +55,8 @@ const EditCustomerForm = (props) => {
         value={customer.documentNumber}
         onChange={handleInputChange}
       />
-
+</div>
+<div className="form-group col-md-6 mb-3">
       <label>Address</label>
       <input
         type="text"
@@ -58,7 +64,8 @@ const EditCustomerForm = (props) => {
         value={customer.address}
         onChange={handleInputChange}
       />
-
+</div>
+<div className="form-group col-md-6 mb-3">
       <label>Phone</label>
       <input
         type="number"
@@ -66,15 +73,9 @@ const EditCustomerForm = (props) => {
         value={customer.phone}
         onChange={handleInputChange}
       />
+</div>
 
-      <label>user id</label>
-      <input
-        type="number"
-        name="userid"
-        value={customer.userid}
-        onChange={handleInputChange}
-      />
-
+<div className="form-group col-md-6 mb-3">
       <label>Payment Plan Id</label>
       <input
         type="number"
@@ -82,14 +83,16 @@ const EditCustomerForm = (props) => {
         value={customer.paymentPlanId}
         onChange={handleInputChange}
       />
-
-      <button>Update Customer</button>
-      <button
+      </div>
+</div>
+<div className="form-group col-12">
+      <button type="submit" className="btn btn-primary">Update Customer</button>
+      <button type="submit" className="btn btn-primary"
         onClick={() => props.setEditing(false)}
-        className="button muted-button"
       >
         Cancel
       </button>
+      </div>
     </form>
   );
 };
