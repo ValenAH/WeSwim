@@ -29,7 +29,7 @@ const Header = () => {
                 return(
                   <li key={route.to}>
                   <NavLink
-                  className="p-2"
+                  className="p-1"
                   style={({isActive})=>({borderBottom: isActive ? '2px solid white': 'none'})}
                   to={route.to}
                   >
@@ -73,13 +73,13 @@ routes.push({
 },
 {
   to:'/register-student',
-  text:'Registrar estudiante',
+  text:'Registro estudiante',
   private: false,
   publicOnly: true
 },
 {
   to:'/register-teacher',
-  text:'Registrar profesor',
+  text:'Registro profesor',
   private: false,
   publicOnly: true
 },

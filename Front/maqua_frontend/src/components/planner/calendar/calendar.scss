@@ -1,0 +1,27 @@
+.css-16b5y55-MuiPickersLayout-contentWrapper{
+    margin: 10px;
+}
+
+.css-1q04gal-MuiDateCalendar-root{
+    box-shadow: 0px 0px 10px 2px var(--gray-light);
+}
+
+.css-4pax7l-MuiPickersLayout-root .MuiPickersLayout-actionBar,
+.css-1eurbeq-MuiPickersToolbar-root-MuiDatePickerToolbar-root,
+.css-1hbyad5-MuiTypography-root{
+display: none !important;
+}
+.css-dplwbx-MuiPickersCalendarHeader-label{
+
+    &:hover{
+        background-color: var(--gray-light);
+        padding: 5px;
+        border-radius: 5px;
+    }
+}
+.css-i5q14k-MuiDayCalendar-header span{
+    color: var(--blue-secondary);
+    font-weight: bold;
+    font-size: 1rem;
+}
+    
