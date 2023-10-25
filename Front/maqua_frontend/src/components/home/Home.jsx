@@ -1,9 +1,13 @@
 import React from "react";
 import './Home.scss';
+import { Gallery } from "./gallery/gallery";
+import { ContactForm } from "./contact-form/contact-form";
 
 const Home = () => (
-    <div className="SinEspecificar">
-        HOLA SOY EL HOME
+    <div>
+        <Gallery/>
+        <ContactForm/>
     </div>
+    
 )
-export default Home;
+export {Home};

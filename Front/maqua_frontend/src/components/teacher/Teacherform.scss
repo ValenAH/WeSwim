@@ -1,21 +1,19 @@
-tbody{
-    border-style: none;
-}
-
 .form {
     border-radius: 5px;
     padding: 2rem;
     background-color: white;
-    width: 25rem;
+    width: 80%;
 
     &__close{
-        top: 10px;
+        top: 0;
         right: 15px;
+        font-size: 2rem;
         color: #ccc;
         cursor: pointer;
-
-        .icon{
-            font-size: 2rem;
-        }
     }
+}
+
+.form .btn {
+    display: block;
+    margin: auto;
 }
