@@ -1,16 +1,24 @@
 import React, { useState } from "react";
 
 const AddCustomerForm = (props) => {
+  const initialFormState = {
+    id: null,
+    name: "",
+    email: "",
+    documentTypeId: 0,
+    documentNumber: "",
+    address: "",
+    phone: "",
+    userid: 0,
+    paymentPlanId: 0,
+  };
+  const [customer, setCustomer] = useState(initialFormState);
 
-const initialFormState = { id: null, name: "", email: "",documentTypeid:0,documentNumber: ""
-                    ,address:"",phone:"",userid:0,paymentPlanId:0};
-const [customer, setCustomer] = useState(initialFormState);
+  const handleInputChange = (event) => {
+    
+    setCustomer({ ...customer, [event.target.name]: event.target.value });
+  };
 
-const handleInputChange = (event) => {
-  const { name, value } = event.target;
-        //console.log(event);
-  setCustomer({ ...customer, [name]: value });
-};
 
   return (
     <form
@@ -19,7 +27,7 @@ const handleInputChange = (event) => {
         if (
           !customer.name ||
           !customer.email ||
-          !customer.documentTypeid ||
+          !customer.documentTypeId ||
           !customer.documentNumber ||
           !customer.address ||
           !customer.phone ||
@@ -31,72 +39,92 @@ const handleInputChange = (event) => {
         props.addCustomer(customer);
         setCustomer(initialFormState);
       }}
+      className="form-row"
     >
-      <label>Name</label>
-      <input
-        type="text"
-        name="name"
-        value={customer.name}
-        onChange={handleInputChange}
-      />
+      <div className="row">
+        <div className="form-group col-md-6 mb-3">
+          <label>Name</label>
+          <input placeholder="Ingrese un nombre"
+            type="text"
+            name="name"
+            value={customer.name}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-group col-md-6 mb-3">
+          <label>email</label>
+          <input placeholder="Ingrese un correo"
+            type="text"
+            name="email"
+            value={customer.email}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-group col-md-6 mb-3">
+          <label>Document Type id</label>
 
-      <label>email</label>
-      <input
-        type="text"
-        name="email"
-        value={customer.email}
-        onChange={handleInputChange}
-      />
+          <select
+            name="documentTypeId"
+            value={customer.documentTypeId}
+            onChange={handleInputChange}
+          >
+            <option value={0} hidden>Selecciona un tipo de documento</option>
+            <option value={1}>Cedula</option>
+            <option value={2}>Trajeta de Identidad</option>
+            <option value={3}>Cedula de Extranjeria</option>
+            
+          </select>
+        </div>
+        <div className="form-group col-md-6 mb-3">
+          <label>Document Number</label>
+          <input placeholder="Ingrese un numero de documento"
+            type="number"
+            name="documentNumber"
+            value={customer.documentNumber}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-group col-md-6 mb-3">
+          <label>Address</label>
+          <input placeholder="Ingrese una dirección"
+            type="text"
+            name="address"
+            value={customer.address}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-group col-md-6 mb-3">
+          <label>Phone</label>
+          <input placeholder="Ingrese un numero de celular"
+            type="number"
+            name="phone"
+            value={customer.phone}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-group col-md-6 mb-3">
+          <label>user id</label>
+          <input placeholder="Ingrese un usuario"
+            type="number"
+            name="userid"
+            value={customer.userid}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-group col-md-6 mb-3">
+          <label>Payment Plan Id</label>
+          <input placeholder="Ingrese un plan de pago"
+            type="number"
+            name="paymentPlanId"
+            value={customer.paymentPlanId}
+            onChange={handleInputChange}
+          />
+        </div>
+      </div>
 
-      <label>Document Type id</label>
-      <input
-        type="number"
-        name="documentTypeid"
-        value={customer.documentTypeid}
-        onChange={handleInputChange}
-      />
-
-      <label>Document Number</label>
-      <input
-        type="number"
-        name="documentNumber"
-        value={customer.documentNumber}
-        onChange={handleInputChange}
-      />
-
-      <label>Address</label>
-      <input
-        type="text"
-        name="address"
-        value={customer.address}
-        onChange={handleInputChange}
-      />
-
-      <label>Phone</label>
-      <input
-        type="number"
-        name="phone"
-        value={customer.phone}
-        onChange={handleInputChange}
-      />
-
-      <label>user id</label>
-      <input
-        type="number"
-        name="userid"
-        value={customer.userid}
-        onChange={handleInputChange}
-      />
-
-      <label>Payment Plan Id</label>
-      <input
-        type="number"
-        name="paymentPlanId"
-        value={customer.paymentPlanId}
-        onChange={handleInputChange}
-      />
-
-      <button>Add new customer</button>
+      <div className="form-group col-12">
+        <button className="btn">Add new customer</button>
+      </div>
     </form>
   );
 };

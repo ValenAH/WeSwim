@@ -6,4 +6,4 @@ const Home = () => (
         HOLA SOY EL HOME
     </div>
 )
-export default Home;
+export {Home};
