@@ -2,6 +2,7 @@ package com.backmaqua.controller.transaction;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -26,6 +27,12 @@ public class TransactionController {
 		response.setTransactionList(list);
 		return response;
 	}
+	
+	@GetMapping(path="/getTransactionByUser/{idUser}",produces = "application/json")
+    public List<Transaction> getTransactionsByUserId(@PathVariable String idUser) {
+		List<Transaction> transactions = transactionRepository.findByIdUser(idUser);
+        return transactions;
+    }
 	
     @PostMapping(path= "/add", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Object> addNewTransaction(@RequestBody Transaction transaction) {
