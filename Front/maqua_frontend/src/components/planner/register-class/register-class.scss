@@ -1,0 +1,24 @@
+.modal-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.2); // Make sure this color has an opacity of less than 1
+    backdrop-filter: blur(3px);
+
+    .register-container{
+        width: 60%;
+        background-color: white;
+        box-shadow: 0px 0px 10px 2px var(--gray-light);
+    }
+
+}
+
+@media screen and (max-width:800px){
+    .modal-container{
+        .register-container{
+            width: 80%;
+        }
+    }
+}
