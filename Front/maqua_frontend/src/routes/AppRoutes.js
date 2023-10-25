@@ -15,6 +15,7 @@ import UserForm from "../components/user/UserForm";
 import { AuthProvider, PrivateRoute } from "../components/auth/Auth";
 import {Home} from "../components/home/Home";
 import {Layout} from "../containers/Layout/Layout";
+import Transaction from "../components/transactionhistory/Transaction";
 
 const AppRoutes = () => {
     return (
