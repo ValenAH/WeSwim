@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import './Planner.scss';
 import {BiSolidUserCircle} from "react-icons/bi";
+import { BsFillCalendarCheckFill } from "react-icons/bs"
+import { Calendar } from "./calendar/calendar";
+import { RegisterClass } from "./register-class/register-class";
 
 const Planner = () => {
+    const [openRegisterModal, setOpenRegisterModal] = useState(false);
 
+    const registerClass = () => { 
+        setOpenRegisterModal(!openRegisterModal)
+    }
 
     return (
         <section className="planner py-5">
@@ -27,9 +34,13 @@ const Planner = () => {
                     <h2 className="my-1">Clase de natación Grupal</h2>
                 </div>
                 <div className="w-50">
-                    <h3 className="text-center">Selecciona una fecha y hora</h3>
-                    <div className="row justify-content-end">
-                        <button className="btn col-3">Registrar clase</button>
+                    <h3 className="text-center"><BsFillCalendarCheckFill className="m-3"/>Selecciona una fecha y hora </h3>
+                    <div className="row justify-content-center">
+                        <button className="btn col-lg-4" onClick={registerClass}>Registrar clase</button>
+                        {openRegisterModal && <RegisterClass/>}
+                    </div>
+                    <div className="mt-3">
+                        <Calendar/>
                     </div>
                 </div>
             </div>

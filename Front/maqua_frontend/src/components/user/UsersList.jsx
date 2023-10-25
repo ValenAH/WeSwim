@@ -1,19 +1,20 @@
 import React, { useState, useEffect} from "react";
-import UserForm from './UserForm';
 import axios from 'axios';
 import {BsFillPencilFill, BsFillTrashFill} from "react-icons/bs"
 import './UsersList.scss';
+import { useNavigate } from "react-router-dom";
 
 const UsersList = () => {
     const userUrl = "http://localhost:9009/api/users";
-
-    const [users, setUser] = useState([]);
-    const [openUserForm, setOpen] = useState(false);
+    //Variable para navegar por las rutas
+    const navigate = useNavigate();
+    //Estado para la lista de usuarios
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             await axios.get(userUrl + "/getAllUsers")
-            .then(res => setUser(res.data.usersList))
+            .then(res => setUsers(res.data.usersList))
             .catch(err => console.log(err));
         }
         fetchData();
@@ -21,22 +22,15 @@ const UsersList = () => {
 
     const handleDeleteUser = async (user) => {
         await axios.post(userUrl + "/removeUser",user)
-        .then(res => {
-            console.log(res)
-           //actualizar componente
-        })
         .catch(err => console.log('No se ha podido eliminar el usuario',err))
+        return window.location.reload(true);
     } 
 
     return (
-    <div className="table-wrapper container w-100 d-flex justify-content-center flex-column">
+        <div className="table-wrapper container w-100 d-flex justify-content-center flex-column">
         <div className="row justify-content-end">
-            <button className='btn col-2' onClick={() =>setOpen(true)}>Nuevo usuario</button>
+            <button className='btn col-2' onClick={() =>navigate('/user/new')}>Nuevo usuario</button>
         </div>
-        {openUserForm && <UserForm closeForm={()=>{
-        setOpen(false)
-        }}/>
-        }
         <div className="table mx-auto mt-3">
             <h3 className="text-center my-2">Administrar usuarios</h3>
             <table>
@@ -59,7 +53,7 @@ const UsersList = () => {
                                 <td>{user.rolId}</td>
                                 <td>
                                     <span className="actions d-flex justify-content-around">
-                                        <BsFillPencilFill className="edit-btn"/>
+                                        <BsFillPencilFill className="edit-btn" onClick={() =>navigate(`/user/${user.id}`)}/>
                                         <BsFillTrashFill className="delete-btn" onClick={()=> handleDeleteUser(user)}/>
                                     </span>
                                 </td>
