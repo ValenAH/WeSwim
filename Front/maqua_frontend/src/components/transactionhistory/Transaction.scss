@@ -1,0 +1,33 @@
+/* TransactionTable.scss */
+table {
+    th input[type="checkbox"],
+    td input[type="checkbox"] {
+      margin-right: 10px; 
+      appearance: none;
+      border: 1px solid #ccc;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%; 
+      cursor: pointer;
+    }
+  
+    th input[type="checkbox"]:checked,
+    td input[type="checkbox"]:checked {
+      background-color: #007bff; 
+    }
+  
+    th input[type="checkbox"]::after,
+    td input[type="checkbox"]::after {
+      content: ' ';
+      font-size: 14px;
+    }
+
+    
+  }
+  tr{
+    height: 50px;
+  }
+
+  .tr-transactions{
+    max-height: 50px;
+  }
