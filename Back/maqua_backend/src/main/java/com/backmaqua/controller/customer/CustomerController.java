@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.backmaqua.entities.customer.Customer;
 import com.backmaqua.entities.customer.Customers;
+import com.backmaqua.entities.user.User;
 import com.backmaqua.repository.customer.CustomerCRUDRepository;
 
 @RestController
@@ -35,6 +37,11 @@ import com.backmaqua.repository.customer.CustomerCRUDRepository;
 		return customer;
 	}
 	
+	@GetMapping(path = "getCustomerById", produces = "application/json")
+	public Customer getUserById(@RequestParam(value="id") Long id) {
+	    Customer customer = customerRepository.findById(id).get();
+	    return customer;
+	}
 	
     //***Api Final Para FRONT
 	@CrossOrigin(origins = "*")
