@@ -19,7 +19,7 @@ const Login = () =>{
                         </div>
                         <div className="form-group">
                             <label>Contraseña</label>
-                            <input></input>
+                            <input type="password"></input>
                         </div>
                         <div className="d-flex flex-column mt-5">
                             <button className="btn__light">Iniciar sesión</button>
