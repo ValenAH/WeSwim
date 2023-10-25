@@ -35,7 +35,7 @@ const AppRoutes = () => {
                                 <Route path="/user" element={<UsersList/>} />
                                 <Route path="/user/:id" element={<UserForm/>} />                              
                                 <Route path="/profile" element={<PrivateRoute><Profile/></PrivateRoute>} />                               
-                                <Route path="/bank" element={<Bank/>} />
+                                <Route path="/transaction" exact element={<Transaction/>}/>
                             </Routes>
                         </Layout>
                 </AuthProvider>
