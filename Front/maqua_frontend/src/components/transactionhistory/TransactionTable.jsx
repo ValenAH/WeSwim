@@ -115,7 +115,7 @@ const TransactionTable = (props) => {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Estado
+              Filtrar por estado
             </button>
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               {Object.keys(statusMap).map((statusKey) => (

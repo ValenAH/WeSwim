@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="C:\Users\user\Documents\ReposGitHub\WeSwim\Front\maqua_frontend\__tests__\Transaction.test.js">
+    <testCase name="TransactionTable Component debe renderizar el componente correctamente" duration="93"/>
+    <testCase name="TransactionTable Component debe filtrar las transacciones correctamente" duration="39"/>
+  </file>
+</testExecutions>
