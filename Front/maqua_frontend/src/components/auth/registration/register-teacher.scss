@@ -13,4 +13,31 @@
     .right-container{
         width: 70%;
     }
+
+    .custom-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%; /* Ajusta este valor según el tamaño deseado */
+      max-width: 400px; /* Ajusta este valor según el tamaño máximo deseado */
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      
+      .custom-modal h3 {
+        font-size: 18px; 
+      }
+      
+      .custom-modal p {
+        font-size: 14px; 
+        margin: 10px 0; 
+      }
+      .error-message {
+        color: red; 
+        font-size: 14px; 
+        margin-top: 10px; 
+      }
+
 }
