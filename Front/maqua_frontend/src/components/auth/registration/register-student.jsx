@@ -3,14 +3,12 @@ import "./register-student.scss";
 import { Modal } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import logo from "../../../assets/images/logo-maqua.svg";
+import axios from "axios";
+//import { Gallery } from "./gallery/gallery";
 
 const RegisterStudent = () => {
-  const [userData, setUserData] = useState({
-    username: "",
-    password: "",
-    rolId: 0,
-  });
-  const [customerData, setCustomerData] = useState({
+  const apiCustomer = "http://localhost:9009/api/CustomerAPI";
+  const [formState, setFormState] = useState({
     name: "",
     email: "",
     documentTypeId: "",
@@ -18,41 +16,59 @@ const RegisterStudent = () => {
     address: "",
     phone: "",
     paymentPlanId: "",
+    userid: 1,
+    password: "",
   });
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleUserChange = (e) => {
-    setUserData({ ...userData, [e.target.name]: e.target.value });
+  const openModal = () => {
+    setIsModalOpen(true);
   };
-
-  const handleCustomerChange = (e) => {
-    setCustomerData({ ...customerData, [e.target.name]: e.target.value });
+  const closeModal = () => {
+    setIsModalOpen(false);
+    window.location.href = "http://localhost:8080";
   };
-
-  const [showModal, setShowModal] = useState(false);
-
-  const handleClose = () => setShowModal(false);
-  const handleShow = () => setShowModal(true);
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      // Realizar una solicitud POST al servidor Spring Boot para guardar los datos
-      const response = await fetch("/api/registerCustomer/saveRegister", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ user: userData, customer: customerData }),
-      });
-
-      if (response.ok) {
-        // Manejar la respuesta exitosa
-      } else {
-        // Manejar errores si es necesario
-      }
-    } catch (error) {
-      console.error(error);
+    if (formState.password !== passwordConfirmation) {
+      console.log("Las contraseñas no coinciden");
+      setError("Las contraseñas no coinciden");
+      return;
     }
+    try {
+      const response = await axios.post(
+        apiCustomer + "/addnewcustomer",
+        formState
+      );
+      console.log(response.data);
+      openModal();
+      setFormState({
+        name: "",
+        email: "",
+        documentTypeId: 0,
+        documentNumber: "",
+        address: "",
+        phone: "",
+        userid: 1,
+        paymentPlanId: "",
+        password: "",
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleChangeCustomer = (e) => {
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleChangePasswordConfirmation = (e) => {
+    setPasswordConfirmation(e.target.value);
   };
 
   return (
@@ -63,157 +79,123 @@ const RegisterStudent = () => {
       <div className="right-container m-3 px-5">
         <div className="d-flex justify-content-between align-items-center">
           <img src={logo}></img>
-          <div className="d-flex flex-column">
-            <button className="btn">Registrarse como Profesor</button>
-            <button className="btn__light">Registrarse como Estudiante</button>
-          </div>
         </div>
         <h1>Crear cuenta de estudiante</h1>
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="row my-3">
             <div className="col-lg-6 form-group">
               <label>Nombre completo</label>
               <input
-                placeholder="Ingrese un nombre"
-                type="text"
                 name="name"
-                onChange={handleCustomerChange}
-              ></input>
+                type="text"
+                value={formState.name}
+                onChange={handleChangeCustomer}
+              />
             </div>
-            <div className="col-lg-6 form-group">
-              <label>Cédula</label>
-              <input
-                placeholder="Ingrese un numero de documento"
-                type="number"
-                name="documentNumber"
-                onChange={handleCustomerChange}
-              ></input>
-            </div>
-          </div>
-          <div className="row my-3">
             <div className="col-lg-6 form-group">
               <label>Correo</label>
               <input
-                placeholder="Ingrese un correo"
-                type="text"
                 name="email"
-                onChange={handleCustomerChange}
-              ></input>
+                type="email"
+                value={formState.email}
+                onChange={handleChangeCustomer}
+              />
+            </div>
+            <div className="col-lg-6 form-group">
+              <label htmlFor="documentTypeId">Tipo de documento</label>
+              <select
+                name="documentTypeId"
+                value={formState.documentTypeId}
+                placeholder="Elige un Tipo de Documento"
+                onChange={handleChangeCustomer}
+              >
+                <option value={0} disabled hidden>
+                  Selecciona un tipo de Documento
+                </option>
+                <option value={1}>Cedula</option>
+                <option value={2}>Tarjeta de Identidad</option>
+                <option value={3}>Pasaporte</option>
+              </select>
+            </div>
+            <div className="col-lg-6 form-group">
+              <label htmlFor="documentNumber">No. Documento</label>
+              <input
+                name="documentNumber"
+                type="text"
+                value={formState.documentNumber}
+                onChange={handleChangeCustomer}
+              />
             </div>
             <div className="col-lg-6 form-group">
               <label>Teléfono</label>
               <input
-                placeholder="Ingrese un numero de celular"
-                type="number"
                 name="phone"
-                onChange={handleCustomerChange}
-              ></input>
+                type="text"
+                value={formState.phone}
+                onChange={handleChangeCustomer}
+              />
             </div>
-          </div>
-          <div className="row my-3">
             <div className="col-lg-6 form-group">
               <label>Dirección</label>
               <input
-                placeholder="Ingrese una dirección"
-                type="text"
                 name="address"
-                onChange={handleCustomerChange}
-              ></input>
+                type="text"
+                value={formState.address}
+                onChange={handleChangeCustomer}
+              />
             </div>
             <div className="col-lg-6 form-group">
               <label>Sube una foto de perfil (Opcional)</label>
               <input type="file"></input>
             </div>
-          </div>
-          <div className="row my-3">
+
             <div className="col-lg-6 form-group">
               <label>Contraseña</label>
               <input
-              placeholder="Ingrese una Contraseña"
-              type="password"
-              name="password"
-              onChange={handleUserChange}
-            ></input>
+                type="password"
+                name="password"
+                value={formState.password}
+                onChange={handleChangeCustomer}
+              />
             </div>
             <div className="col-lg-6 form-group">
               <label>Confirmar Contraseña</label>
               <input
-              placeholder="Confirme la Contraseña"
-              type="password"
-              name="password"
-              onChange={handleUserChange}
-            ></input>
+                type="password"
+                name="passwordConfirmation"
+                value={passwordConfirmation}
+                onChange={handleChangePasswordConfirmation}
+              ></input>
             </div>
+
+            <div>{error && <p className="error-message">{error}</p>}</div>
           </div>
+
           <div className="my-5 text-center">
             <div>
               <input className="m-2" type="checkbox"></input>
-              <label onClick={handleShow}>Acepto términos y condiciones</label>
+              <label>Acepto términos y condiciones</label>
             </div>
-            <button className="btn__light mt-5">Crear cuenta</button>
+            <button
+              type="submit"
+              className="btn__light mt-5"
+              onClick={handleSubmit}
+            >
+              Crear cuenta
+            </button>
           </div>
         </form>
       </div>
-
-      <Modal show={showModal} onHide={handleClose} backdrop="static" keyboard={false}>
-        <Modal.Header >
-          <Modal.Title>Términos y Condiciones</Modal.Title>
-        </Modal.Header>
-        <Modal.Body style={{ maxHeight: '400px', overflowY: 'auto' }}>
-          <p>
-
-¡Bienvenido a WeSwim! Estamos emocionados de que hayas decidido unirte a nuestro programa de clases de natación personalizadas. Antes de comenzar, te pedimos que leas atentamente los siguientes términos y condiciones que rigen nuestra relación con los estudiantes. Al inscribirte en nuestras clases, aceptas cumplir con estos términos y condiciones.
-<br /><br />
-1. Descripción de WeSwim:<br />
-WeSwim es un servicio que ofrece clases de natación personalizadas para todas las edades, ya sea para individuos o grupos. Nuestras clases son impartidas por instructores altamente calificados y experimentados, con el objetivo de promover la seguridad y el aprendizaje efectivo de la natación.
-<br /><br />
-2. Pago:<br />
-2.1. Pago por Clase: Las clases de WeSwim se pagan individualmente por clase. El estudiante deberá realizar el pago por consignación o transferencia bancaria antes de la fecha programada de la clase. Los detalles bancarios para el pago se proporcionarán al momento de la reserva.
-<br /><br />
-3. Programación de Clases:
-<br />
-3.1. Reservas: Las clases deben programarse con anticipación. Los estudiantes pueden hacerlo poniéndose en contacto con nuestro equipo a través de los canales de comunicación proporcionados. Recomendamos programar las clases con la mayor anticipación posible para garantizar la disponibilidad del instructor.
-<br />
-3.2. Confirmación: WeSwim confirmará la fecha y hora de la clase después de recibir la reserva y el pago correspondiente. La confirmación se enviará al estudiante por correo electrónico o mensaje de texto.
-<br /><br />
-4. Piscina:
-<br />
-4.1. Responsabilidad del Estudiante: Los estudiantes deben proporcionar la piscina en la que se llevará a cabo la clase. Esta piscina debe cumplir con los requisitos de seguridad y estar adecuadamente mantenida. WeSwim no se hace responsable de la seguridad o el mantenimiento de la piscina proporcionada por el estudiante.
-<br />
-4.2. Requisitos de la Piscina: La piscina debe estar en buenas condiciones de limpieza y desinfección. Además, debe tener una profundidad y espacio adecuado para llevar a cabo las lecciones de natación de manera segura.
-<br /><br />
-5. Información del Estudiante:
-<br />
-5.1. Base de Datos: WeSwim mantendrá una base de datos de la información del estudiante, incluyendo nombre, edad, nivel de habilidad, información de contacto y registros de clases. Esta información se utilizará para gestionar las clases y mantener un registro de progreso del estudiante.
-<br />
-5.2. Privacidad: Respetamos la privacidad de nuestros estudiantes. Toda la información proporcionada se mantendrá confidencial y no se compartirá con terceros sin el consentimiento del estudiante, excepto en casos requeridos por la ley.
-<br /><br />
-6. Cancelaciones y Reembolsos:
-<br />
-6.1. Cancelaciones por Parte del Estudiante: Los estudiantes pueden cancelar una clase programada con al menos 24 horas de anticipación. En caso de cancelación dentro de las 24 horas previas a la clase, el estudiante no será elegible para un reembolso.
-<br />
-6.2. Cancelaciones por Parte de WeSwim: En caso de que WeSwim deba cancelar una clase debido a circunstancias imprevistas, se ofrecerá al estudiante la opción de reprogramar la clase o recibir un reembolso completo.
-<br /><br />
-7. Seguridad:
-<br />
-7.1. Seguridad en la Piscina: La seguridad del estudiante es de suma importancia. Los estudiantes deben seguir las instrucciones del instructor y tomar medidas de seguridad adecuadas durante la clase. WeSwim no se hace responsable de lesiones o accidentes que puedan ocurrir durante las clases.
-<br /><br />
-8. Cambios en los Términos y Condiciones:
-WeSwim se reserva el derecho de realizar cambios en estos términos y condiciones en cualquier momento. Los estudiantes serán notificados de cualquier cambio mediante la publicación de una versión actualizada en nuestro sitio web.
-<br /><br />
-9. Contacto:
-Si tienes alguna pregunta o necesitas aclaraciones sobre estos términos y condiciones, no dudes en contactarnos a través de los medios de comunicación proporcionados en nuestro sitio web.
-<br />
-Al inscribirte en las clases de WeSwim, aceptas cumplir con estos términos y condiciones. Gracias por confiar en nosotros para ayudarte a alcanzar tus objetivos de natación. ¡Esperamos verte en la piscina pronto!
-          </p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cerrar
-          </Button>
-        </Modal.Footer>
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        contentLabel="Registro Exitoso"
+        className="custom-modal d-flex justify-content-center"
+      >
+        <h2>Registro Exitoso</h2>
+        <p>Tu registro ha sido completado con éxito y puedes iniciar sesión</p>
+        <button onClick={closeModal}>Cerrar</button>
       </Modal>
-
     </section>
   );
 };

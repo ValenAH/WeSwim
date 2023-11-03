@@ -5,7 +5,6 @@ import RegisterTeacher from "../components/auth/registration/register-teacher";
 import Profile from "../components/profile/profile";
 import { Teacherform } from "../components/teacher/Teacherform";
 import TeacherList from "../components/teacher/TeacherList";
-import Customer from "../components/Customer/Customer";
 import UsersList from "../components/User/UsersList";
 import Planner from "../components/planner/Planner";
 import NotFound from "../components/notfound/Notfound";
@@ -16,6 +15,8 @@ import { AuthProvider, PrivateRoute } from "../components/auth/Auth";
 import {Home} from "../components/home/Home";
 import {Layout} from "../containers/Layout/Layout";
 import Transaction from "../components/transactionhistory/Transaction";
+import { CustomerForm } from "../components/customer/CustomerForm";
+import CustomerList from "../components/customer/CustomerList";
 
 const AppRoutes = () => {
     return (
@@ -31,11 +32,12 @@ const AppRoutes = () => {
                                 <Route path="*" element={<NotFound/>}/>
                                 <Route path="/teacher" exact element={<TeacherList/>}/>
                                 <Route path="/teacher/:id" exact element={<Teacherform/>}/>
-                                <Route path="/customer" element={<Customer/>} />
                                 <Route path="/user" element={<UsersList/>} />
                                 <Route path="/user/:id" element={<UserForm/>} />                              
                                 <Route path="/profile" element={<PrivateRoute><Profile/></PrivateRoute>} />                               
                                 <Route path="/transaction" exact element={<Transaction/>}/>
+                                <Route path="/customer" exact element={<CustomerList/>}/>
+                                <Route path="/customer/:id" exact element={<CustomerForm/>}/>
                             </Routes>
                         </Layout>
                 </AuthProvider>
