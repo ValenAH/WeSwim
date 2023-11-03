@@ -104,8 +104,8 @@ routes.push({
   private: true
 },
 {
-  to:'/transaction',
-  text:'Transacciones',
+  to:'/bank',
+  text:'Bancos',
   private: true
 })
 
