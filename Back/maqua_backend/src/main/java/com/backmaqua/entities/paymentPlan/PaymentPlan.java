@@ -4,8 +4,6 @@ import java.util.Objects;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.backmaqua.entities.user.User;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
