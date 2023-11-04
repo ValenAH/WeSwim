@@ -1,34 +1,41 @@
-/** @jest-environment jsdom */
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import TransactionTable from '../transactionhistory/TransactionTable';
+import CustomerForm from '../src/components/customer/CustomerForm'
 
-// Mock de las transacciones para las pruebas
+
 const transactions = [
-  {
-    id: 890,
-    status: 1,
-    quantity: 100,
-    paymentMethod: 'Tarjeta',
-    date: '2023-10-14T13:00:00',
-  },
-];
+    {
+        name: 'Maria',
+        email: 'mimv@gmail.com',
+        documentTypeId: 1,
+        documentNumber: 1001587456,
+        address: 'Calle 25',
+        phone: '302369854',
+        userId: 3,
+        paymentPlanId: 30,
+    },
+  ];
 
-describe('TransactionTable Component', () => {
-  it('debe renderizar el componente correctamente', () => {
-    const { getByText, getByPlaceholderText } = render(<TransactionTable transactions={transactions} />);
+  
+describe('CustomerForm Component', () => {
+    it('debe renderizar el componente correctamente', () => {
+      const { getByText, getByPlaceholderText } = render(<CustomerForm customers={customers} />);
+      
+      // Verifica que el componente esté renderizado correctamente
+      expect(getByText('id')).toBeTruthy();
+      expect(getByText('name')).toBeTruthy();
+      expect(getByText('email')).toBeTruthy();
+      expect(getByText('documentTypeId')).toBeTruthy();
+      expect(getByText('documentNumber')).toBeTruthy();
+      expect(getByText('address')).toBeTruthy();
+      expect(getByText('phone')).toBeTruthy();
+      expect(getByText('userId')).toBeTruthy();
+      expect(getByText('paymentPlanId')).toBeTruthy();
+
+
+      // Verifica que se muestren los clientes en la tabla
+    });
     
-    // Verifica que el componente esté renderizado correctamente
-    expect(getByText('ID de transacción')).toBeTruthy();
-    expect(getByText('Estado')).toBeTruthy();
-    expect(getByText('Cantidad')).toBeTruthy();
-    expect(getByText('Método de pago')).toBeTruthy();
-    expect(getByText('Fecha de creación')).toBeTruthy();
-
-    // Verifica que se muestren las transacciones en la tabla
-    //expect(getByText('1')).toBeTruthy();
-  });
-
   it('debe filtrar las transacciones correctamente', () => {
     const { getByText, getByPlaceholderText } = render(<TransactionTable transactions={transactions} />);
     
