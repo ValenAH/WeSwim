@@ -6,7 +6,7 @@ import Profile from "../components/profile/profile";
 import { Teacherform } from "../components/teacher/Teacherform";
 import TeacherList from "../components/teacher/TeacherList";
 import Customer from "../components/Customer/Customer";
-import UsersList from "../components/User/UsersList";
+import { UsersList } from "../components/user/UsersList";
 import Planner from "../components/planner/Planner";
 import NotFound from "../components/notfound/Notfound";
 import { Login } from "../components/auth/login/login";

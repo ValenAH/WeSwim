@@ -24,9 +24,6 @@ import com.backmaqua.repository.paymentPlan.PaymentPlanQUERYRepository;
 public class PaymentPlanController {
 	@Autowired
     private PaymentPlanCRUDRepository paymentPlanRepository;
-	@Autowired
-	private PaymentPlanQUERYRepository paymentPlanRepositoryQuery;
-
 
     //***Api Final Front
 	@CrossOrigin(origins = "*")
