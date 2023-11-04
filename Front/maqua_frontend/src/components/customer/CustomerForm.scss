@@ -1,0 +1,19 @@
+.form {
+  border-radius: 5px;
+  padding: 2rem;
+  background-color: white;
+  width: 80%;
+
+  &__close{
+      top: 0;
+      right: 15px;
+      font-size: 2rem;
+      color: #ccc;
+      cursor: pointer;
+  }
+}
+
+.form .btn {
+  display: block;
+  margin: auto;
+}
