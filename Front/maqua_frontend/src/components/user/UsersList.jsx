@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react";
 import axios from 'axios';
-import {BsFillPencilFill, BsFillTrashFill} from "react-icons/bs"
+import {BsFillPencilFill, BsFillTrashFill} from "react-icons/bs";
 import './UsersList.scss';
 import { useNavigate } from "react-router-dom";
 
@@ -67,4 +67,4 @@ const UsersList = () => {
     )
 }
 
-export default UsersList;
+export {UsersList};
