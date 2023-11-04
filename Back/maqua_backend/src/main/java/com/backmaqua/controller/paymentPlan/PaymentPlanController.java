@@ -10,23 +10,21 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.backmaqua.entities.accountType.AccountType;
-import com.backmaqua.entities.accountType.AccountTypes;
 import com.backmaqua.entities.paymentPlan.PaymentPlan;
 import com.backmaqua.entities.paymentPlan.PaymentPlans;
-import com.backmaqua.repository.accountType.AccountTypeCRUDRepository;
 import com.backmaqua.repository.paymentPlan.PaymentPlanCRUDRepository;
-import com.backmaqua.repository.paymentPlan.PaymentPlanQUERYRepository;
 
+@RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequestMapping("/api/paymentPlans")
 public class PaymentPlanController {
 	@Autowired
     private PaymentPlanCRUDRepository paymentPlanRepository;
-	@Autowired
-	private PaymentPlanQUERYRepository paymentPlanRepositoryQuery;
-
 
     //***Api Final Front
 	@CrossOrigin(origins = "*")
@@ -39,7 +37,7 @@ public class PaymentPlanController {
     
     //***Api Final Para FRONT
 	@CrossOrigin(origins = "*")
-    @GetMapping(path= "/GetPaymentPlan", produces = "application/json")
+    @GetMapping(path= "/GetPaymentPlans", produces = "application/json")
     public PaymentPlans getPaymentPlan() 
     {
 		PaymentPlans response = new PaymentPlans();
@@ -77,7 +75,7 @@ public class PaymentPlanController {
         return response;
     }
     
-    @PostMapping(path= "/addPaymentPlan", consumes = "application/json", produces = "application/json")
+    @PostMapping(path= "/addNewPaymentPlan", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Object> addPaymentPlan(@RequestBody PaymentPlan paymentPlan) {       
         //add resource
     	paymentPlan = paymentPlanRepository.save(paymentPlan);

@@ -1,5 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./register-student.scss";
+import { Modal } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import logo from "../../../assets/images/logo-maqua.svg";
 import axios from "axios";
 //import { Gallery } from "./gallery/gallery";
@@ -28,6 +30,11 @@ const RegisterStudent = () => {
   };
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [error, setError] = useState("");
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClose = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -172,7 +179,7 @@ const RegisterStudent = () => {
           <div className="my-5 text-center">
             <div>
               <input className="m-2" type="checkbox"></input>
-              <label>Acepto términos y condiciones</label>
+              <label onClick={handleShow}>Acepto términos y condiciones</label>
             </div>
             <button
               type="submit"

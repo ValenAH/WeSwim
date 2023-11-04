@@ -9,7 +9,6 @@ import UsersList from "../components/User/UsersList";
 import Planner from "../components/planner/Planner";
 import NotFound from "../components/notfound/Notfound";
 import { Login } from "../components/auth/login/login";
-import Bank from "../components/bank/Bank";
 import UserForm from "../components/user/UserForm";
 import { AuthProvider, PrivateRoute } from "../components/auth/Auth";
 import {Home} from "../components/home/Home";
