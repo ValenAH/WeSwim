@@ -1,7 +1,7 @@
 /** @jest-environment jsdom */
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import TransactionTable from '../transactionhistory/TransactionTable';
+import TransactionTable from '../src/components/transactionhistory/TransactionTable';
 
 // Mock de las transacciones para las pruebas
 const transactions = [
