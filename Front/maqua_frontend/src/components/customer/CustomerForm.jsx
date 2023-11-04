@@ -3,12 +3,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import { IoIosCloseCircle } from "react-icons/io";
 import axios from "axios";
 
-const AddCustomerForm = (props) => {
+const CustomerForm = () => {
   const { id } = useParams();
-  console.log(id);
   const navigate = useNavigate();
-  const initialFormState = {
-    id: null,
+  const apiCustomer = "http://localhost:9009/api/CustomerAPI";
+  const [formState, setFormState] = useState({
     name: "",
     email: "",
     documentTypeId: 0,
@@ -17,37 +16,43 @@ const AddCustomerForm = (props) => {
     phone: "",
     userId: 0,
     paymentPlanId: 0,
-  };
-  const [customer, setCustomer] = useState(initialFormState);
-  const [loading, setShowLoading] = useState(false);
-
-  const handleInputChange = (event) => {
-    setCustomer({ ...customer, [event.target.name]: event.target.value });
-  };
-
+  });
   useEffect(() => {
     if (id === "new") return;
-
     const fetchCustomer = async () => {
       await axios
-        .get(`${apiUrl}/getCustomerById?id=${id}`)
+        .get(`${apiCustomer}/getCustomerById?id=${id}`)
         .then((response) => {
-          setCustomer(response.data);
+          setFormState(response.data);
         })
         .catch((err) => console.log(err));
     };
     fetchCustomer();
-  }, []);
+  }, [])
 
-
-
-  const addCustomer = () => {
-    setShowLoading(true);
-    axios
-      .post("http://localhost:9009/api/CustomerAPI/addnewcustomer", customer)
-
-      .catch((error) => console.log(error));
-    return navigate("/customer");
+  const handlesubmit = async (e) => {
+    e.preventDefault();
+    if (id === "new") {
+      await axios
+        .post(apiCustomer + "/addnewcustomer", formState)
+        .catch((err) => console.log(err));
+      return navigate("/customer");
+    } else {
+      let data = { id: id, ...formState };
+      await axios
+        .post(apiCustomer + "/updatecustomer", data)
+        .then((response) => {
+          setFormState(response);
+        })
+        .catch((err) => console.log(err));
+      return navigate("/customer");
+    }
+  };
+  const handleChangeCustomer = (e) => {
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
@@ -62,7 +67,7 @@ const AddCustomerForm = (props) => {
         <h5 className="text-center">
           {id === "new" ? "Crear" : "Actualizar"} Cliente
         </h5>
-        <form className="mt-3" onSubmit={handleInputChange}>
+        <form className="mt-3">
           <div className="row">
             <div className="form-group col-md-6 mb-3">
               <label>Name</label>
@@ -70,8 +75,8 @@ const AddCustomerForm = (props) => {
                 placeholder="Ingrese un nombre"
                 type="text"
                 name="name"
-                value={customer.name}
-                onChange={handleInputChange}
+                value={formState.name}
+                onChange={handleChangeCustomer}
               />
             </div>
             <div className="form-group col-md-6 mb-3">
@@ -80,8 +85,8 @@ const AddCustomerForm = (props) => {
                 placeholder="Ingrese un correo"
                 type="text"
                 name="email"
-                value={customer.email}
-                onChange={handleInputChange}
+                value={formState.email}
+                onChange={handleChangeCustomer}
               />
             </div>
             <div className="form-group col-md-6 mb-3">
@@ -89,8 +94,8 @@ const AddCustomerForm = (props) => {
 
               <select
                 name="documentTypeId"
-                value={customer.documentTypeId}
-                onChange={handleInputChange}
+                value={formState.documentTypeId}
+                onChange={handleChangeCustomer}
               >
                 <option value={0} hidden>
                   Selecciona un tipo de documento
@@ -106,8 +111,8 @@ const AddCustomerForm = (props) => {
                 placeholder="Ingrese un numero de documento"
                 type="number"
                 name="documentNumber"
-                value={customer.documentNumber}
-                onChange={handleInputChange}
+                value={formState.documentNumber}
+                onChange={handleChangeCustomer}
               />
             </div>
             <div className="form-group col-md-6 mb-3">
@@ -116,8 +121,8 @@ const AddCustomerForm = (props) => {
                 placeholder="Ingrese una dirección"
                 type="text"
                 name="address"
-                value={customer.address}
-                onChange={handleInputChange}
+                value={formState.address}
+                onChange={handleChangeCustomer}
               />
             </div>
             <div className="form-group col-md-6 mb-3">
@@ -126,8 +131,8 @@ const AddCustomerForm = (props) => {
                 placeholder="Ingrese un numero de celular"
                 type="number"
                 name="phone"
-                value={customer.phone}
-                onChange={handleInputChange}
+                value={formState.phone}
+                onChange={handleChangeCustomer}
               />
             </div>
             <div className="form-group col-md-6 mb-3">
@@ -136,8 +141,8 @@ const AddCustomerForm = (props) => {
                 placeholder="Ingrese un usuario"
                 type="number"
                 name="userId"
-                value={customer.userId}
-                onChange={handleInputChange}
+                value={formState.userId}
+                onChange={handleChangeCustomer}
               />
             </div>
             <div className="form-group col-md-6 mb-3">
@@ -146,15 +151,15 @@ const AddCustomerForm = (props) => {
                 placeholder="Ingrese un plan de pago"
                 type="number"
                 name="paymentPlanId"
-                value={customer.paymentPlanId}
-                onChange={handleInputChange}
+                value={formState.paymentPlanId}
+                onChange={handleChangeCustomer}
               />
             </div>
           </div>
 
           <div className="form-group col-12">
-            <button className="btn" onClick={addCustomer}>
-              Add new customer
+            <button className="btn" onClick={handlesubmit}>
+              {id === "new" ? "Crear" : "Actualizar"}
             </button>
           </div>
         </form>
@@ -162,4 +167,4 @@ const AddCustomerForm = (props) => {
     </div>
   );
 };
-export default AddCustomerForm;
+export {CustomerForm} ;

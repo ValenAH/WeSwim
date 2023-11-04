@@ -23,6 +23,7 @@ public class Customer {
 	private String phone;
 	private Long userId;
 	private Long paymentPlanId;
+	private String password;
 	
 	public Customer() {}
 
@@ -36,6 +37,7 @@ public class Customer {
 		this.phone = phone;
 		this.userId = userId;
 		this.paymentPlanId= paymentPlanId;
+		this.password = password;
 		
 	}
 	@Override
@@ -51,12 +53,13 @@ public class Customer {
 				&& Objects.equals(documentTypeId, other.documentTypeId) && Objects.equals(email, other.email)
 				&& Objects.equals(id, other.id) && Objects.equals(name, other.name)
 				&& Objects.equals(paymentPlanId, other.paymentPlanId) && Objects.equals(phone, other.phone)
-				&& Objects.equals(userId, other.userId);
+				&& Objects.equals(userId, other.userId) &&
+						Objects.equals(password, other.password);
 	}	
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(address, documentNumber, documentTypeId, email, id, name, paymentPlanId, phone, userId);
+		return Objects.hash(address, documentNumber, documentTypeId, email, id, name, paymentPlanId, phone, userId, password);
 	}
 	
 	
@@ -131,6 +134,13 @@ public class Customer {
 	public void setPaymentPlanId(Long paymentPlanId) {
 		this.paymentPlanId = paymentPlanId;
 	}
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	@Override
 	public String toString() {
@@ -144,6 +154,7 @@ public class Customer {
 			", phone='" + phone + '\'' +
 			", userId='" + userId + '\'' +
 			", paymentPlanId='" + paymentPlanId + '\'' +
+			", password='" + password + '\'' +
 			'}';
 
 	}
