@@ -9,6 +9,7 @@ const Teacherform = () => {
     const navigate=useNavigate();
     const apiTeachers = "http://localhost:9009/api/teacherCustomAPI";
     const [formState, setFormState] = useState({
+        //id: null,
         name: "",
         email: "",
         documentTypeid:0,
@@ -62,7 +63,7 @@ const Teacherform = () => {
                 </div>
                 <h5 className='text-center'>{id==='new'?'Crear':'Editar'} Profesor</h5>
                 <form className='mt-3'>
-                    <div className='form-group col-md-6 mb-3'>
+                    <div className='form-group '>
                         <label htmlFor='name'>Nombre Completo</label>
                         <input name='name' type='text' value={formState.name}  onChange={handleChangeTeacher}/>
                     </div>
@@ -70,7 +71,7 @@ const Teacherform = () => {
                         <label htmlFor='email'>Email</label>
                         <input name='email' type='text' value={formState.email}  onChange={handleChangeTeacher}/>
                     </div>
-                    <div className='form-group col-md-6 mb-3'>
+                    <div className='form-group'>
                         <label htmlFor='documentTypeid'>Tipo de documento</label>
                         <select name='documentTypeid' value={formState.documentTypeid} placeholder='Elige un tipo de documento' onChange={handleChangeTeacher}>
                             <option value={0} disabled hidden>Elige un tipo de documento</option>
@@ -79,15 +80,15 @@ const Teacherform = () => {
                             <option value={3}>Pasaporte</option>
                         </select>
                     </div>
-                    <div className='form-group col-md-6 mb-3'>
+                    <div className='form-group '>
                         <label htmlFor='documentNumber'>No. Documento</label>
                         <input name='documentNumber' type='text' value={formState.documentNumber}  onChange={handleChangeTeacher}/>
                     </div>
-                    <div className='form-group col-md-6 mb-3'>
+                    <div className='form-group '>
                         <label htmlFor='phone'>Telefono</label>
                         <input name='phone' type='text' value={formState.phone}  onChange={handleChangeTeacher}/>
                     </div>
-                    <div className='form-group col-md-6 mb-3'>
+                    <div className='form-group'>
                         <label htmlFor='bankid'>Banco</label>
                         <select name='bankid' value={formState.bankid} placeholder='Elige un Banco' onChange={handleChangeTeacher}>
                             <option value={0} disabled hidden>Elige un Banco</option>
@@ -96,7 +97,7 @@ const Teacherform = () => {
                             <option value={3}>Davivienda</option>
                         </select>
                     </div>
-                    <div className='form-group col-md-6 mb-3'>
+                    <div className='form-group'>
                         <label htmlFor='accountType'>Tipo de cuenta</label>
                         <select name='accountType' value={formState.accountType} placeholder='Elige Tipo de cuenta' onChange={handleChangeTeacher}>
                                 <option value="" disabled hidden>Elige tipo de cuenta</option>
@@ -108,9 +109,9 @@ const Teacherform = () => {
                         <label htmlFor='accountNumber'>No. de Cuenta</label>
                         <input name='accountNumber' type='text' value={formState.accountNumber}  onChange={handleChangeTeacher}/>
                     </div>
-                    <div className='form-group col-md-6 mb-3'>
+                    <div className='form-group'>
                         <label htmlFor='password'>Contraseña</label>
-                        <input type="password" name='password' value={formState.password} onChange={handleChangeTeacher}/>
+                        <input name='password' value={formState.password} onChange={handleChangeTeacher}/>
                     </div>
                     <button type='submit' className='btn' onClick={handlesubmit} >{id==='new'?'Crear':'Editar'}</button>
                 </form>

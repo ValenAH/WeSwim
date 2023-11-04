@@ -94,76 +94,68 @@ const RegisterTeacher = () =>{
         <section className="register-page d-flex">
             <div className="left-container p-5">
                 <h3 className="welcome text-center">BIENVENIDO A MAQUA</h3>
-                <div>
-                    <Gallery/>
-                </div>
             </div>
             <div className="right-container m-3 px-5">
                 <div className="d-flex justify-content-between align-items-center">
                     <img src={logo}></img>
+                    <div className="d-flex flex-column">
+                        <buton className="btn">Registrarse como profesor</buton>
+                        <button className="btn__light">Registrarse como estudiante</button>
+                    </div>
                 </div>
                 <h2>Crear cuenta de profesor</h2>
                 <form>
                     <div className="row my-3">
                         <div className="col-lg-6 form-group">
                             <label>Nombre completo</label>
-                            <input name='name' type='text' value={formState.name}  onChange={handleChangeTeacher}/>
+                            <input></input>
                         </div>
                         <div className="col-lg-6 form-group">
                             <label>Correo</label>
-                            <input name='email' type='email' value={formState.email}  onChange={handleChangeTeacher}/>
+                            <input type="email"></input>
                         </div>
                         <div className="col-lg-6 form-group">
-                        <label htmlFor='documentTypeid'>Tipo de documento</label>
-                        <select name='documentTypeid' value={formState.documentTypeid} placeholder='Elige un Tipo de Documento' onChange={handleChangeTeacher}>
-                            <option value={0} disabled hidden>Selecciona un tipo de Documento</option>
-                            <option value={1}>Cedula</option>
-                            <option value={2}>Tarjeta de Identidad</option>
-                            <option value={3}>Pasaporte</option>
-                        </select>
+                            <label>Tipo de documento</label>
+                            <select id="opciones">
+                                <option value="1">CC</option>
+                                <option value="2">TI</option>
+                                <option value="3">Pasaporte</option>
+                            </select>
                         </div>
                         <div className="col-lg-6 form-group">
-                        <label htmlFor='documentNumber'>No. Documento</label>
-                        <input name='documentNumber' type='text' value={formState.documentNumber}  onChange={handleChangeTeacher}/>
+                            <label>Numero de documento</label>
+                            <input ></input>
                         </div>
                         <div className="col-lg-6 form-group">
-                        <label htmlFor='bankid'>Banco</label>
-                        <select name='bankid' value={formState.bankid} placeholder='Elige un Banco' onChange={handleChangeTeacher}>
-                            <option value={0} disabled hidden>Selecciona un Banco</option>
-                            <option value={1}>Bancolombia</option>
-                            <option value={2}>BBVA</option>
-                            <option value={3}>Davivienda</option>
-                        </select>
+                            <label>Banco</label>
+                            <select id="opciones">
+                                <option value="1">Bancolombia</option>
+                                <option value="2">Davivienda</option>
+                                <option value="3">BBVA</option>
+                            </select>
                         </div>
                         <div className="col-lg-6 form-group">
-                        <label htmlFor='accountType'>Tipo de cuenta</label>
-                        <select name='accountType' value={formState.accountType} placeholder='Elige un Tipo de Cuenta' onChange={handleChangeTeacher}>
-                                <option value="" disabled hidden>Selecciona un Tipo de Cuenta</option>
-                                <option value="Ahorros">Ahorros</option>
-                                <option value="Corriente">Corriente</option>
-                        </select>
+                            <label>Tipo de cuenta</label>
+                            <select id="opciones">
+                                <option value="1">Ahorros</option>
+                                <option value="2">Corriente</option>
+                            </select>
                         </div>
                         <div className="col-lg-6 form-group">
-                            <label htmlFor='accountNumber'>No. de Cuenta</label>
-                            <input name='accountNumber' type='text' value={formState.accountNumber}  onChange={handleChangeTeacher}/>
+                            <label>Numero de cuenta</label>
+                            <input></input>
                         </div>
                         <div className="col-lg-6 form-group">
-                            <label htmlFor='phone'>Telefono</label>
-                            <input name='phone' type='text' value={formState.phone}  onChange={handleChangeTeacher}/>
+                            <label>Telefono</label>
+                            <input></input>
                         </div>
                         <div className="col-lg-6 form-group">
-                            <label htmlFor='password'>Contraseña</label>
-                            <input type="password" name='password' value={formState.password} onChange={handleChangeTeacher}/>
+                            <label>Contraseña</label>
+                            <input type="password"></input>
                         </div>
                         <div className="col-lg-6 form-group">
                             <label>Confirmar Contraseña</label>
-                            <input type="password" name="passwordConfirmation"
-                                value={passwordConfirmation}
-                                onChange={handleChangePasswordConfirmation}>
-                            </input>
-                        </div>
-                        <div>
-                        {error && <p className="error-message">{error}</p>}
+                            <input type="password"></input>
                         </div>
                         <div className="col-lg-6 form-group">
                             <label>Sube una foto de perfil (Opcional)</label>
