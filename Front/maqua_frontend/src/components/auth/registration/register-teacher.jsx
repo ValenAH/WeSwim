@@ -1,17 +1,94 @@
 import React, { useRef, useState, useEffect } from "react";
 import './register-teacher.scss';
 import logo from "../../../assets/images/logo-maqua.svg";
+import axios from 'axios';
 import { Modal } from "react-bootstrap";
 import { Button } from "react-bootstrap";
+import { Gallery } from "./gallery/gallery";
+
 
 
 
 const RegisterTeacher = () =>{
     
-    const [showModal, setShowModal] = useState(false);
+    const apiTeachers = "http://localhost:9009/api/teacherCustomAPI";
+    const [formState, setFormState] = useState({
+        name: "",
+        email: "",
+        documentTypeid:0,
+        documentNumber: "",
+        phone:"",
+        userid:1,
+        bankid:0,
+        accountType: "",
+        accountNumber: "",
+        password:""
+    })
 
-    const handleClose = () => setShowModal(false);
-    const handleShow = () => setShowModal(true);
+    const [showRegisterModal, setShowRegisterModal] = useState(false);
+    const [showTermsModal, setShowTermsModal] = useState(false);
+
+    const handleCloseRegisterModal = () =>{
+        setShowRegisterModal(false);
+        window.location.href = 'http://localhost:8080';
+    }
+      
+  const handleShowRegisterModal = () => setShowRegisterModal(true);
+
+  const handleCloseTermsModal = () => setShowTermsModal(false);
+  const handleShowTermsModal = () => setShowTermsModal(true);
+
+  const handleRegisterSuccess = () => {
+    setShowRegisterModal(true);
+  }
+            const [passwordConfirmation, setPasswordConfirmation] = useState("");
+            const [error, setError] = useState("");
+
+
+    const handlesubmit = async (e) => {
+        e.preventDefault();
+        if (formState.password !== passwordConfirmation) {
+            console.log("Las contraseñas no coinciden");
+            setError("Las contraseñas no coinciden");
+            return;
+          }
+        try {
+          const response = await axios.post(apiTeachers + "/addnewteacher", formState);
+          console.log(response.data);
+          
+          if (response.status === 200) {
+            // Registro exitoso
+            handleRegisterSuccess();
+          } else {
+            // Manejar el caso de error, si es necesario
+            console.log("Error en el servidor:", response.status, response.data);
+          }
+          
+          setFormState({
+            name: "",
+            email: "",
+            documentTypeid: 0,
+            documentNumber: "",
+            phone: "",
+            userid: 1,
+            bankid: 0,
+            accountType: "",
+            accountNumber: "",
+            password: ""
+          });
+        } catch (err) {
+          console.log("Error en la solicitud:", err);
+        }
+      };
+    const handleChangeTeacher = (e) => {
+        setFormState({
+            ...formState,
+            [e.target.name]: e.target.value
+        })
+    }
+    const handleChangePasswordConfirmation = (e) => {
+        setPasswordConfirmation(e.target.value);
+    }
 
     return (
         <section className="register-page d-flex">
@@ -88,15 +165,27 @@ const RegisterTeacher = () =>{
                     <div className="my-5 text-center">
                         <div>
                             <input className="m-2" type="checkbox"></input>
-                            <label onClick={handleShow}>Acepto términos y condiciones</label>
+                            <label  onClick={handleShowTermsModal}>Acepto términos y condiciones</label>
                         </div>
-                        <button className="btn__light mt-5">Crear cuenta</button>
+                        <button type="submit" className="btn__light mt-5" onClick={handlesubmit}>Crear cuenta</button>
                     </div>
                 </form>
             </div>
-
-            <Modal show={showModal} onHide={handleClose} backdrop="static" keyboard={false}>
-        <Modal.Header >
+            <Modal show={showRegisterModal} onHide={handleCloseRegisterModal} backdrop="static" keyboard={false} centered>
+        <Modal.Header closeButton>
+        </Modal.Header>
+        <Modal.Body>
+          <h2>Registro Exitoso</h2>
+          <p>Tu registro ha sido completado con éxito y puedes iniciar sesión</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseRegisterModal}>
+            Cerrar
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <Modal show={showTermsModal} onHide={handleCloseTermsModal} backdrop="static" keyboard={false} centered>
+        <Modal.Header closeButton>
           <Modal.Title>Términos y Condiciones</Modal.Title>
         </Modal.Header>
         <Modal.Body style={{ maxHeight: '400px', overflowY: 'auto' }}>
@@ -148,7 +237,7 @@ Al inscribirte en las clases de WeSwim, aceptas cumplir con estos términos y co
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleCloseTermsModal}>
             Cerrar
           </Button>
         </Modal.Footer>
