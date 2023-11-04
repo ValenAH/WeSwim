@@ -77,13 +77,7 @@ import com.backmaqua.repository.user.UserCRUDRepository;
 		response.setCustomerList(list);
         return response;
     }
-	
-	@GetMapping(path = "getCustomerById", produces = "application/json")
-	public Customer getCustomerById(@RequestParam(value="id") Long id) {
-		Customer customer = customerRepository.findById(id).get();
-	    return customer;
-	}
-	
+
 	@CrossOrigin(origins = "*")
     @PostMapping(path= "/updatecustomer", consumes = "application/json", produces = "application/json")
 	public Customer updateCustomer(@RequestBody Customer customer) {
