@@ -2,10 +2,6 @@
   "moduleNameMapper": {
   "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|scss)$": "<rootDir>/__mocks__/fileMock.js",
   "\\.(css|less|scss|sass)$": "identity-obj-proxy"
-<<<<<<< HEAD
   },
   "testEnvironment": "jsdom"
-=======
-  }
->>>>>>> 0e5d2a5f0d759e6f18af0b19ea9a451b8a0e6903
 }
