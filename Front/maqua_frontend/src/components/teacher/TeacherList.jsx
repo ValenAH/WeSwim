@@ -38,16 +38,16 @@ const TeacherList = () => {
                     <thead>
                         <tr>
                             <th>id</th>
-                            <th >name</th>
-                            <th>email</th>
-                            <th>documentTypeid</th>
-                            <th>documentNumber</th>
-                            <th>Phone</th>
-                            <th>userid</th>
-                            <th>Bankid</th>
-                            <th>AccountType</th>
-                            <th>AccountNumber</th>
-                            <th>Password</th>
+                            <th >Nombre Completo</th>
+                            <th>Email</th>
+                            <th>Tipo de documento</th>
+                            <th>No. Documento</th>
+                            <th>Telefono</th>
+                            <th>id de usuario</th>
+                            <th>Banco</th>
+                            <th>Tipo de cuenta</th>
+                            <th>No. de Cuenta</th>
+                            <th>Contraseña</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -82,4 +82,4 @@ const TeacherList = () => {
         )
 
 }
-export default TeacherList;
+export {TeacherList};
