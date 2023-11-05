@@ -5,10 +5,10 @@ import {BsWhatsapp, BsInstagram, BsFacebook} from 'react-icons/bs';
 const SocialMedia = () => {
 
     return (
-        <div className="socialMedia py-5">
+        <div className="socialMedia py-3">
             <div className="container-fluid">
                 <div className="container">
-                    <div className="d-flex justify-content-around text-light">
+                    <div className="d-lg-flex justify-content-around text-light">
                         <div className="d-flex gap-2 align-items-center">
                             <BsWhatsapp className="icons"/>
                             <span>+57 3052587069</span>
