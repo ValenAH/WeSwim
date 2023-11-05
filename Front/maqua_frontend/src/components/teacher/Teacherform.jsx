@@ -56,7 +56,7 @@ const Teacherform = () => {
     }
 
     return (
-        <div className='modal-container d-flex justify-content-center align-items-center'>
+        <div className='d-flex justify-content-center align-items-center'>
             <div className='form position-relative'>
                 <div className='form__close position-absolute'>
                     <IoIosCloseCircle onClick={()=>navigate('/teacher')}/>
@@ -67,13 +67,14 @@ const Teacherform = () => {
                         <label htmlFor='name'>Nombre Completo</label>
                         <input name='name' type='text' value={formState.name}  onChange={handleChangeTeacher}/>
                     </div>
-                    <div className='form-group '>
+                    <div className='form-group col-md-6 mb-3 '>
                         <label htmlFor='email'>Email</label>
                         <input name='email' type='text' value={formState.email}  onChange={handleChangeTeacher}/>
                     </div>
                     <div className='form-group'>
                         <label htmlFor='documentTypeid'>Tipo de documento</label>
-                        <select name='documentTypeid' value={formState.documentTypeid} onChange={handleChangeTeacher}>
+                        <select name='documentTypeid' value={formState.documentTypeid} placeholder='Elige un tipo de documento' onChange={handleChangeTeacher}>
+                            <option value={0} disabled hidden>Elige un tipo de documento</option>
                             <option value={1}>Cedula</option>
                             <option value={2}>Tarjeta de Identidad</option>
                             <option value={3}>Pasaporte</option>
@@ -89,7 +90,8 @@ const Teacherform = () => {
                     </div>
                     <div className='form-group'>
                         <label htmlFor='bankid'>Banco</label>
-                        <select name='bankid' value={formState.bankid} onChange={handleChangeTeacher}>
+                        <select name='bankid' value={formState.bankid} placeholder='Elige un Banco' onChange={handleChangeTeacher}>
+                            <option value={0} disabled hidden>Elige un Banco</option>
                             <option value={1}>Bancolombia</option>
                             <option value={2}>BBVA</option>
                             <option value={3}>Davivienda</option>
@@ -97,12 +99,13 @@ const Teacherform = () => {
                     </div>
                     <div className='form-group'>
                         <label htmlFor='accountType'>Tipo de cuenta</label>
-                        <select name='accountType' value={formState.accountType} onChange={handleChangeTeacher}>
+                        <select name='accountType' value={formState.accountType} placeholder='Elige Tipo de cuenta' onChange={handleChangeTeacher}>
+                                <option value="" disabled hidden>Elige tipo de cuenta</option>
                                 <option value="Ahorros">Ahorros</option>
                                 <option value="Corriente">Corriente</option>
                         </select>
                     </div>
-                    <div className='form-group '>
+                    <div className='form-group col-md-6 mb-3 '>
                         <label htmlFor='accountNumber'>No. de Cuenta</label>
                         <input name='accountNumber' type='text' value={formState.accountNumber}  onChange={handleChangeTeacher}/>
                     </div>
