@@ -11,6 +11,40 @@
         width: 60%;
         background-color: white;
         box-shadow: 0px 0px 10px 2px var(--gray-light);
+
+        &__close{
+            top: 0;
+            right: 15px;
+            color: #ccc;
+            cursor: pointer;
+    
+            .icon{
+                font-size: 2rem;
+            }
+        }
+
+        .studentField{
+            width: 90%;
+        }
+        .icon-container{
+            width: 10%;
+
+            &__minusIcon{
+                font-size: 1.4rem;
+                &:hover{
+                    color:var(--blue-primary)
+                }
+            }
+
+            &:hover{
+                cursor: pointer;
+                
+            }
+        }
+        .days-container{
+            border: 1px solid var(--gray-light);
+        }
+        
     }
 
 }
