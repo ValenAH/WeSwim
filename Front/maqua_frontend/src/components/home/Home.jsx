@@ -11,7 +11,7 @@ const Home = () => {
             <Gallery/>
             <div className="container-fluid bg-white py-5">
                 <div className="container">
-                    <div className="row">
+                    <div className="row text-center">
                         <h2>CLASES DE NATACIÓN A DOMICILIO EN MEDELLÍN</h2>
                         <p>Creemos en la importancia de aprender a nadar y disfrutar del agua en un entorno inclusivo y amigable.
                             <br/>Dictamos clases de natación a personas de todas las edades y capacidades, incluyendo aquellos con discapacidades físicas y cognitivas.
