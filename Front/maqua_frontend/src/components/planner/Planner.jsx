@@ -9,7 +9,10 @@ const Planner = () => {
     const [openRegisterModal, setOpenRegisterModal] = useState(false);
 
     const registerClass = () => { 
-        setOpenRegisterModal(!openRegisterModal)
+        setOpenRegisterModal(true)
+    }
+    const closeRegisterModal= (event) => {
+        setOpenRegisterModal(event)
     }
 
     return (
@@ -37,7 +40,7 @@ const Planner = () => {
                     <h3 className="text-center"><BsFillCalendarCheckFill className="m-3"/>Selecciona una fecha y hora </h3>
                     <div className="row justify-content-center">
                         <button className="btn col-lg-4" onClick={registerClass}>Registrar clase</button>
-                        {openRegisterModal && <RegisterClass/>}
+                        {openRegisterModal && <RegisterClass isOpen={openRegisterModal} closeModal={closeRegisterModal}/>}
                     </div>
                     <div className="mt-3">
                         <Calendar/>
