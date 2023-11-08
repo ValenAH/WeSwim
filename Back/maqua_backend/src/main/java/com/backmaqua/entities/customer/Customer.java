@@ -27,7 +27,7 @@ public class Customer {
 	
 	public Customer() {}
 
-	public Customer(Long id, String name,String email,String documentTypeId, String documentNumber,String address,String phone,Long userId, Long paymentPlanId) {
+	public Customer(Long id, String name,String email,String documentTypeId, String documentNumber,String address,String phone,Long userId, Long paymentPlanId,String password) {
 		this.id = id;
 		this.name = name;
 		this.email= email;
