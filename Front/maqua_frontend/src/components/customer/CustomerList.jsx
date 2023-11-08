@@ -43,16 +43,16 @@ import { useNavigate } from "react-router-dom";
       <table className="table mx-auto mt-3 text-center ">
         <thead>
           <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>email</th>
-            <th>documentTypeId</th>
-            <th>documentNumber</th>
-            <th>address</th>
-            <th>phone</th>
-            <th>userId</th>
-            <th>paymentPlanId</th>
-            <th scope="col">Actions</th>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Tipo de documento</th>
+            <th>Numero de documento</th>
+            <th>Dirección</th>
+            <th>Telefono</th>
+            <th>Id Usuario</th>
+            <th>Plan de Pago</th>
+            <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -89,4 +89,4 @@ import { useNavigate } from "react-router-dom";
 
   
 
-export default CustomerList;
+export {CustomerList};
