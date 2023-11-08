@@ -205,4 +205,4 @@ const RegisterStudent = () => {
   );
 };
 
-export default RegisterStudent;
+export {RegisterStudent};
