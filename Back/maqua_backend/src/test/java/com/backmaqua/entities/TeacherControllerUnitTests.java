@@ -14,24 +14,37 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
+
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.backmaqua.controller.teacher.TeacherController;
+import com.backmaqua.controller.user.UserController;
 import com.backmaqua.entities.teacher.Teacher;
 import com.backmaqua.entities.teacher.Teachers;
 import com.backmaqua.repository.teacher.TeacherCRUDRepository;
+import com.backmaqua.repository.user.UserCRUDRepository;
 
 @ExtendWith(MockitoExtension.class)
 public class TeacherControllerUnitTests {
 	
 	@InjectMocks
 	TeacherController teacherController;
+	
+	@InjectMocks
+	UserController userController;
 
 	@Mock
 	TeacherCRUDRepository teacherRepositoryMock;
+	
+	@Mock
+	UserCRUDRepository userRepositoryMock;
 
 	@Test
 	public void testAddTeacher() {
@@ -81,27 +94,27 @@ public class TeacherControllerUnitTests {
 	}
 
 	
-	
 	@Test
 	public void updateTeacherTest() {
+	    MockHttpServletRequest request = new MockHttpServletRequest();
+	    RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
 
-		MockHttpServletRequest request = new MockHttpServletRequest();
-		RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
+	    // Configura el comportamiento del teacherRepositoryMock para la operación save
+	    Teacher teacherToUpdate = new Teacher((long) 1, "Rhino", "rhino@gmail.com", (long) 2, "004", "999", (long) 002, (long) 1565314, "Corriente", "10555774", "tropical");
 
-		Teacher teacher = new Teacher();
-		teacher.setId((long) 1);
+	    when(teacherRepositoryMock.save(any(Teacher.class))).thenReturn(teacherToUpdate);
 
-		when(teacherRepositoryMock.save(any(Teacher.class))).thenReturn(teacher);
+	    // Crea un profesor simulado para agregar
+	    Teacher teacherToAdd = new Teacher((long) 0, "Warpig", "warpig@gmail.com", (long) 1, "003", "888", (long) 033, (long) 1333459, "Ahorro", "10678", "queso");
 
-		// Entonces Realizo la prueba si es verdadera
-		Teacher teacherToAdd = new Teacher((long) 0, "Warpig", "warpig@gmail.com",(long) 1,"003","888",(long) 033,(long) 1333459,"Ahorro","10678","queso");
-		ResponseEntity<Object> responseEntityCreate = teacherController.addTeacher(teacherToAdd);
-		
-		Teacher teacherToUpdate = new Teacher((long) 0, "Rhino", "rhino@gmail.com",(long) 1,"004","999",(long) 002,(long) 1565314,"Ahorro","10555774","queso");
-		Teacher responseEntityUpdate = teacherController.updateTeacher(teacherToUpdate);
-		
-		assertThat(responseEntityUpdate.equals(teacherToUpdate));
-		
+	    // Agrega el profesor
+	    teacherController.addTeacher(teacherToAdd);
+
+	    // Realiza la actualización del profesor
+	    Teacher responseEntityUpdate = teacherController.updateTeacher(teacherToUpdate);
+
+	    // Verifica que la actualización se haya realizado correctamente
+	    assertEquals(teacherToUpdate, responseEntityUpdate);
 	}
 
 	
