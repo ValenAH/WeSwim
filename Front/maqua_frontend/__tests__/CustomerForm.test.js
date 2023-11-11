@@ -35,6 +35,13 @@ describe('CustomerForm Component', () => {
 
 
       // Verifica que se muestren los clientes en la tabla
+      expect(getByPlaceholderText('Ingrese un nombre')).toBeTruthy();
+      expect(getByPlaceholderText('Ingrese un correo')).toBeTruthy();
+      expect(getByPlaceholderText('Ingrese un numero de documento')).toBeTruthy();
+      expect(getByPlaceholderText('Ingrese una dirección')).toBeTruthy();
+      expect(getByPlaceholderText('Ingrese un numero de celular')).toBeTruthy();
+      expect(getByPlaceholderText('Ingrese un usuario')).toBeTruthy();
+      expect(getByPlaceholderText('Ingrese un plan de pago')).toBeTruthy();
     });
     
   
