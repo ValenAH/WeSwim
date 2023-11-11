@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter,Routes,Route } from "react-router-dom";
-import RegisterStudent from "../components/auth/registration/register-student";
+import {RegisterStudent} from "../components/auth/registration/register-student";
 import RegisterTeacher from "../components/auth/registration/register-teacher";
 import Profile from "../components/profile/profile";
 import { Teacherform } from "../components/teacher/Teacherform";
@@ -15,7 +15,7 @@ import {Home} from "../components/home/Home";
 import {Layout} from "../containers/Layout/Layout";
 import Transaction from "../components/transactionhistory/Transaction";
 import { CustomerForm } from "../components/customer/CustomerForm";
-import CustomerList from "../components/customer/CustomerList";
+import {CustomerList} from "../components/customer/CustomerList";
 
 const AppRoutes = () => {
     return (
