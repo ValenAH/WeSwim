@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useReducer } from "react";
+import React, {useState } from "react";
 import './login.scss'
 import logo from "../../../assets/images/logo-maqua.svg";
 

@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
     const apiCustomer = "http://localhost:9009/api/CustomerAPI";
     const navigate=useNavigate();
     const [customers, setCustomer] = useState([]);
-    const [openCustomerformadd, setOpen] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {

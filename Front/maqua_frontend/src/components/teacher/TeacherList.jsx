@@ -8,7 +8,6 @@ const TeacherList = () => {
     const TeacherUrl = "http://localhost:9009/api/teacherCustomAPI";
     const navigate=useNavigate();
     const [teachers, setTeacher] = useState([]);
-    const [openTeacherformadd, setOpen] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
