@@ -77,3 +77,6 @@ yarn-error.log
 
 # Build
 dist/
+
+#Snapshots
+__snapshots__/
