@@ -43,7 +43,6 @@ const Bank = () => {
   const deleteBank = (id) => {
     setBanks(banks.filter((bank) => bank.id !== id));
     axios.post(apiUrl + "/bankremove", { id })
-      .then((result) => { })
       .catch((error) => setShowLoading(false));
   };
 
@@ -80,7 +79,6 @@ const Bank = () => {
       )
     );
     axios.post(apiUrl + "/updatebank", updatedBank)
-      .then((result) => { })
       .catch((error) => setShowLoading(false));
   };
 
