@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import {RegisterStudent} from "../components/auth/registration/register-student";
-import RegisterTeacher from "../components/auth/registration/register-teacher";
+import {RegisterTeacher} from "../components/auth/registration/register-teacher";
 import Profile from "../components/profile/profile";
 import { Teacherform } from "../components/teacher/Teacherform";
 import {TeacherList} from "../components/teacher/TeacherList";
