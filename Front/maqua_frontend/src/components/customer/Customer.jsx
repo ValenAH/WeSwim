@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Customer.scss";
 import CustomerTable from "./CustomerTable";
-import AddCustomerForm from "./AddCustomerForm";
 import EditCustomerForm from "./EditCustomerForm";
 import axios from "axios";
 
@@ -15,7 +14,7 @@ const Customer = () => {
       documentNumber: "1001577",
       address: "Calle 2A",
       phone: "302369859",
-      userid: 1,
+      userId: 1,
       paymentPlanId: 30,
     },
   ];
@@ -31,26 +30,7 @@ const Customer = () => {
     fetchData();
   }, []);
 
-  const addCustomer = (customer) => {
-    setShowLoading(true);
-    const data = {
-      id: customer.id,
-      name: customer.name,
-      email: customer.email,
-      documentTypeId: customer.documentTypeId,
-      documentNumber: customer.documentNumber,
-      address: customer.address,
-      phone: customer.phone,
-      userid: customer.userid,
-      paymentPlanId: customer.paymentPlanId,
-    };
-    axios
-      .post("http://localhost:9009/api/CustomerAPI/addnewcustomer", data)
-      .then((result) => {
-        setCustomer([...customers, result.data]);
-      })
-      .catch((error) => setShowLoading(false));
-  };
+
 
   const deleteCustomer = (id) => {
     setCustomer(customers.filter((customer) => customer.id !== id));
@@ -62,7 +42,7 @@ const Customer = () => {
       documentNumber: "",
       address: "",
       phone: "",
-      userid: "",
+      userId: "",
       paymentPlanId: "",
     };
     axios
@@ -83,7 +63,7 @@ const Customer = () => {
     documentNumber: "",
     address: "",
     phone: "",
-    userid: null,
+    userId: null,
     paymentPlanId: null,
   };
 
@@ -99,7 +79,7 @@ const Customer = () => {
       documentNumber: customer.documentNumber,
       address: customer.address,
       phone: customer.phone,
-      userid: customer.userid,
+      userId: customer.userId,
       paymentPlanId: customer.paymentPlanId,
     });
   };
@@ -119,7 +99,7 @@ const Customer = () => {
       documentNumber: updatedCustomer.documentNumber,
       address: updatedCustomer.address,
       phone: updatedCustomer.phone,
-      userid: updatedCustomer.userid,
+      userId: updatedCustomer.userId,
       paymentPlanId: updatedCustomer.paymentPlanId,
     };
     axios
@@ -132,28 +112,10 @@ const Customer = () => {
 
   return (
     <div className="container">
-      <h1>CRUD App with Customer</h1>
-      <div className="flex-row">
-        <div className="flex-large">
-          {editing ? (
-            <div>
-              <h2>Edit Customer</h2>
-              <EditCustomerForm
-                setEditing={setEditing}
-                currentCustomer={currentCustomer}
-                updateCustomer={updateCustomer}
-              />
-            </div>
-          ) : (
-            <div>
-              <h2>Add Customer</h2>
-              <AddCustomerForm addCustomer={addCustomer} />
-            </div>
-          )}
-        </div>
+           <div className="flex-row">
+
 
         <div className="flex-large">
-          <h2>View Customers</h2>
           <CustomerTable
             customers={customers}
             deleteCustomer={deleteCustomer}
