@@ -48,13 +48,11 @@ const RegisterTeacher = () =>{
     const handlesubmit = async (e) => {
         e.preventDefault();
         if (formState.password !== passwordConfirmation) {
-            console.log("Las contraseñas no coinciden");
             setError("Las contraseñas no coinciden");
             return;
           }
         try {
           const response = await axios.post(apiTeachers + "/addnewteacher", formState);
-          console.log(response.data);
           
           if (response.status === 200) {
             // Registro exitoso
@@ -106,16 +104,16 @@ const RegisterTeacher = () =>{
                 <form>
                     <div className="row my-3">
                         <div className="col-lg-6 form-group">
-                            <label>Nombre completo</label>
-                            <input name='name' type='text' value={formState.name}  onChange={handleChangeTeacher}/>
+                            <label htmlFor="name">Nombre completo</label>
+                            <input id="name" name='name' type='text' value={formState.name}  onChange={handleChangeTeacher}/>
                         </div>
                         <div className="col-lg-6 form-group">
-                            <label>Correo</label>
-                            <input name='email' type='email' value={formState.email}  onChange={handleChangeTeacher}/>
+                            <label htmlFor="email">Correo</label>
+                            <input id="email" name='email' type='email' value={formState.email}  onChange={handleChangeTeacher}/>
                         </div>
                         <div className="col-lg-6 form-group">
                         <label htmlFor='documentTypeid'>Tipo de documento</label>
-                        <select name='documentTypeid' value={formState.documentTypeid} placeholder='Elige un Tipo de Documento' onChange={handleChangeTeacher}>
+                        <select id="documentTypeid" name='documentTypeid' value={formState.documentTypeid} placeholder='Elige un Tipo de Documento' onChange={handleChangeTeacher}>
                             <option value={0} disabled hidden>Selecciona un tipo de Documento</option>
                             <option value={1}>Cedula</option>
                             <option value={2}>Tarjeta de Identidad</option>
@@ -124,11 +122,11 @@ const RegisterTeacher = () =>{
                         </div>
                         <div className="col-lg-6 form-group">
                         <label htmlFor='documentNumber'>No. Documento</label>
-                        <input name='documentNumber' type='text' value={formState.documentNumber}  onChange={handleChangeTeacher}/>
+                        <input id="documentNumber" name='documentNumber' type='text' value={formState.documentNumber}  onChange={handleChangeTeacher}/>
                         </div>
                         <div className="col-lg-6 form-group">
                         <label htmlFor='bankid'>Banco</label>
-                        <select name='bankid' value={formState.bankid} placeholder='Elige un Banco' onChange={handleChangeTeacher}>
+                        <select id="bankid" name='bankid' value={formState.bankid} placeholder='Elige un Banco' onChange={handleChangeTeacher}>
                             <option value={0} disabled hidden>Selecciona un Banco</option>
                             <option value={1}>Bancolombia</option>
                             <option value={2}>BBVA</option>
@@ -137,7 +135,7 @@ const RegisterTeacher = () =>{
                         </div>
                         <div className="col-lg-6 form-group">
                         <label htmlFor='accountType'>Tipo de cuenta</label>
-                        <select name='accountType' value={formState.accountType} placeholder='Elige un Tipo de Cuenta' onChange={handleChangeTeacher}>
+                        <select id="accountType" name='accountType' value={formState.accountType} placeholder='Elige un Tipo de Cuenta' onChange={handleChangeTeacher}>
                                 <option value="" disabled hidden>Selecciona un Tipo de Cuenta</option>
                                 <option value="Ahorros">Ahorros</option>
                                 <option value="Corriente">Corriente</option>
@@ -145,19 +143,19 @@ const RegisterTeacher = () =>{
                         </div>
                         <div className="col-lg-6 form-group">
                             <label htmlFor='accountNumber'>No. de Cuenta</label>
-                            <input name='accountNumber' type='text' value={formState.accountNumber}  onChange={handleChangeTeacher}/>
+                            <input id="accountNumber" name='accountNumber' type='text' value={formState.accountNumber}  onChange={handleChangeTeacher}/>
                         </div>
                         <div className="col-lg-6 form-group">
                             <label htmlFor='phone'>Telefono</label>
-                            <input name='phone' type='text' value={formState.phone}  onChange={handleChangeTeacher}/>
+                            <input id="phone" name='phone' type='text' value={formState.phone}  onChange={handleChangeTeacher}/>
                         </div>
                         <div className="col-lg-6 form-group">
                             <label htmlFor='password'>Contraseña</label>
-                            <input type="password" name='password' value={formState.password} onChange={handleChangeTeacher}/>
+                            <input id="password" type="password" name='password' value={formState.password} onChange={handleChangeTeacher}/>
                         </div>
                         <div className="col-lg-6 form-group">
-                            <label>Confirmar Contraseña</label>
-                            <input type="password" name="passwordConfirmation"
+                            <label htmlFor="passwordConfirmation">Confirmar Contraseña</label>
+                            <input id="passwordConfirmation" type="password" name="passwordConfirmation"
                                 value={passwordConfirmation}
                                 onChange={handleChangePasswordConfirmation}>
                             </input>
@@ -166,14 +164,14 @@ const RegisterTeacher = () =>{
                         {error && <p className="error-message">{error}</p>}
                         </div>
                         <div className="col-lg-6 form-group">
-                            <label>Sube una foto de perfil (Opcional)</label>
-                            <input type="file"></input>
+                            <label htmlFor="profilepicture">Sube una foto de perfil (Opcional)</label>
+                            <input id="profilepicture" type="file"></input>
                         </div>
                     </div>
                     <div className="my-5 text-center">
                         <div>
                             <input className="m-2" type="checkbox"></input>
-                            <label  onClick={handleShowTermsModal}>Acepto términos y condiciones</label>
+                            <label onClick={handleShowTermsModal}>Acepto términos y condiciones</label>
                         </div>
                         <button type="submit" className="btn__light mt-5" onClick={handlesubmit}>Crear cuenta</button>
                     </div>
@@ -254,4 +252,4 @@ Al inscribirte en las clases de WeSwim, aceptas cumplir con estos términos y co
     )
 }
 
-export default RegisterTeacher;
+export {RegisterTeacher};
