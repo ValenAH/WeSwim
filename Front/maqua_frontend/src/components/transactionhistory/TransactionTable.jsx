@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { CSVLink } from 'react-csv';
-//import './Transaction.scss';
 
 const statusMap = {
   0: 'Completado',

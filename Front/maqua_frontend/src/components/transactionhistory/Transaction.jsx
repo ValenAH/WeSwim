@@ -17,7 +17,6 @@ const Transaction = () => {
   ];
 
   const [transactions, setTransactions] = useState(TransactionData);
-  const [showLoading, setShowLoading] = useState(true);
   const apiUrl = "http://localhost:9009/api/transactionAPI";
 
   useEffect(() => {
