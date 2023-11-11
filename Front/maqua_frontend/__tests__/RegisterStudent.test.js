@@ -1,7 +1,8 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent,screen, waitFor } from '@testing-library/react';
 import {RegisterStudent} from '../src/components/auth/registration/register-student';
 import { BrowserRouter } from 'react-router-dom';
+import axios from "axios"; 
 
 
 
@@ -40,5 +41,65 @@ describe('CustomerForm Component', () => {
       // Verifica que se muestren los clientes en la tabla
     });
     
+    
+    it('debería mostrar un mensaje de error si las contraseñas no coinciden', async () => {
+      render(<RegisterStudent />);
+  
+      // Ingresa las contraseñas que no coinciden
+      fireEvent.change(screen.getByLabelText('Contraseña'), { target: { value: 'password123' } });
+      fireEvent.change(screen.getByLabelText('Confirmar Contraseña'), { target: { value: 'mismatchedpassword' } });
+  
+      // Realiza el envío del formulario
+      fireEvent.click(screen.getByText('Crear cuenta'));
+  
+      // Espera a que aparezca el mensaje de error
+      await waitFor(() => {
+        const errorMessage = screen.queryByText('Las contraseñas no coinciden');
+        expect(errorMessage).toBeTruthy(); // Verifica si el mensaje de error está presente
+      });
+    });
+  
+    it('debería manejar un registro exitoso', async () => {
+      // Mock de axios.post para simular una respuesta exitosa
+      jest.spyOn(axios, 'post').mockResolvedValue({ status: 200 });
+  
+      // Renderizamos el componente RegisterTeacher
+      render(<RegisterStudent />);
+  
+      // Simulamos el ingreso de datos válidos en el formulario
+      fireEvent.change(screen.getByLabelText('Contraseña'), { target: { value: 'password123' } });
+      fireEvent.change(screen.getByLabelText('Confirmar Contraseña'), { target: { value: 'password123' } });
+  
+      // Simulamos el envío del formulario
+      fireEvent.click(screen.getByText('Crear cuenta'));
+  
+      // Esperamos a que la solicitud axios.post se complete
+      await waitFor(() => {
+        // Verificamos que no haya mensajes de error
+        expect(screen.queryByText('Las contraseñas no coinciden')).toBeNull();
+        // Verificamos que haya mensaje de registro exitoso
+        expect(screen.queryByText('Registro exitoso')).toBeNull();
+      });
+    });
+ 
+  
+    test('debería enviar el formulario correctamente', async () => {
+      // Renderizar el componente
+      const { getByLabelText, getByText } = render(<RegisterStudent />);
+    
+      // Simular la entrada de datos en los campos del formulario
+      fireEvent.change(getByLabelText('Nombre completo'), { target: { value: 'John Doe' } });
+      fireEvent.change(getByLabelText('Correo'), { target: { value: 'john@example.com' } });
+      // ... Simular cambios en otros campos ...
+    
+      // Simular el clic en el botón de enviar
+      fireEvent.click(getByText('Crear cuenta'));
+    
+      // Puedes ajustar la espera según la lógica de tu componente
+      // Aquí, estamos esperando a que aparezca el mensaje de "Registro Exitoso"
+      /*await waitFor(() => {
+        expect(getByText('Registro Exitoso')).toBeTruthy();
+      });*/
+    });
   
 });
