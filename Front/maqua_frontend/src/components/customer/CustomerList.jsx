@@ -5,7 +5,7 @@ import { BsFillPencilFill, BsFillTrashFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
 
-  const CustomerList = (props) => {
+  const CustomerList = () => {
     const apiCustomer = "http://localhost:9009/api/CustomerAPI";
     const navigate=useNavigate();
     const [customers, setCustomer] = useState([]);
