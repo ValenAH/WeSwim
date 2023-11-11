@@ -4,7 +4,8 @@ import { Modal } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import logo from "../../../assets/images/logo-maqua.svg";
 import axios from "axios";
-//import { Gallery } from "./gallery/gallery";
+import { Gallery } from "./gallery/gallery";
+
 
 const RegisterStudent = () => {
   const apiCustomer = "http://localhost:9009/api/CustomerAPI";
@@ -39,7 +40,6 @@ const RegisterStudent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (formState.password !== passwordConfirmation) {
-      console.log("Las contraseñas no coinciden");
       setError("Las contraseñas no coinciden");
       return;
     }
@@ -89,8 +89,8 @@ const RegisterStudent = () => {
         <form>
           <div className="row my-3">
             <div className="col-lg-6 form-group">
-              <label>Nombre completo</label>
-              <input
+              <label htmlFor="name">Nombre completo</label>
+              <input id="name"
                 name="name"
                 type="text"
                 value={formState.name}
@@ -98,8 +98,8 @@ const RegisterStudent = () => {
               />
             </div>
             <div className="col-lg-6 form-group">
-              <label>Correo</label>
-              <input
+              <label htmlFor="email">Correo</label>
+              <input id="email"
                 name="email"
                 type="email"
                 value={formState.email}
@@ -108,7 +108,7 @@ const RegisterStudent = () => {
             </div>
             <div className="col-lg-6 form-group">
               <label htmlFor="documentTypeId">Tipo de documento</label>
-              <select
+              <select id="documentTypeid"
                 name="documentTypeId"
                 value={formState.documentTypeId}
                 placeholder="Elige un Tipo de Documento"
@@ -124,7 +124,7 @@ const RegisterStudent = () => {
             </div>
             <div className="col-lg-6 form-group">
               <label htmlFor="documentNumber">No. Documento</label>
-              <input
+              <input id="documentNumber"
                 name="documentNumber"
                 type="text"
                 value={formState.documentNumber}
@@ -132,8 +132,8 @@ const RegisterStudent = () => {
               />
             </div>
             <div className="col-lg-6 form-group">
-              <label>Teléfono</label>
-              <input
+              <label  htmlFor='phone'>Teléfono</label>
+              <input id="phone"
                 name="phone"
                 type="text"
                 value={formState.phone}
@@ -141,8 +141,8 @@ const RegisterStudent = () => {
               />
             </div>
             <div className="col-lg-6 form-group">
-              <label>Dirección</label>
-              <input
+              <label htmlFor='address'>Dirección</label>
+              <input id="address"
                 name="address"
                 type="text"
                 value={formState.address}
@@ -150,13 +150,13 @@ const RegisterStudent = () => {
               />
             </div>
             <div className="col-lg-6 form-group">
-              <label>Sube una foto de perfil (Opcional)</label>
-              <input type="file"></input>
+              <label htmlFor="profilepicture">Sube una foto de perfil (Opcional)</label>
+              <input id="profilepicture" type="file"></input>
             </div>
 
             <div className="col-lg-6 form-group">
-              <label>Contraseña</label>
-              <input
+              <label htmlFor="password">Contraseña</label>
+              <input id="password"
                 type="password"
                 name="password"
                 value={formState.password}
@@ -164,8 +164,8 @@ const RegisterStudent = () => {
               />
             </div>
             <div className="col-lg-6 form-group">
-              <label>Confirmar Contraseña</label>
-              <input
+              <label htmlFor="passwordConfirmation">Confirmar Contraseña</label>
+              <input id="passwordConfirmation"
                 type="password"
                 name="passwordConfirmation"
                 value={passwordConfirmation}
