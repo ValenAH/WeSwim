@@ -7,6 +7,7 @@
     "test": "jest --config ./jest-config.json",
     "build": "webpack --mode production",
     "start": "webpack serve --open --mode development --env development",
+    "test-coverage": "jest --config ./jest-config.json --coverage --watchAll --testResultsProcessor jest-sonar-reporter",
     "sonarqube": "sonar-scanner"
   },
   "keywords": [],
@@ -60,5 +61,10 @@
   },
   "jest": {
     "testEnvironment": "jsdom"
+  },
+  "jestSonar": {
+    "reportPath": "coverage/sonar",
+    "reportFile": "sonar-report.xml",
+    "indent": 4
   }
 }
