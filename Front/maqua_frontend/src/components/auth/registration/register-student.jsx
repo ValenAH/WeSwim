@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./register-student.scss";
 import { Modal } from "react-bootstrap";
-import { Button } from "react-bootstrap";
 import logo from "../../../assets/images/logo-maqua.svg";
 import axios from "axios";
 import { Gallery } from "./gallery/gallery";
