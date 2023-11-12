@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./register-student.scss";
 import { Modal } from "react-bootstrap";
 import logo from "../../../assets/images/logo-maqua.svg";
