@@ -1,8 +1,9 @@
-import React, {useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import './register-teacher.scss';
 import logo from "../../../assets/images/logo-maqua.svg";
 import axios from 'axios';
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Gallery } from "./gallery/gallery";
 
 
@@ -31,6 +32,9 @@ const RegisterTeacher = () =>{
         setShowRegisterModal(false);
         window.location.href = 'http://localhost:8080';
     }
+      
+  const handleShowRegisterModal = () => setShowRegisterModal(true);
+
   const handleCloseTermsModal = () => setShowTermsModal(false);
   const handleShowTermsModal = () => setShowTermsModal(true);
 

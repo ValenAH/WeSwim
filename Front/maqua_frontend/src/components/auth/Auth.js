@@ -26,8 +26,7 @@ function AuthProvider({children}) {
 }
 
 function useAuth() {
-    const auth = useContext(AuthContext);
-    return auth;
+    return useContext(AuthContext);
 }
 
 function PrivateRoute(props) {

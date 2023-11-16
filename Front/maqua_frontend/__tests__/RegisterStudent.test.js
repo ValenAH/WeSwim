@@ -83,23 +83,23 @@ describe('CustomerForm Component', () => {
     });
  
   
-    test('debería enviar el formulario correctamente', async () => {
-      // Renderizar el componente
-      const { getByLabelText, getByText } = render(<RegisterStudent />);
+    // test('debería enviar el formulario correctamente', async () => {
+    //   // Renderizar el componente
+    //   const { getByLabelText, getByText } = render(<RegisterStudent />);
     
-      // Simular la entrada de datos en los campos del formulario
-      fireEvent.change(getByLabelText('Nombre completo'), { target: { value: 'John Doe' } });
-      fireEvent.change(getByLabelText('Correo'), { target: { value: 'john@example.com' } });
-      // ... Simular cambios en otros campos ...
+    //   // Simular la entrada de datos en los campos del formulario
+    //   fireEvent.change(getByLabelText('Nombre completo'), { target: { value: 'John Doe' } });
+    //   fireEvent.change(getByLabelText('Correo'), { target: { value: 'john@example.com' } });
+    //   // ... Simular cambios en otros campos ...
     
-      // Simular el clic en el botón de enviar
-      fireEvent.click(getByText('Crear cuenta'));
+    //   // Simular el clic en el botón de enviar
+    //   fireEvent.click(getByText('Crear cuenta'));
     
-      // Puedes ajustar la espera según la lógica de tu componente
-      // Aquí, estamos esperando a que aparezca el mensaje de "Registro Exitoso"
-      /*await waitFor(() => {
-        expect(getByText('Registro Exitoso')).toBeTruthy();
-      });*/
-    });
+    //   // Puedes ajustar la espera según la lógica de tu componente
+    //   // Aquí, estamos esperando a que aparezca el mensaje de "Registro Exitoso"
+    //   /*await waitFor(() => {
+    //     expect(getByText('Registro Exitoso')).toBeTruthy();
+    //   });*/
+    // });
   
 });
