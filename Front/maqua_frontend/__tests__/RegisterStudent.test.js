@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, fireEvent,screen, waitFor } from '@testing-library/react';
 import {RegisterStudent} from '../src/components/auth/registration/register-student';
-import { BrowserRouter } from 'react-router-dom';
 import axios from "axios"; 
 
 
@@ -23,7 +22,7 @@ const customers = [
   
 describe('CustomerForm Component', () => {
     it('debe renderizar el componente correctamente', () => {
-      const { getByText, getByPlaceholderText } = render(<BrowserRouter><RegisterStudent/></BrowserRouter>);
+      const { getByText, getByLabelText } = render(<RegisterStudent />);
       
       // Verifica que el componente esté renderizado correctamente
       expect(getByText('Nombre completo')).toBeTruthy();
