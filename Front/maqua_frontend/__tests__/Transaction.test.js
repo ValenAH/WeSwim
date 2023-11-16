@@ -16,7 +16,7 @@ const transactions = [
 
 describe('TransactionTable Component', () => {
   it('debe renderizar el componente correctamente', () => {
-    const { getByText, getByPlaceholderText } = render(<TransactionTable transactions={transactions} />);
+    const { getByText } = render(<TransactionTable transactions={transactions} />);
     
     // Verifica que el componente esté renderizado correctamente
     expect(getByText('ID de transacción')).toBeTruthy();

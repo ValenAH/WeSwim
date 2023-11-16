@@ -66,7 +66,7 @@ export const UserForm = () => {
                     </div>
                     <div className='form-group'>
                         <label htmlFor='password'>Contraseña</label>
-                        <input name='password' value={formState.password} placeholder='Contraseña' onChange={handleChangeUser}/>
+                        <input name='password' type='text' value={formState.password} placeholder='Contraseña' onChange={handleChangeUser}/>
                     </div>
                     <div className='form-group'>
                         <label htmlFor='rolId'>Rol</label>
@@ -78,7 +78,7 @@ export const UserForm = () => {
                         </select>
                     </div>
                     <div className='text-center'>
-                        <button type='submit' className='btn text-center' onClick={handleSubmit}>
+                        <button type='submit' className='btn text-center' disabled={formState.user == ''} onClick={handleSubmit}>
                             {id === 'new'? 'Crear':'Actualizar'}
                         </button>
                     </div>
