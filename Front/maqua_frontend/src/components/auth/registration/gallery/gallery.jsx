@@ -20,6 +20,10 @@ const images = [
     {
         id:4,
         route: require('../../../../assets/images/Image4.jpeg'),
+    },
+    {
+        id:5,
+        route: require('../../../../assets/images/Image5.jpeg'),
     }
 ]
 
