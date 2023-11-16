@@ -1,11 +1,5 @@
-<<<<<<< HEAD
-import React, {useState } from "react";
-import "./register-student.scss";
-import { Modal, Button } from "react-bootstrap";
-=======
 import React, { useState } from "react";
 import "./register-student.scss";
->>>>>>> 1626498d6e9bf5f7d3aec7acb14e7254f5fae91f
 import logo from "../../../assets/images/logo-maqua.svg";
 import axios from "axios";
 import { Modal, Button } from "react-bootstrap";
@@ -24,92 +18,66 @@ const RegisterStudent = () => {
     paymentPlanId: "",
     userid: 1,
     password: "",
-<<<<<<< HEAD
-  })
-=======
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showTermsModal, setShowTermsModal] = useState(false);
 
   const handleCloseTermsModal = () => setShowTermsModal(false);
   const handleShowTermsModal = () => setShowTermsModal(true);
->>>>>>> 1626498d6e9bf5f7d3aec7acb14e7254f5fae91f
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+    window.location.href = "http://localhost:8080";
+  };
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [error, setError] = useState("");
 
-<<<<<<< HEAD
-  const [showRegisterModal, setShowRegisterModal] = useState(false);
-  const [setShowTermsModal] = useState(false);
-
-  const handleCloseRegisterModal = () =>{
-    setShowRegisterModal(false);
-    window.location.href = 'http://localhost:8080';
-}
-const handleCloseTermsModal = () => setShowTermsModal(false);
-const handleShowTermsModal = () => setShowTermsModal(true);
-
-const handleRegisterSuccess = () => {
-setShowRegisterModal(true);
-}
-        const [passwordConfirmation, setPasswordConfirmation] = useState("");
-        const [error, setError] = useState("");
-
-
-        const handlesubmit = async (e) => {
-          e.preventDefault();
-          if (formState.password !== passwordConfirmation) {
-              setError("Las contraseñas no coinciden");
-              return;
-            }
-          try {
-            const response = await axios.post(apiCustomer + "/addnewcustomer", formState);
-            
-            if (response.status === 200) {
-              // Registro exitoso
-              handleRegisterSuccess();
-            } else {
-              // Manejar el caso de error, si es necesario
-              console.log("Error en el servidor:", response.status, response.data);
-            }
-          
-          setFormState({
-            name: "",
-            email: "",
-            documentTypeId: "",
-            documentNumber: "",
-            address: "",
-            phone: "",
-            paymentPlanId: "",
-            userid: 1,
-            password: "",
-          });
-        } catch (err) {
-          console.log("Error en la solicitud:", err);
-        }
-      };
-      const handleChangeCustomer = (e) => {
-        setFormState({
-            ...formState,
-            [e.target.name]: e.target.value
-        })
-=======
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (formState.password !== passwordConfirmation) {
       setError("Las contraseñas no coinciden");
       return;
->>>>>>> 1626498d6e9bf5f7d3aec7acb14e7254f5fae91f
     }
-    const handleChangePasswordConfirmation = (e) => {
-        setPasswordConfirmation(e.target.value);
+    try {
+      const response = await axios.post(
+        apiCustomer + "/addnewcustomer",
+        formState
+      );
+      console.log(response.data);
+      openModal();
+      setFormState({
+        name: "",
+        email: "",
+        documentTypeId: 0,
+        documentNumber: "",
+        address: "",
+        phone: "",
+        userid: 1,
+        paymentPlanId: "",
+        password: "",
+      });
+    } catch (err) {
+      console.log(err);
     }
+  };
+
+  const handleChangeCustomer = (e) => {
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleChangePasswordConfirmation = (e) => {
+    setPasswordConfirmation(e.target.value);
+  };
 
   return (
     <section className="registration-page d-flex">
       <div className="left-container p-5">
         <h3 className="welcome text-center">BIENVENIDO A MAQUA</h3>
-        <div>
-                    <Gallery/>
-                </div>
       </div>
       <div className="right-container m-3 px-5">
         <div className="d-flex justify-content-between align-items-center">
@@ -214,25 +182,22 @@ setShowRegisterModal(true);
             <button
               type="submit"
               className="btn__light mt-5"
-              onClick={handlesubmit}
+              onClick={handleSubmit}
             >
               Crear cuenta
             </button>
           </div>
         </form>
       </div>
-      <Modal show={showRegisterModal} onHide={handleCloseRegisterModal} backdrop="static" keyboard={false} centered>
-        <Modal.Header closeButton>
-        </Modal.Header>
-        <Modal.Body>
-          <h2>Registro Exitoso</h2>
-          <p>Tu registro ha sido completado con éxito y puedes iniciar sesión</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseRegisterModal}>
-            Cerrar
-          </Button>
-        </Modal.Footer>
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        contentLabel="Registro Exitoso"
+        className="custom-modal d-flex justify-content-center"
+      >
+        <h2>Registro Exitoso</h2>
+        <p>Tu registro ha sido completado con éxito y puedes iniciar sesión</p>
+        <button onClick={closeModal}>Cerrar</button>
       </Modal>
       <Modal show={showTermsModal} onHide={handleCloseTermsModal} backdrop="static" keyboard={false} centered>
         <Modal.Header closeButton>
