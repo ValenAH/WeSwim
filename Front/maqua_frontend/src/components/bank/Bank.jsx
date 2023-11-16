@@ -19,7 +19,6 @@ const Bank = () => {
   ];
 
   const [banks, setBanks] = useState(BankData);
-  const [showLoading, setShowLoading] = useState(true);
   const apiUrl = "http://localhost:9009/api/bankCustomAPI";
 
   useEffect(() => {
@@ -32,18 +31,17 @@ const Bank = () => {
   }, []);
 
   const addBank = (bank) => {
-    setShowLoading(true);
     axios.post(apiUrl + "/addnewbankapi", bank)
       .then((result) => {
         setBanks([...banks, result.data]);
       })
-      .catch((error) => setShowLoading(false));
+      .catch((error) => console.log(error));
   };
 
   const deleteBank = (id) => {
     setBanks(banks.filter((bank) => bank.id !== id));
     axios.post(apiUrl + "/bankremove", { id })
-      .catch((error) => setShowLoading(false));
+      .catch((error) => console.log(error));
   };
 
   const [editing, setEditing] = useState(false);
@@ -79,7 +77,7 @@ const Bank = () => {
       )
     );
     axios.post(apiUrl + "/updatebank", updatedBank)
-      .catch((error) => setShowLoading(false));
+      .catch((error) => console.log(error));
   };
 
   return (

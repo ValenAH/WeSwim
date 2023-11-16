@@ -66,6 +66,6 @@ public class AccountType {
 	}
 	
 	public void setIdBank(Long idBank) {
-		this.id = idBank;
+		this.idBank = idBank;
 	}
 }
