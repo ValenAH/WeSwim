@@ -61,7 +61,6 @@ public class Teacher {
 			Objects.equals(userid, teacher.userid)&&
 			Objects.equals(Bankid, teacher.Bankid)&&
 			Objects.equals(AccountType, teacher.AccountType)&&
-			Objects.equals(AccountNumber, teacher.AccountNumber)&&
 			Objects.equals(AccountNumber, teacher.AccountNumber);
 	}
 	
