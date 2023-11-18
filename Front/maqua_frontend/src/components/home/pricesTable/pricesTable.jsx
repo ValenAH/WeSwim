@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import './pricesTable.scss';
 import { environment } from "../../../environments/environment";
 import axios from "axios";
 
