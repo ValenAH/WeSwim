@@ -18,11 +18,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import com.backmaqua.controller.user.UserController;
 import com.backmaqua.entities.accountType.AccountType;
 import com.backmaqua.entities.accountType.AccountTypes;
-import com.backmaqua.entities.user.User;
-import com.backmaqua.entities.user.Users;
 import com.backmaqua.repository.accountType.AccountTypeCRUDRepository;
 import com.backmaqua.controller.accountType.*;
 

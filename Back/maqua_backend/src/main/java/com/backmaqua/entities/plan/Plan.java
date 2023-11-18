@@ -1,6 +1,6 @@
 package com.backmaqua.entities.plan;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Objects;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -22,10 +22,10 @@ public class Plan {
 	
 	public Plan() {}
 	
-	public Plan(Long id, Long PaymentPlanId, Date creationDate, Double totalAmount) {
+	public Plan(Long id, Long PaymentPlanId, Date date, Double totalAmount) {
 		this.id = id;
 		this.PaymentPlanId = PaymentPlanId;
-		this.creationDate = creationDate;
+		this.creationDate = date;
 		this.totalAmount = totalAmount;
 	}
 	
@@ -71,11 +71,11 @@ public class Plan {
 		this.creationDate = creationDate;
 	}
 	
-	public Double getTotalAmount() {
+	public double getTotalAmount() {
 		return totalAmount;
 	}
 
-	public void setTotalAmount(Double totalAmount) {
+	public void setTotalAmount(double totalAmount) {
 		this.totalAmount = totalAmount;
 	}
 }
