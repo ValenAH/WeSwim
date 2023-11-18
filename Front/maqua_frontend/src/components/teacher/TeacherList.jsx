@@ -68,7 +68,7 @@ const TeacherList = () => {
                                     <td>
                                         <span className="actions d-flex justify-content-around">
                                             <BsFillPencilFill className="edit-btn" onClick={() => navigate(`/teacher/${teacher.id}`)}/>
-                                            <BsFillTrashFill className="delete-btn" onClick={() => handleDeleteTeacher(teacher)}/>
+                                            <BsFillTrashFill id="delete-icon" className="delete-btn" onClick={() => handleDeleteTeacher(teacher)}/>
                                         </span>
                                     </td>
                                 </tr>
