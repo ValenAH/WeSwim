@@ -1,5 +1,4 @@
 import React from "react";
-import './Home.scss';
 import { Gallery } from "./gallery/gallery";
 import { ContactForm } from "./contact-form/contact-form";
 import { SocialMedia } from "./social-media/social-media";

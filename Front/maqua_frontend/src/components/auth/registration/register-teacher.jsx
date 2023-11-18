@@ -5,9 +5,6 @@ import axios from 'axios';
 import { Modal , Button } from "react-bootstrap";
 import { Gallery } from "./gallery/gallery";
 
-
-
-
 const RegisterTeacher = () =>{
     
     const apiTeachers = "http://localhost:9009/api/teacherCustomAPI";
@@ -31,9 +28,6 @@ const RegisterTeacher = () =>{
         setShowRegisterModal(false);
         window.location.href = 'http://localhost:8080';
     }
-      
-   setShowRegisterModal(true);
-
   const handleCloseTermsModal = () => setShowTermsModal(false);
   const handleShowTermsModal = () => setShowTermsModal(true);
 
