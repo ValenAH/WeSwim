@@ -21,8 +21,6 @@ public class AccountTypeController {
 
 	@Autowired
     private AccountTypeCRUDRepository accountTypeRepository;
-	@Autowired
-	private AccountTypeCRUDRepository accountTypeRepositoryQuery;
 
 
     //***Api Final Front
