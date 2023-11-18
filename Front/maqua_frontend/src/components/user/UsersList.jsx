@@ -23,7 +23,6 @@ const UsersList = () => {
     const handleDeleteUser = async (user) => {
         await axios.post(userUrl + "/removeUser",user)
         .catch(err => console.log('No se ha podido eliminar el usuario',err))
-        return window.location.reload(true);
     } 
 
     return (
