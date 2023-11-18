@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState } from "react";
 import './register-teacher.scss';
 import logo from "../../../assets/images/logo-maqua.svg";
 import axios from 'axios';
@@ -32,7 +32,7 @@ const RegisterTeacher = () =>{
         window.location.href = 'http://localhost:8080';
     }
       
-  const handleShowRegisterModal = () => setShowRegisterModal(true);
+   setShowRegisterModal(true);
 
   const handleCloseTermsModal = () => setShowTermsModal(false);
   const handleShowTermsModal = () => setShowTermsModal(true);
