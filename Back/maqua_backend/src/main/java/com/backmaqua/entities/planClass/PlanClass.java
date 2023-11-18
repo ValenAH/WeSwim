@@ -1,6 +1,6 @@
 package com.backmaqua.entities.planClass;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Objects;
 
 import org.hibernate.annotations.GenericGenerator;
