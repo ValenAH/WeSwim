@@ -28,7 +28,6 @@ const RegisterStudent = () => {
     setShowRegisterModal(false);
     window.location.href = 'http://localhost:8080';
 }
-const handleCloseTermsModal = () => setShowTermsModal(false);
 const handleShowTermsModal = () => setShowTermsModal(true);
 
 const handleRegisterSuccess = () => {
