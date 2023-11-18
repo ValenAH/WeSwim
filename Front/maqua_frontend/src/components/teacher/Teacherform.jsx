@@ -65,15 +65,15 @@ const Teacherform = () => {
                 <form className='mt-3'>
                     <div className='form-group '>
                         <label htmlFor='name'>Nombre Completo</label>
-                        <input name='name' type='text' value={formState.name}  onChange={handleChangeTeacher}/>
+                        <input id="name" name='name' type='text' value={formState.name}  onChange={handleChangeTeacher}/>
                     </div>
                     <div className='form-group col-md-6 mb-3 '>
                         <label htmlFor='email'>Email</label>
-                        <input name='email' type='text' value={formState.email}  onChange={handleChangeTeacher}/>
+                        <input id="email" name='email' type='text' value={formState.email}  onChange={handleChangeTeacher}/>
                     </div>
                     <div className='form-group'>
                         <label htmlFor='documentTypeid'>Tipo de documento</label>
-                        <select name='documentTypeid' value={formState.documentTypeid} placeholder='Elige un tipo de documento' onChange={handleChangeTeacher}>
+                        <select id="documentTypeid" name='documentTypeid' value={formState.documentTypeid} placeholder='Elige un tipo de documento' onChange={handleChangeTeacher}>
                             <option value={0} disabled hidden>Elige un tipo de documento</option>
                             <option value={1}>Cedula</option>
                             <option value={2}>Tarjeta de Identidad</option>
@@ -82,15 +82,15 @@ const Teacherform = () => {
                     </div>
                     <div className='form-group '>
                         <label htmlFor='documentNumber'>No. Documento</label>
-                        <input name='documentNumber' type='text' value={formState.documentNumber}  onChange={handleChangeTeacher}/>
+                        <input id="documentNumber" name='documentNumber' type='text' value={formState.documentNumber}  onChange={handleChangeTeacher}/>
                     </div>
                     <div className='form-group '>
                         <label htmlFor='phone'>Telefono</label>
-                        <input name='phone' type='text' value={formState.phone}  onChange={handleChangeTeacher}/>
+                        <input id="phone" name='phone' type='text' value={formState.phone}  onChange={handleChangeTeacher}/>
                     </div>
                     <div className='form-group'>
                         <label htmlFor='bankid'>Banco</label>
-                        <select name='bankid' value={formState.bankid} placeholder='Elige un Banco' onChange={handleChangeTeacher}>
+                        <select id="bankid" name='bankid' value={formState.bankid} placeholder='Elige un Banco' onChange={handleChangeTeacher}>
                             <option value={0} disabled hidden>Elige un Banco</option>
                             <option value={1}>Bancolombia</option>
                             <option value={2}>BBVA</option>
@@ -99,7 +99,7 @@ const Teacherform = () => {
                     </div>
                     <div className='form-group'>
                         <label htmlFor='accountType'>Tipo de cuenta</label>
-                        <select name='accountType' value={formState.accountType} placeholder='Elige Tipo de cuenta' onChange={handleChangeTeacher}>
+                        <select id="accountType" name='accountType' value={formState.accountType} placeholder='Elige Tipo de cuenta' onChange={handleChangeTeacher}>
                                 <option value="" disabled hidden>Elige tipo de cuenta</option>
                                 <option value="Ahorros">Ahorros</option>
                                 <option value="Corriente">Corriente</option>
@@ -107,11 +107,11 @@ const Teacherform = () => {
                     </div>
                     <div className='form-group col-md-6 mb-3 '>
                         <label htmlFor='accountNumber'>No. de Cuenta</label>
-                        <input name='accountNumber' type='text' value={formState.accountNumber}  onChange={handleChangeTeacher}/>
+                        <input id="accountNumber" name='accountNumber' type='text' value={formState.accountNumber}  onChange={handleChangeTeacher}/>
                     </div>
                     <div className='form-group'>
                         <label htmlFor='password'>Contraseña</label>
-                        <input name='password' value={formState.password} onChange={handleChangeTeacher}/>
+                        <input id="password" name='password' value={formState.password} onChange={handleChangeTeacher}/>
                     </div>
                     <button type='submit' className='btn' onClick={handlesubmit} >{id==='new'?'Crear':'Editar'}</button>
                 </form>
