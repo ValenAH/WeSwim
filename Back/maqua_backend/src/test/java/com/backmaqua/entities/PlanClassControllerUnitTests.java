@@ -10,8 +10,10 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -23,6 +25,7 @@ import com.backmaqua.entities.planClass.PlanClass;
 import com.backmaqua.entities.planClass.PlanClasses;
 import com.backmaqua.repository.planClass.PlanClassCRUDRepository;
 
+@ExtendWith(MockitoExtension.class)
 public class PlanClassControllerUnitTests {
 	@InjectMocks
 	PlanClassController planClassController;
@@ -43,7 +46,7 @@ public class PlanClassControllerUnitTests {
 		when( planClassRepositoryMock.save(any(PlanClass.class))).thenReturn(planClass);
 		Date date = new Date();
 		// Entonces Realizo la prueba si es verdadera
-		PlanClass planClassToAdd = new PlanClass(Long.valueOf(0), date, Long.valueOf(2));
+		PlanClass planClassToAdd = new PlanClass(Long.valueOf(1), date, Long.valueOf(2));
 		ResponseEntity<Object> responseEntity = planClassController.addPlanClass(planClassToAdd);
 
 		
@@ -55,7 +58,7 @@ public class PlanClassControllerUnitTests {
 	public void testFindAll() {
 		Date date = new Date();
 		// given
-		PlanClass planClass1 = new PlanClass(Long.valueOf(0), date, Long.valueOf(2));
+		PlanClass planClass1 = new PlanClass(Long.valueOf(1), date, Long.valueOf(2));
 		PlanClass planClass2 = new PlanClass(Long.valueOf(0), date, Long.valueOf(2));
 		List<PlanClass> list = new ArrayList<PlanClass>();
 		list.addAll(Arrays.asList(planClass1, planClass2));
