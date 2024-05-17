@@ -39,19 +39,6 @@ const Header = () => {
                 );
               })}
             </ul>
-              {auth.user ? (
-              <div className="profile d-flex align-items-center gap-2 px-2">
-                <NavLink className="text-decoration-none text-light" to="" id="profileOptions" data-bs-toggle="dropdown" aria-expanded="false">
-                    <BiSolidUserCircle className="profile__icon rounded"></BiSolidUserCircle>
-                      <span>{auth.user?.username}</span>
-                  </NavLink>
-                  <ul className="dropdown-menu" aria-labelledby="profileOptions">
-                    <li><NavLink className="dropdown-item" to="/profile">Perfil</NavLink></li>
-                    <li><hr className="dropdown-divider"/></li>
-                    <li><NavLink className="dropdown-item" onClick={handleLogout}>Cerrar Sesión</NavLink></li>
-                  </ul>
-              </div>
-              ): null}
           </header> 
         </div>
       </nav>
@@ -67,46 +54,15 @@ routes.push({
 },
 {
   to:'/login',
-  text:'Iniciar sesión',
+  text:'Quienes Somos',
   private: false,
   publicOnly: true
 },
 {
-  to:'/register-student',
-  text:'Registro estudiante',
+  to:'/login',
+  text:'Tarifas',
   private: false,
   publicOnly: true
-},
-{
-  to:'/register-teacher',
-  text:'Registro profesor',
-  private: false,
-  publicOnly: true
-},
-{
-  to:'/planner',
-  text:'Agenda',
-  private: true
-},
-{
-  to:'/teacher',
-  text:'Profesor',
-  private: true
-},
-{
-  to:'/customer',
-  text:'Cliente',
-  private: true
-},
-{
-  to:'/user',
-  text:'Usuarios',
-  private: true
-},
-{
-  to:'/transaction',
-  text:'Transacciones',
-  private: true
 })
 
 export {Header};

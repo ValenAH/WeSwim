@@ -1,0 +1,20 @@
+.image{
+    height: 80vh;
+    width: 100%;
+}
+.table-div{
+    position: absolute;
+    top: 26px;
+    left: 10rem;
+    width: 75%;
+
+    .table{
+        height: 60vh;
+        background-color: #083164;
+        opacity: 90%;
+        border-radius: 15px;
+        box-shadow: 0 0 27px 0px #083164;
+        overflow: hidden;
+    }
+}
+

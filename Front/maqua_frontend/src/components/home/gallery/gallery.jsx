@@ -5,19 +5,27 @@ import './gallery.scss';
 const images = [
     {
         id:1,
-        route: require('../../../assets/images/Image1.jpeg'),
+        route: require('../../../assets/images/1.jpg'),
     },
     {
         id:2,
-        route: require('../../../assets/images/Image2.jpeg'),
+        route: require('../../../assets/images/2.jpg'),
     },
     {
         id:3,
-        route: require('../../../assets/images/Image3.jpeg'),
+        route: require('../../../assets/images/3.jpg'),
     },
     {
         id:4,
-        route: require('../../../assets/images/Image4.jpeg'),
+        route: require('../../../assets/images/4.jpg'),
+    },
+    {
+        id:5,
+        route: require('../../../assets/images/5.jpg'),
+    },
+    {
+        id:5,
+        route: require('../../../assets/images/6.jpg'),
     }
 ]
 
@@ -31,7 +39,9 @@ const Gallery = () => {
                     <Carousel.Item className="d-flex justify-content-center" key={image.id}>
                         <img className="image" src={image.route.default}/>
                         <Carousel.Caption>
-                        <button className="btn__light">Programa tu clase de prueba</button>
+                            <a href="https://wa.me/573052587069" target="_blank">
+                                <button className="btn__light" >Programa tu clase de prueba</button>
+                            </a>
                         </Carousel.Caption>
                     </Carousel.Item>
                 )
