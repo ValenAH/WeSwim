@@ -12,7 +12,7 @@ import { Login } from "../components/auth/login/login";
 import UserForm from "../components/user/UserForm";
 import { AuthProvider, PrivateRoute } from "../components/auth/Auth";
 import {Home} from "../components/home/Home";
-import {Layout} from "../containers/Layout/Layout";
+import Layout from "../containers/Layout/Layout";
 import Transaction from "../components/transactionhistory/Transaction";
 import { CustomerForm } from "../components/customer/CustomerForm";
 import {CustomerList} from "../components/customer/CustomerList";

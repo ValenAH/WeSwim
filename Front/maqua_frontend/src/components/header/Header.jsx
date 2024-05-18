@@ -53,7 +53,7 @@ routes.push({
   private: false
 },
 {
-  to:'/login',
+  to:'/whoweare',
   text:'Quienes Somos',
   private: false,
   publicOnly: true

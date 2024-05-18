@@ -24,7 +24,7 @@ const images = [
         route: require('../../../assets/images/5.jpg'),
     },
     {
-        id:5,
+        id:6,
         route: require('../../../assets/images/6.jpg'),
     }
 ]

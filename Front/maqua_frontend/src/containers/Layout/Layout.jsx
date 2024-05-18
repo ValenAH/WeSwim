@@ -10,4 +10,4 @@ const Layout = ({ children }) => (
   </div>
 );
 
-export {Layout};
+export default Layout;

@@ -4,7 +4,7 @@ const ContactForm = ()=> {
     return (
         <div className="bg-white py-5">
             <div className="container">
-                <h2>Contáctanos</h2>
+                <h2 className="text-center">CONTÁCTANOS</h2>
                 <p>Para obtener más información, diligencia el siguiente formulario. Nos pondremos en contacto lo más pronto posible</p>
                 <form>
                     <div className="row">
