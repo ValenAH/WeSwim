@@ -6,3 +6,14 @@
         width: 100%;
     }
 }
+
+@media only screen and (max-width: 450px) {
+    .carousel{
+        height: 35vh;
+    
+        .image{
+            height: 35vh;
+            width: 100%;
+        }
+    }
+  }

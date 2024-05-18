@@ -2,7 +2,6 @@ import React from "react";
 import './Header.scss';
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo-maqua.svg";
-import { BiSolidUserCircle } from "react-icons/bi";
 import { useAuth } from "../auth/Auth";
 
 const Header = () => {
@@ -53,13 +52,13 @@ routes.push({
   private: false
 },
 {
-  to:'/whoweare',
+  to:'/',
   text:'Quienes Somos',
   private: false,
   publicOnly: true
 },
 {
-  to:'/login',
+  to:'/',
   text:'Tarifas',
   private: false,
   publicOnly: true
