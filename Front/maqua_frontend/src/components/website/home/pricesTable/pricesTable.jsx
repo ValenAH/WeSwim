@@ -1,7 +1,7 @@
 import React from "react";
 import './pricesTable.scss';
 
-const ocean = require('../../../assets/images/Ocean.jpg');
+const ocean = require('../../../../assets/images/Ocean.jpg');
 
 const PricesTable = () => {
     return (

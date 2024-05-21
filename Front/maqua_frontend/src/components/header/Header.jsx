@@ -7,8 +7,6 @@ import { useAuth } from "../auth/Auth";
 const Header = () => {
     const auth = useAuth();
 
-
-
     const handleLogout= (e)=>{
       e.preventDefault();
       auth.logout();
@@ -52,14 +50,14 @@ routes.push({
   private: false
 },
 {
-  to:'/',
-  text:'Quienes Somos',
+  to:'/we',
+  text:'Nosotros',
   private: false,
   publicOnly: true
 },
 {
-  to:'/',
-  text:'Tarifas',
+  to:'/classes',
+  text:'Clases',
   private: false,
   publicOnly: true
 })
