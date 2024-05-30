@@ -7,27 +7,27 @@ import { NavLink } from "react-router-dom";
 const Home = () => {
     const services = [
         {
-            url: require('../../../assets/images/1.jpg'),
+            url: require('../../../assets/images/Niños.jpg'),
             title: "Clases para niños"
         },
         {
-            url: require('../../../assets/images/1.jpg'),
+            url: require('../../../assets/images/Niños.jpg'),
             title: "Clases para adultos"
         },
         {
-            url: require('../../../assets/images/1.jpg'),
+            url: require('../../../assets/images/Acondicionamiento.jpg'),
             title: "Acondicionamiento físico"
         },
         {
-            url: require('../../../assets/images/1.jpg'),
+            url: require('../../../assets/images/Competencia.jpg'),
             title: "Preparación de nadadores para competencia"
         },
         {
-            url: require('../../../assets/images/1.jpg'),
+            url: require('../../../assets/images/Autismo.jpg'),
             title: "Autismo y Síndrome de Down"
         },
         {
-            url: require('../../../assets/images/1.jpg'),
+            url: require('../../../assets/images/Autismo.jpg'),
             title: "Terapias"
         }
     ]
@@ -53,13 +53,12 @@ const Home = () => {
                         <h1 className="text-center">NUESTROS SERVICIOS</h1>
                         {services.map(service =>{
                             return (
-                                <div className="col-lg-5 m-2 bg-white p-5 rounded-3">
-                            <h3>{service.title}</h3>
-                            <img src={service.url} alt="" />
-                        </div>
+                                <div className="col-lg-3 m-2 bg-white p-2 rounded-3">
+                                    <h5>{service.title}</h5>
+                                    <img className="w-100" src={service.url.default} alt=""/>
+                                </div>
                             )
                         })}
-                        
                     </div>
                 </div>
             </div>
