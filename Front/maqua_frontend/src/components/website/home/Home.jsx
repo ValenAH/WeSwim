@@ -1,4 +1,5 @@
 import React from "react";
+import "./Home.scss";
 import { Gallery } from "./gallery/gallery";
 import { SocialMedia } from "./social-media/social-media";
 import { PricesTable } from "./pricesTable/pricesTable";
@@ -8,27 +9,39 @@ const Home = () => {
     const services = [
         {
             url: require('../../../assets/images/Niños.jpg'),
-            title: "Clases para niños"
+            title: "Clases para niños",
+            show: false,
+            message: "¡Diversión y seguridad en el agua! Inscribe a tus hijos en nuestras clases de natación para niños y descubre el mundo acuático juntos."
         },
         {
-            url: require('../../../assets/images/Niños.jpg'),
-            title: "Clases para adultos"
+            url: require('../../../assets/images/Adultos.jpeg'),
+            title: "Clases para adultos",
+            show: false,
+            message: "Nunca es tarde para aprender a nadar. Únete a nuestras clases de natación para adultos y disfruta de un nuevo estilo de vida saludable."
         },
         {
             url: require('../../../assets/images/Acondicionamiento.jpg'),
-            title: "Acondicionamiento físico"
+            title: "Acondicionamiento físico",
+            show: true,
+            message: "Ponte en forma con nuestras clases de acondicionamiento físico en el agua. ¡Ejercicio de bajo impacto, alta efectividad!"
         },
         {
             url: require('../../../assets/images/Competencia.jpg'),
-            title: "Preparación de nadadores para competencia"
+            title: "Competencias",
+            show: true,
+            message: "Lleva tu rendimiento al siguiente nivel. Únete a nuestro programa de preparación de nadadores para competencia y alcanza tus metas."
         },
         {
             url: require('../../../assets/images/Autismo.jpg'),
-            title: "Autismo y Síndrome de Down"
+            title: "Autismo y Síndrome de Down",
+            show: true,
+            message: "Natación inclusiva y terapéutica. Ofrecemos clases especializadas para personas con discapacidades cognitivas."
         },
         {
             url: require('../../../assets/images/Autismo.jpg'),
-            title: "Terapias"
+            title: "Terapias",
+            show: true,
+            message: "Descubre los beneficios de la terapia acuática. Mejoramos tu bienestar físico y emocional a través del poder del agua."
         }
     ]
 
@@ -53,10 +66,19 @@ const Home = () => {
                         <h1 className="text-center">NUESTROS SERVICIOS</h1>
                         {services.map(service =>{
                             return (
-                                <div className="col-lg-3 m-2 bg-white p-2 rounded-3">
-                                    <h5>{service.title}</h5>
-                                    <img className="w-100" src={service.url.default} alt=""/>
-                                </div>
+                                <div className="card col-lg-3 m-lg-2 bg-white p-2 rounded-3">
+                                    <h5 className="my-2">{service.title}</h5>
+                                    <div className="image-container">
+                                        <img className="w-100" src={service.url.default} alt=""/> 
+                                    </div>
+                                        
+                                    <hr className="m-0"></hr>
+                                        <div className="message justify-content-center h-100">
+                                        <div className="d-flex align-items-center p-2">
+                                            <p className="text-center">{service.message}</p>
+                                        </div>
+                                    </div>                          
+                                </div> 
                             )
                         })}
                     </div>
