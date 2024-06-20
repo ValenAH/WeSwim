@@ -10,7 +10,7 @@ const PricesTable = () => {
             <div className="container">
                 <div className="table-div">
                     <h2 className="mt-md-5 text-white text-center">NUESTRAS TARIFAS</h2>
-                    <p className="text-white">Los precios establecidos corresponden a la mensualidad <u>por persona</u>.</p>
+                    <p className="text-white">Los precios establecidos corresponden a la mensualidad <u>por persona</u>. Las clases tienen una duración de 50 minutos a 1 hora.</p>
                     <div className="mt-lg-5 table-responsive">
                         <table className="table">
                             <thead>

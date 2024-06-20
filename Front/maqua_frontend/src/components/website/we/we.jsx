@@ -9,9 +9,11 @@ const We = () => {
                     <div className="row justify-content-around">
                         <div className="my-2 bg-white mt-5 rounded-3">
                             <h2>¿QUIÉNES SOMOS?</h2>
-                            <p>Nosotros somos un grupo de profesores de natación y gimnasia acúatica, con experiencia en la enseñanza de la natación en bebés, niños, adultos, tercera edad y personas con discapacidad fisica y cognitiva. Vamos a su unidad con todos los materiales para la clase.
+                            <p>Somos un equipo de expertos en natación y gimnasia acuática, especializados en la enseñanza a bebés, niños, adultos, personas mayores y con discapacidad física o cognitiva. 
+                                Ofrecemos clases personalizadas y adaptadas a cada grupo, asegurando una experiencia segura y efectiva. Proporcionamos todos los materiales necesarios para cada sesión, llevándolos a tu unidad. 
+                                Nuestro objetivo es fomentar la confianza y habilidades acuáticas en todos nuestros estudiantes. 
                                 <br />
-                                Las clases de natación son para todas las edades, en español e inglés si prefieren, las cuales tienen una duración de 50 minutos a 1 hora.
+                                ¡Únete a nosotros y descubre el placer de nadar y ejercitarte en el agua!
                             </p>
                         </div>
                     </div>
