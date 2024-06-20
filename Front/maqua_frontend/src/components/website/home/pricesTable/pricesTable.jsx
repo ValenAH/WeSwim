@@ -5,13 +5,13 @@ const ocean = require('../../../../assets/images/Ocean.jpg');
 
 const PricesTable = () => {
     return (
-        <div className="position-relative">
+        <div id="prices" className="position-relative">
             <img className="image" src={ocean.default} alt="" />
             <div className="container">
                 <div className="table-div">
                     <h2 className="mt-md-5 text-white text-center">NUESTRAS TARIFAS</h2>
                     <p className="text-white">Los precios establecidos corresponden a la mensualidad <u>por persona</u>.</p>
-                    <div className="mt-5 table-responsive-md">
+                    <div className="mt-5">
                         <table className="table">
                             <thead>
                                 <tr>
@@ -37,7 +37,7 @@ const PricesTable = () => {
                             </tbody>
                         </table>
                     </div>
-                    <p className="mt-5 text-white">*Recibe un 10% de descuento en tu primera mensualidad enviándonos por WhatsApp el siguiente código MAQUA-WEBSITE</p>
+                    <p className="mt-5 text-white">*Recibe un 10% de descuento en tu primera mensualidad enviándonos por WhatsApp el siguiente código MAQUA-WEBSITE al momento de agendar tu clase de prueba.</p>
                 </div>
             </div>
         </div>

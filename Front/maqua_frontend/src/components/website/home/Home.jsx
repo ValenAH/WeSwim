@@ -4,6 +4,7 @@ import { Gallery } from "./gallery/gallery";
 import { SocialMedia } from "./social-media/social-media";
 import { PricesTable } from "./pricesTable/pricesTable";
 import { NavLink } from "react-router-dom";
+import { GoChevronUp } from "react-icons/go";
 
 const Home = () => {
     const services = [
@@ -38,7 +39,7 @@ const Home = () => {
             message: "Natación inclusiva y terapéutica. Ofrecemos clases especializadas para personas con discapacidades cognitivas."
         },
         {
-            url: require('../../../assets/images/Autismo.jpg'),
+            url: require('../../../assets/images/Terapias.jpg'),
             title: "Terapias",
             show: true,
             message: "Descubre los beneficios de la terapia acuática. Mejoramos tu bienestar físico y emocional a través del poder del agua."
@@ -67,7 +68,7 @@ const Home = () => {
                         {services.map(service =>{
                             return (
                                 <div className="card col-lg-3 m-lg-2 bg-white p-2 rounded-3">
-                                    <h5 className="my-2">{service.title}</h5>
+                                    <h5 className="my-2 text-center">{service.title}</h5>
                                     <div className="image-container">
                                         <img className="w-100" src={service.url.default} alt=""/> 
                                     </div>
@@ -88,15 +89,18 @@ const Home = () => {
                 <div className="container">
                     <div className="row justify-content-around">
                         <div className="m-2 p-5 rounded-3">
-                            <NavLink to="/classes">
-                                <h2>CONOCE NUESTRAS CLASES</h2>
-                            </NavLink>                
+                            <a href="https://www.instagram.com/maqua.oficial/reels/" target="_blank">
+                                <h2 className="text-center">CONOCE NUESTRAS CLASES</h2>
+                            </a>                
                         </div>
                     </div>
                 </div>
             </div>
             <PricesTable/>
             <SocialMedia/>
+            <div className="go-up position-fixed rounded-circle p-2 d-flex justify-content-center align-items-center">
+                <a href="#gallery" className="text-decoration-none text-light"><GoChevronUp className="fs-2"/></a>
+            </div>
         </div>
     )
 }

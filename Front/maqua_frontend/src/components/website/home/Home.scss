@@ -1,4 +1,4 @@
-
+@import url('../../../assets/fonts/fonts.scss');
 .card .image-container{
         display: block;
         transition: 1s ease-in;
@@ -21,6 +21,17 @@
 
 .card:hover .message{
     display: flex;
+}
+
+.go-up{
+    width: 2rem;
+    height: 2rem;
+    bottom: 1rem;
+    right: 1rem;
+    box-shadow: 0px 0px 5px 0px var(--blue-primary);
+    background-color: var(--blue-secondary);
+    color: white;
+
 }
 
 

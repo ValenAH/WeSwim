@@ -3,9 +3,12 @@ import './Header.scss';
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo-maqua.svg";
 import { useAuth } from "../auth/Auth";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
     const auth = useAuth();
+
+    let location = useLocation();
 
     const handleLogout= (e)=>{
       e.preventDefault();
@@ -35,6 +38,11 @@ const Header = () => {
                   </li>
                 );
               })}
+              { location.pathname == "/" ? 
+                <li key={"prices"}>
+                  <a href="#prices"> Precios</a>
+              </li> : null
+              }
             </ul>
           </header> 
         </div>
@@ -52,12 +60,6 @@ routes.push({
 {
   to:'/we',
   text:'Nosotros',
-  private: false,
-  publicOnly: true
-},
-{
-  to:'/classes',
-  text:'Clases',
   private: false,
   publicOnly: true
 })

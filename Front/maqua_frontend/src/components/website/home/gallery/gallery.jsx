@@ -32,7 +32,7 @@ const images = [
 const Gallery = () => {
 
     return (
-        <section className="carousel">
+        <section id="gallery" className="carousel">
             <Carousel fade>
             {images.map(image=>{
                 return (
