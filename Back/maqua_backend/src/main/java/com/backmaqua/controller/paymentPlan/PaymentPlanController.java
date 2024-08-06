@@ -6,18 +6,13 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.backmaqua.entities.paymentPlan.PaymentPlan;
 import com.backmaqua.entities.paymentPlan.PaymentPlans;
 import com.backmaqua.repository.paymentPlan.PaymentPlanCRUDRepository;
+import com.backmaqua.repository.paymentPlan.PaymentPlanQUERYRepository;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -25,6 +20,11 @@ import com.backmaqua.repository.paymentPlan.PaymentPlanCRUDRepository;
 public class PaymentPlanController {
 	@Autowired
     private PaymentPlanCRUDRepository paymentPlanRepository;
+	private PaymentPlanQUERYRepository paymentPlanQUERYRepository;
+
+    public PaymentPlanController(PaymentPlanQUERYRepository paymentPlanQUERYRepository) {
+        this.paymentPlanQUERYRepository = paymentPlanQUERYRepository;
+    }
 
     //***Api Final Front
 	@CrossOrigin(origins = "*")
@@ -32,6 +32,18 @@ public class PaymentPlanController {
 	public PaymentPlan addNewPaymentPlan(@RequestBody PaymentPlan paymentPlan) {
         //add resource
 		paymentPlan = paymentPlanRepository.save(paymentPlan);
+		return paymentPlan;
+	}
+
+	@GetMapping(path = "getPaymentPlanById", produces = "application/json")
+	public PaymentPlan getPaymentPlanById(@RequestParam(value="id") Long id) {
+		PaymentPlan paymentPlan = paymentPlanRepository.findById(id).get();
+		return paymentPlan;
+	}
+
+	@GetMapping(path = "definePaymentPlan", produces = "application/json")
+	public PaymentPlan definePaymentPlan(@RequestParam(value="students") int studentsNumber, @RequestParam(value="periodicity") int periodicity) {
+		PaymentPlan paymentPlan = paymentPlanQUERYRepository.findByPeopleQuantityAndPeriodicity(studentsNumber,periodicity);
 		return paymentPlan;
 	}
     

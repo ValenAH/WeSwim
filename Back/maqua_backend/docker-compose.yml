@@ -1,0 +1,13 @@
+version: "3"
+services:
+  maqua-db:
+    image: mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: MLvalen2024*
+        MYSQL_DATABASE: maqua
+  maqua-backend:
+    build: .
+    ports:
+      - "9009:9009"
+    depends_on:
+      - maqua-db

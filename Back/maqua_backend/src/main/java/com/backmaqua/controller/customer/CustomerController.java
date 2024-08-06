@@ -26,7 +26,7 @@ import com.backmaqua.repository.user.UserCRUDRepository;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping("/api/CustomerAPI")
+@RequestMapping("/api/customers")
  public class CustomerController {
 
 	@Autowired
@@ -39,7 +39,7 @@ import com.backmaqua.repository.user.UserCRUDRepository;
     private Long customerRoleId;
 	
 	@CrossOrigin(origins = "*")
-    @PostMapping(path= "/addnewcustomer", consumes = "application/json", produces = "application/json")
+    @PostMapping(path= "/addNewCustomer", consumes = "application/json", produces = "application/json")
 	public Customer addNewCustomerApi(@RequestBody Customer customer) {
         //add resource
 		customer = customerRepository.save(customer);
@@ -79,7 +79,7 @@ import com.backmaqua.repository.user.UserCRUDRepository;
     }
 
 	@CrossOrigin(origins = "*")
-    @PostMapping(path= "/updatecustomer", consumes = "application/json", produces = "application/json")
+    @PostMapping(path= "/updateCustomer", consumes = "application/json", produces = "application/json")
 	public Customer updateCustomer(@RequestBody Customer customer) {
         //add resource
      	customerRepository.save(customer);
