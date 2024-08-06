@@ -3,16 +3,16 @@ import axios from 'axios';
 import "./CustomerList.scss";
 import { BsFillPencilFill, BsFillTrashFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { environment } from "../../environments/environment";
 
 
   const CustomerList = () => {
-    const apiCustomer = "http://localhost:9009/api/CustomerAPI";
     const navigate=useNavigate();
     const [customers, setCustomer] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get(apiCustomer + "/getAllCustomers")
+            await axios.get(environment.API_BACKEND + "customers/getAllCustomers")
             .then(res => setCustomer(res.data.customerList))
             .catch(err => console.log(err));
         }

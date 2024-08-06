@@ -22,32 +22,13 @@
                 font-size: 2rem;
             }
         }
-
-        .studentField{
-            width: 90%;
+        
         }
-        .icon-container{
-            width: 10%;
-
-            &__minusIcon{
-                font-size: 1.4rem;
-                &:hover{
-                    color:var(--blue-primary)
-                }
-            }
-
-            &:hover{
-                cursor: pointer;
-                
-            }
-        }
-        .days-container{
+        .container-border{
             border: 1px solid var(--gray-light);
         }
         
     }
-
-}
 
 @media screen and (max-width:800px){
     .modal-container{
