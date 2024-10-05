@@ -46,7 +46,7 @@ public class PlanControllerUnitTests {
 		when( planRepositoryMock.save(any(Plan.class))).thenReturn(plan);
 	    Date date = new Date();
 		// Entonces Realizo la prueba si es verdadera
-		Plan planToAdd = new Plan(Long.valueOf(0), Long.valueOf(1),date,Double.valueOf(210000));
+		Plan planToAdd = new Plan(Long.valueOf(0), Long.valueOf(1),date);
 		ResponseEntity<Object> responseEntity = planController.addPlan(planToAdd);
 
 		
@@ -58,8 +58,8 @@ public class PlanControllerUnitTests {
 	public void testFindAll() {
 		// given
 		Date date = new Date();
-		Plan plan1 = new Plan(Long.valueOf(0), Long.valueOf(1),date,Double.valueOf(210000));
-		Plan plan2 = new Plan(Long.valueOf(0), Long.valueOf(1),date,Double.valueOf(210000));
+		Plan plan1 = new Plan(Long.valueOf(0), Long.valueOf(1),date);
+		Plan plan2 = new Plan(Long.valueOf(0), Long.valueOf(1),date);
 		List<Plan> list = new ArrayList<Plan>();
 		list.addAll(Arrays.asList(plan1, plan2));
 
@@ -89,7 +89,7 @@ public class PlanControllerUnitTests {
 		when(planRepositoryMock.save(any(Plan.class))).thenReturn(plan);
 
 		// Entonces Realizo la prueba si es verdadera
-		Plan planToUpdate = new Plan(Long.valueOf(0), Long.valueOf(1),date,Double.valueOf(210000));
+		Plan planToUpdate = new Plan(Long.valueOf(0), Long.valueOf(1),date);
 		Plan responseEntityUpdate = planController.updatePlan(planToUpdate);
 		
 		assertThat(responseEntityUpdate.equals(planToUpdate));
@@ -108,7 +108,7 @@ public class PlanControllerUnitTests {
 		when(planRepositoryMock.save(any(Plan.class))).thenReturn(planBase);
 
 		// Entonces Realizo la prueba si es verdadera
-		Plan plan = new Plan(Long.valueOf(0), Long.valueOf(1),date,Double.valueOf(210000));
+		Plan plan = new Plan(Long.valueOf(0), Long.valueOf(1),date);
 		ResponseEntity<Object> responseEntityCreate = planController.addPlan(plan);
 		
 		ResponseEntity<String> responseEntityUpdate = planController.deletePlan(plan);

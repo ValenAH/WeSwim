@@ -36,9 +36,18 @@ dependencies {
     //Interactuar con BD
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.apache.commons:commons-lang3:3.6'    
-    implementation 'com.mysql:mysql-connector-j:8.0.31'
+    implementation 'com.mysql:mysql-connector-j:8.2.0'
 
     implementation 'com.h2database:h2'
+
+    // Dependencia para AWS Lambda API
+    implementation 'com.amazonaws:aws-lambda-java-core:1.2.1'
+    // Dependencia para empaquetar el código como un JAR ejecutable
+    implementation 'com.amazonaws:aws-lambda-java-events:3.11.0'
+    implementation 'org.springframework.cloud:spring-cloud-function-adapter-aws:3.2.2'
+    implementation 'org.springframework.boot:spring-boot-starter'
+
+
 
     //Mantenibilidad de Codigo / ***
     compileOnly 'org.projectlombok:lombok'  //investigar para que sirve

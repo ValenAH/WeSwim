@@ -18,15 +18,13 @@ public class Plan {
 	private Long id;
 	private Long PaymentPlanId; //time by week
 	private Date creationDate;
-	private Double totalAmount;
 	
 	public Plan() {}
 	
-	public Plan(Long id, Long PaymentPlanId, Date date, Double totalAmount) {
+	public Plan(Long id, Long PaymentPlanId, Date date) {
 		this.id = id;
 		this.PaymentPlanId = PaymentPlanId;
 		this.creationDate = date;
-		this.totalAmount = totalAmount;
 	}
 	
 	@Override
@@ -38,13 +36,13 @@ public class Plan {
 		if (getClass() != obj.getClass())
 			return false;
 		Plan other = (Plan) obj;
-		return Objects.equals(id, other.id) && PaymentPlanId == other.PaymentPlanId
-				&& creationDate == other.creationDate && Objects.equals(totalAmount, other.totalAmount);
+		return Objects.equals(id, other.id) && Objects.equals(PaymentPlanId, other.PaymentPlanId)
+				&& creationDate == other.creationDate;
 	}
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, PaymentPlanId, creationDate, totalAmount);
+		return Objects.hash(id, PaymentPlanId, creationDate);
 	}
 	
 	public Long getId() {
@@ -70,12 +68,5 @@ public class Plan {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	
-	public double getTotalAmount() {
-		return totalAmount;
-	}
 
-	public void setTotalAmount(double totalAmount) {
-		this.totalAmount = totalAmount;
-	}
 }

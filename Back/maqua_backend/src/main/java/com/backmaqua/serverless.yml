@@ -1,0 +1,29 @@
+service: maquabackend-app # Nombre de tu servicio
+
+provider:
+  name: aws
+  runtime: java11 # o el runtime que estés usando
+  region: us-east-1 # Cambia a tu región preferida
+  stage: dev
+
+functions:
+  getAllUsers:
+    handler: com.backmaqua.functions::UserFunctions.getAllUsers
+    events:
+      - http:
+          path: users/all
+          method: get
+
+  getUserById:
+    handler: com.backmaqua.functions::UserFunctions.getUserById
+    events:
+      - http:
+          path: users/{id}
+          method: get
+
+  createUser:
+    handler: com.backmaqua.functions::UserFunctions.createUser
+    events:
+      - http:
+          path: users/create
+          method: post
