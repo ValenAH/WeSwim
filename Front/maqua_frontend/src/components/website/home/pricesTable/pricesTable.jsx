@@ -24,15 +24,15 @@ const PricesTable = () => {
                             <tbody>
                                 <tr>
                                     <td>1</td>
+                                    <td>$ 260.000</td>
                                     <td>$ 230.000</td>
-                                    <td>$ 190.000</td>
-                                    <td>$ 170.000</td>
+                                    <td>$ 210.000</td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <th>$ 380.000</th>
-                                    <th>$ 280.000</th>
-                                    <th>$ 260.000</th>
+                                    <th>$ 440.000</th>
+                                    <th>$ 350.000</th>
+                                    <th>$ 320.000</th>
                                 </tr>
                             </tbody>
                         </table>
