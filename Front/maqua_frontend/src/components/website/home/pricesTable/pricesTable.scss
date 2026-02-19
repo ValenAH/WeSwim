@@ -1,0 +1,53 @@
+@import url('../../../../assets/fonts/fonts.scss');
+
+.image{
+    height: 80vh;
+    width: 100%;
+}
+.table-div{
+    position: absolute;
+    top: 26px;
+    left: 9rem;
+    width: 75%;
+
+    .table{
+        height: 30vh;
+        background-color: #083164;
+        opacity: 90%;
+        border-radius: 15px;
+        box-shadow: 0 0 27px 0px #083164;
+        overflow: hidden;
+        color: white;
+
+        thead {
+            background-color: transparent;
+            color: white;
+        }
+
+        tbody tr:hover {
+            background-color: #083164;
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .table-div {
+        top: 22px;
+        left: 5rem;
+    }
+  }
+
+  @media only screen and (max-width: 700px) {
+    .table-div {
+        top: 22px;
+        left: 3rem;
+    }
+  }
+
+  @media only screen and (max-width: 350px) {
+    .table-div {
+        top: 22px;
+        left: 1rem;
+        width: 90%;
+    }
+  }

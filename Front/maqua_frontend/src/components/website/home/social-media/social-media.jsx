@@ -9,17 +9,17 @@ const SocialMedia = () => {
             <div className="container-fluid">
                 <div className="container">
                     <div className="d-lg-flex justify-content-around text-light">
-                        <div className="d-flex gap-2 align-items-center">
+                        <div className="mb-2 d-flex gap-2 align-items-center">
                             <BsWhatsapp className="icons"/>
-                            <span>+57 3052587069</span>
+                            <a className="text-white" href="https://wa.me/573052587069" target="_blank">+57 3052587069</a>
                         </div>
-                        <div className="d-flex gap-2 align-items-center">
+                        <div className="mb-2 d-flex gap-2 align-items-center">
                             <BsInstagram className="icons"/>
-                            <span>@maqua.oficial</span>
+                            <a className="text-white" href="https://www.instagram.com/maqua.oficial/" target="_blank">@maqua.oficial</a>
                         </div>
-                        <div className="d-flex gap-2 align-items-center">
+                        <div className="mb-2 d-flex gap-2 align-items-center">
                             <BsFacebook className="icons"/>
-                            <span>Maqua Gimnasia Acuática</span>
+                            <a className="text-white" href="https://m.facebook.com/people/MAQUA/100064239030294/" target="_blank">Maqua Gimnasia Acuática</a>
                         </div>
                     </div>
                 </div>

@@ -11,11 +11,13 @@ import NotFound from "../components/notfound/Notfound";
 import { Login } from "../components/auth/login/login";
 import UserForm from "../components/user/UserForm";
 import { AuthProvider, PrivateRoute } from "../components/auth/Auth";
-import {Home} from "../components/home/Home";
-import {Layout} from "../containers/Layout/Layout";
+import {Home} from "../components/website/home/Home";
+import Layout from "../containers/Layout/Layout";
 import Transaction from "../components/transactionhistory/Transaction";
 import { CustomerForm } from "../components/customer/CustomerForm";
 import {CustomerList} from "../components/customer/CustomerList";
+import { We } from "../components/website/we/we";
+import { Classes } from "../components/website/classes/classes";
 
 const AppRoutes = () => {
     return (
@@ -23,7 +25,9 @@ const AppRoutes = () => {
                 <AuthProvider>
                         <Layout>
                             <Routes>
-                                <Route path="/" element={<Home/>} />
+                                <Route path="/" element={<Home/>}/>
+                                <Route path="/we" element={<We/>}/>
+                                <Route path="/classes" element={<Classes/>}/>
                                 <Route path="/register-student" element={<RegisterStudent/>}/>
                                 <Route path="/register-teacher" element={<RegisterTeacher/>}/>
                                 <Route path="/login" element={<Login/>}/>
@@ -43,6 +47,5 @@ const AppRoutes = () => {
             </BrowserRouter>
         );
 }
- 
 
 export default AppRoutes;
