@@ -1,0 +1,21 @@
+@import url('../../../assets/fonts/fonts.scss');
+
+.servicios-section {
+    .card .image-container {
+        display: block;
+        transition: 1s ease-in;
+        overflow: hidden;
+    }
+    .card hr { display: none; }
+    .card .message { display: none; }
+    .card:hover .image-container { display: none; }
+    .card:hover hr { display: block; }
+    .card:hover .message { display: flex; }
+}
+
+@media only screen and (max-width: 1000px) {
+    .servicios-section .card { height: 80vh; }
+}
+@media only screen and (max-width: 500px) {
+    .servicios-section .card { height: 50vh; }
+}

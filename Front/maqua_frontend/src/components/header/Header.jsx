@@ -40,7 +40,7 @@ const Header = () => {
               })}
               { location.pathname == "/" ? 
                 <li key={"prices"}>
-                  <a href="#prices"> Precios</a>
+                  <a href="#prices"> Planes</a>
               </li> : null
               }
             </ul>

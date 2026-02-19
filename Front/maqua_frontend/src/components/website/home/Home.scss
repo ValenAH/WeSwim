@@ -1,48 +1,113 @@
 @import url('../../../assets/fonts/fonts.scss');
-.card .image-container{
-        display: block;
-        transition: 1s ease-in;
-        overflow: hidden
-}
-.card hr{
-    display: none;
-}
-.card .message{
-    display:none;
-}
 
-.card:hover .image-container{
-    display: none;
-}
+.why-maqua-section {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-.card:hover hr{
-    display: block;
-}
-
-.card:hover .message{
-    display: flex;
-}
-
-.go-up{
-    width: 2rem;
-    height: 2rem;
-    bottom: 2rem;
-    right: 1rem;
-    box-shadow: 0px 0px 5px 0px var(--blue-primary);
-    background-color: var(--blue-secondary);
-    color: white;
-
-}
-
-
-@media only screen and (max-width: 1000px) {
-    .card{
-        height: 80vh;
+    &__title {
+        color: var(--blue-primary);
+        font-weight: 700;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     }
 }
 
-@media only screen and (max-width: 500px) {
-    .card{
-        height: 50vh;
+.why-maqua-card {
+    background: white;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(11, 17, 101, 0.08);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.2s ease;
+
+    &:hover { box-shadow: 0 4px 20px rgba(11, 17, 101, 0.1); }
+
+    &__icon {
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(61, 184, 223, 0.15);
+        color: var(--blue-primary);
+        border-radius: 0.5rem;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    &__title { font-size: 1.1rem; font-weight: 700; color: var(--blue-secondary); margin-bottom: 0.5rem; }
+    &__description { color: #444; line-height: 1.6; font-size: 0.95rem; margin-bottom: 0; }
+}
+
+.conocenos-section {
+    &__title { color: var(--blue-secondary); margin-bottom: 0.75rem; }
+    &__cta {
+        display: inline-block;
+        color: var(--blue-primary);
+        font-weight: 600;
+        text-decoration: none;
+        margin-bottom: 2rem;
+        &:hover { color: var(--blue-primary-hover); text-decoration: underline; }
+    }
+}
+
+.testimonial-card {
+    display: flex;
+    flex-direction: column;
+    background: #f8f9fc;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(11, 17, 101, 0.1);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.2s ease;
+
+    &:hover { box-shadow: 0 4px 20px rgba(11, 17, 101, 0.08); }
+
+    &__stars {
+        display: flex;
+        gap: 0.2rem;
+        margin-bottom: 0.75rem;
+        color: #e6b800;
+        font-size: 1.1rem;
+    }
+
+    &__quote { flex: 1; font-style: italic; color: #333; line-height: 1.6; margin-bottom: 1rem; }
+    &__author { font-weight: 700; color: var(--blue-secondary); font-size: 0.95rem; margin-top: auto; }
+    &__role { font-size: 0.85rem; color: #666; }
+}
+
+.unidades-section {
+    background-color: #f5f7fa;
+
+    &__title { color: var(--blue-secondary); font-weight: 700; }
+    &__subtitle { color: #555; font-size: 1rem; margin-bottom: 0; margin-top: 0.5rem; }
+}
+
+.unidad-card {
+    background: white;
+    border-radius: 0.75rem;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    border: 1px solid rgba(11, 17, 101, 0.1);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.2s ease;
+
+    &:hover { box-shadow: 0 4px 20px rgba(11, 17, 101, 0.08); }
+    &__name { font-weight: 700; font-size: 1.1rem; color: var(--blue-secondary); }
+}
+
+.whatsapp-float {
+    width: 3.25rem;
+    height: 3.25rem;
+    bottom: 1.5rem;
+    right: 1rem;
+    background-color: #25d366;
+    box-shadow: 0 2px 10px rgba(37, 211, 102, 0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    z-index: 1000;
+
+    &:hover {
+        transform: scale(1.08);
+        box-shadow: 0 4px 14px rgba(37, 211, 102, 0.6);
     }
 }
