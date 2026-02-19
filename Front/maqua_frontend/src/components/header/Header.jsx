@@ -43,6 +43,23 @@ const Header = () => {
                   <a href="#prices"> Planes</a>
               </li> : null
               }
+              {!auth.user ? (
+                <li key="login">
+                  <NavLink
+                    className="p-1"
+                    style={({ isActive }) => ({ borderBottom: isActive ? '2px solid white' : 'none' })}
+                    to="/login"
+                  >
+                    Iniciar sesión
+                  </NavLink>
+                </li>
+              ) : (
+                <li key="logout">
+                  <button type="button" className="header__logout p-1" onClick={handleLogout}>
+                    Cerrar sesión
+                  </button>
+                </li>
+              )}
             </ul>
           </header> 
         </div>
@@ -60,8 +77,7 @@ routes.push({
 {
   to:'/we',
   text:'Nosotros',
-  private: false,
-  publicOnly: true
+  private: false
 })
 
 export {Header};

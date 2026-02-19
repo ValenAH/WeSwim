@@ -2,6 +2,8 @@ package com.backmaqua.controller.user;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,5 +82,24 @@ public class UserController {
         //Send location in response
         return ResponseEntity.created(location).build();
     }
+
+	@PostMapping(path = "/login", consumes = "application/json", produces = "application/json")
+	public ResponseEntity<?> login(@RequestBody Map<String, String> body) {
+		String username = body.get("username");
+		String password = body.get("password");
+		if (username == null || password == null) {
+			return ResponseEntity.badRequest().body(Map.of("error", "Faltan usuario o contraseña"));
+		}
+		Optional<User> opt = userRepository.findByUsername(username);
+		if (opt.isEmpty() || !password.equals(opt.get().getPassword())) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "Credenciales incorrectas"));
+		}
+		User user = opt.get();
+		Map<String, Object> response = new HashMap<>();
+		response.put("id", user.getId());
+		response.put("username", user.getUser());
+		response.put("rolId", user.getRolId());
+		return ResponseEntity.ok(response);
+	}
     
 }

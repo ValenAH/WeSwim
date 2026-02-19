@@ -11,7 +11,7 @@
 
     &__menu{
       list-style: none;
-      
+
       a{
         text-decoration: none;
         color: white;
@@ -19,6 +19,18 @@
         &:hover {
           border-bottom: 2px solid white;
         }
+      }
+    }
+
+    &__logout {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: inherit;
+
+      &:hover {
+        border-bottom: 2px solid white;
       }
     }
   }

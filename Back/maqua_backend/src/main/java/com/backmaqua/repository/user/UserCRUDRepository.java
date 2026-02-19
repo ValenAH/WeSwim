@@ -13,4 +13,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 public interface UserCRUDRepository extends CrudRepository<User, Long>{
 
+	java.util.Optional<User> findByUsername(String username);
 }
