@@ -16,17 +16,23 @@ public class Plan {
 	@Id @GeneratedValue(strategy=GenerationType.AUTO , generator="native")
 	@GenericGenerator(name = "native", strategy = "native")
 	private Long id;
-	private Long PaymentPlanId; //time by week
+	private Long PaymentPlanId;
+	private Long teacherId;
 	private Date creationDate;
 	private Double totalAmount;
 	
 	public Plan() {}
 	
-	public Plan(Long id, Long PaymentPlanId, Date date, Double totalAmount) {
+	public Plan(Long id, Long PaymentPlanId, Long teacherId, Date date, Double totalAmount) {
 		this.id = id;
 		this.PaymentPlanId = PaymentPlanId;
+		this.teacherId = teacherId;
 		this.creationDate = date;
 		this.totalAmount = totalAmount;
+	}
+
+	public Plan(Long id, Long PaymentPlanId, Date date, Double totalAmount) {
+		this(id, PaymentPlanId, null, date, totalAmount);
 	}
 	
 	@Override
@@ -38,13 +44,13 @@ public class Plan {
 		if (getClass() != obj.getClass())
 			return false;
 		Plan other = (Plan) obj;
-		return Objects.equals(id, other.id) && PaymentPlanId == other.PaymentPlanId
-				&& creationDate == other.creationDate && Objects.equals(totalAmount, other.totalAmount);
+		return Objects.equals(id, other.id) && Objects.equals(PaymentPlanId, other.PaymentPlanId)
+				&& Objects.equals(teacherId, other.teacherId) && Objects.equals(creationDate, other.creationDate) && Objects.equals(totalAmount, other.totalAmount);
 	}
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, PaymentPlanId, creationDate, totalAmount);
+		return Objects.hash(id, PaymentPlanId, teacherId, creationDate, totalAmount);
 	}
 	
 	public Long getId() {
@@ -62,7 +68,15 @@ public class Plan {
 	public void setIdPaymentPlan(Long PaymentPlanId) {
 		this.PaymentPlanId = PaymentPlanId;
 	}
-	
+
+	public Long getTeacherId() {
+		return teacherId;
+	}
+
+	public void setTeacherId(Long teacherId) {
+		this.teacherId = teacherId;
+	}
+
 	public Date getCreationDate() {
 		return creationDate;
 	}

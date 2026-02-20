@@ -12,7 +12,7 @@ export const UserForm = () => {
     const [formState, setFormState] = useState({
         user: "",
         password: "",
-        rolId: 0
+        roleId: 0
     })
 
     const navigate = useNavigate();
@@ -69,8 +69,8 @@ export const UserForm = () => {
                         <input name='password' type='text' value={formState.password} placeholder='Contraseña' onChange={handleChangeUser}/>
                     </div>
                     <div className='form-group'>
-                        <label htmlFor='rolId'>Rol</label>
-                        <select name='rolId' value={formState.rolId} placeholder='Elige un rol' onChange={handleChangeUser}>
+                        <label htmlFor='roleId'>Rol</label>
+                        <select name='roleId' value={formState.roleId} placeholder='Elige un rol' onChange={handleChangeUser}>
                             <option value={0} disabled hidden>Selecciona un rol</option>
                             <option value={1}>Administrador</option>
                             <option value={2}>Profesor</option>
@@ -78,7 +78,7 @@ export const UserForm = () => {
                         </select>
                     </div>
                     <div className='text-center'>
-                        <button type='submit' className='btn text-center' disabled={formState.user == ''} onClick={handleSubmit}>
+                        <button type='submit' className='btn text-center' disabled={formState.user === ''} onClick={handleSubmit}>
                             {id === 'new'? 'Crear':'Actualizar'}
                         </button>
                     </div>

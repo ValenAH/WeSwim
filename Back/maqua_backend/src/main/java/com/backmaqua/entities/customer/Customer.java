@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,34 +12,39 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Customer {
-	
-	@Id @GeneratedValue(strategy=GenerationType.AUTO , generator="native")
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
 	@GenericGenerator(name = "native", strategy = "native")
 	private Long id;
 	private String name;
+	private String lastname;
 	private String email;
+
+	@Column(name = "document_type")
 	private String documentTypeId;
+
+	@Column(name = "document_num")
 	private String documentNumber;
+
 	private String address;
 	private String phone;
+
+	@Column(name = "user_id")
 	private Long userId;
-	private Long paymentPlanId;
-	private String password;
-	
+
 	public Customer() {}
 
-	public Customer(Long id, String name,String email,String documentTypeId, String documentNumber,String address,String phone,Long userId, Long paymentPlanId,String password) {
+	public Customer(Long id, String name, String lastname, String email, String documentTypeId, String documentNumber, String address, String phone, Long userId) {
 		this.id = id;
 		this.name = name;
-		this.email= email;
+		this.lastname = lastname;
+		this.email = email;
 		this.documentTypeId = documentTypeId;
 		this.documentNumber = documentNumber;
 		this.address = address;
 		this.phone = phone;
 		this.userId = userId;
-		this.paymentPlanId= paymentPlanId;
-		this.password = password;
-		
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -51,15 +57,13 @@ public class Customer {
 		Customer other = (Customer) obj;
 		return Objects.equals(address, other.address) && Objects.equals(documentNumber, other.documentNumber)
 				&& Objects.equals(documentTypeId, other.documentTypeId) && Objects.equals(email, other.email)
-				&& Objects.equals(id, other.id) && Objects.equals(name, other.name)
-				&& Objects.equals(paymentPlanId, other.paymentPlanId) && Objects.equals(phone, other.phone)
-				&& Objects.equals(userId, other.userId) &&
-						Objects.equals(password, other.password);
+				&& Objects.equals(id, other.id) && Objects.equals(name, other.name) && Objects.equals(lastname, other.lastname)
+				&& Objects.equals(phone, other.phone) && Objects.equals(userId, other.userId);
 	}	
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(address, documentNumber, documentTypeId, email, id, name, paymentPlanId, phone, userId, password);
+		return Objects.hash(address, documentNumber, documentTypeId, email, id, name, lastname, phone, userId);
 	}
 	
 	
@@ -77,6 +81,14 @@ public class Customer {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
 	public String getEmail() {
@@ -127,36 +139,19 @@ public class Customer {
 		this.userId = userId;
 	}
 
-	public Long getPaymentPlanId() {
-		return paymentPlanId;
-	}
-
-	public void setPaymentPlanId(Long paymentPlanId) {
-		this.paymentPlanId = paymentPlanId;
-	}
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	@Override
 	public String toString() {
 		return "Customer{" +
 			"id=" + id +
 			", name='" + name + '\'' +
+			", lastname='" + lastname + '\'' +
 			", email='" + email + '\'' +
 			", documentTypeId='" + documentTypeId + '\'' +
 			", documentNumber='" + documentNumber + '\'' +
 			", address='" + address + '\'' +
 			", phone='" + phone + '\'' +
-			", userId='" + userId + '\'' +
-			", paymentPlanId='" + paymentPlanId + '\'' +
-			", password='" + password + '\'' +
+			", userId=" + userId +
 			'}';
-
 	}
 		
 }

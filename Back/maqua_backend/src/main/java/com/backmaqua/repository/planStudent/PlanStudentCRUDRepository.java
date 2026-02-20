@@ -11,5 +11,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "planStudents", path ="planStudents")
 
 public interface PlanStudentCRUDRepository extends CrudRepository<PlanStudent, Long>{
-
+	java.util.List<PlanStudent> findByPlanIdIn(java.util.Collection<Long> planIds);
 }

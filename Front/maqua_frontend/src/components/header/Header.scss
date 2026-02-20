@@ -28,9 +28,83 @@
       color: white;
       cursor: pointer;
       font-size: inherit;
+      width: 100%;
+      text-align: left;
+      padding: 0.5rem 1rem;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+    }
+
+    &__account {
+      position: relative;
+    }
+
+    &__account-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: inherit;
 
       &:hover {
         border-bottom: 2px solid white;
+      }
+    }
+
+    &__account-icon {
+      font-size: 1.25rem;
+    }
+
+    &__account-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin: 0;
+      margin-top: 0.25rem;
+      padding: 0.25rem 0;
+      list-style: none;
+      min-width: 160px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 100;
+
+      a,
+      .header__account-link,
+      .header__logout {
+        color: #1a1a1a !important;
+        text-decoration: none;
+      }
+
+      a:hover,
+      .header__account-link:hover,
+      .header__logout:hover {
+        background: #f0f0f0;
+        color: #0b1165 !important;
+      }
+    }
+
+    &__account-link {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: #1a1a1a !important;
+      text-decoration: none;
+      font-size: 0.95rem;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+
+      &:hover {
+        background: #f0f0f0;
+        color: #0b1165 !important;
       }
     }
   }

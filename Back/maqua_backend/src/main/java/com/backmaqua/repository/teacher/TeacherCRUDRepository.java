@@ -11,5 +11,5 @@ import com.backmaqua.entities.teacher.Teacher;
 path = "teachers")
 
 public interface TeacherCRUDRepository extends CrudRepository<Teacher, Long>{
-
+	java.util.Optional<Teacher> findByUserid(Long userid);
 }

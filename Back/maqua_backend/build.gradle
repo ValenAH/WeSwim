@@ -21,7 +21,6 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    runtimeOnly 'mysql:mysql-connector-java'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	
 	//incrementar como un servicio
@@ -32,6 +31,7 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
     //Interactuar con BD
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -40,10 +40,10 @@ dependencies {
 
     implementation 'com.h2database:h2'
 
-    //Mantenibilidad de Codigo / ***
-    compileOnly 'org.projectlombok:lombok'  //investigar para que sirve
+    // Lombok: versión explícita compatible con JDK 21+ (evita NoSuchFieldError: JCTree$JCImport qualid)
+    compileOnly 'org.projectlombok:lombok:1.18.34'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
 
     // https://mvnrepository.com/artifact/javax.servlet/servlet-api
     compileOnly 'javax.servlet:servlet-api:2.5'

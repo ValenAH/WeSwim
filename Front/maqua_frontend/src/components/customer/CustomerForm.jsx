@@ -2,20 +2,21 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { IoIosCloseCircle } from "react-icons/io";
 import axios from "axios";
+import { environment } from "../../environments/environment";
 
 const CustomerForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const apiCustomer = "http://localhost:9009/api/CustomerAPI";
+  const baseUrl = (environment.API_BACKEND || "http://localhost:9009/api/").replace(/\/?$/, "");
+  const apiCustomer = `${baseUrl}/CustomerAPI`;
   const [formState, setFormState] = useState({
     name: "",
+    lastname: "",
     email: "",
-    documentTypeId: 0,
+    documentTypeId: "",
     documentNumber: "",
     address: "",
     phone: "",
-    userId: 0,
-    paymentPlanId: 0,
   });
   useEffect(() => {
     if (id === "new") return;
@@ -70,9 +71,9 @@ const CustomerForm = () => {
         <form className="mt-3">
           <div className="row">
             <div className="form-group col-md-6 mb-3">
-              <label>Name</label>
+              <label>Nombre</label>
               <input
-                placeholder="Ingrese un nombre"
+                placeholder="Ingrese el nombre"
                 type="text"
                 name="name"
                 value={formState.name}
@@ -80,7 +81,17 @@ const CustomerForm = () => {
               />
             </div>
             <div className="form-group col-md-6 mb-3">
-              <label>email</label>
+              <label>Apellido</label>
+              <input
+                placeholder="Ingrese el apellido"
+                type="text"
+                name="lastname"
+                value={formState.lastname}
+                onChange={handleChangeCustomer}
+              />
+            </div>
+            <div className="form-group col-md-6 mb-3">
+              <label>Correo</label>
               <input
                 placeholder="Ingrese un correo"
                 type="text"
@@ -126,32 +137,12 @@ const CustomerForm = () => {
               />
             </div>
             <div className="form-group col-md-6 mb-3">
-              <label>Phone</label>
+              <label>Teléfono</label>
               <input
-                placeholder="Ingrese un numero de celular"
-                type="number"
+                placeholder="Ingrese un número de celular"
+                type="tel"
                 name="phone"
                 value={formState.phone}
-                onChange={handleChangeCustomer}
-              />
-            </div>
-            <div className="form-group col-md-6 mb-3">
-              <label>user id</label>
-              <input
-                placeholder="Ingrese un usuario"
-                type="number"
-                name="userId"
-                value={formState.userId}
-                onChange={handleChangeCustomer}
-              />
-            </div>
-            <div className="form-group col-md-6 mb-3">
-              <label>Payment Plan Id</label>
-              <input
-                placeholder="Ingrese un plan de pago"
-                type="number"
-                name="paymentPlanId"
-                value={formState.paymentPlanId}
                 onChange={handleChangeCustomer}
               />
             </div>

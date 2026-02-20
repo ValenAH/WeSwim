@@ -13,15 +13,17 @@ public class User {
 	private Long id;
 	private String username;
 	private String password;
-	private Long rolId;
+
+	@Column(name = "role_id")
+	private Long roleId;
 	
 	public User(){ }
 	
-	public User(Long id, String username, String password, Long rolId) {
+	public User(Long id, String username, String password, Long roleId) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
-		this.rolId = rolId;
+		this.roleId = roleId;
 	}
 	
 	@Override
@@ -32,12 +34,12 @@ public class User {
 		return Objects.equals(id, user.id) &&
 			Objects.equals(username, user.username) &&
 			Objects.equals(password, user.password) &&
-			Objects.equals(rolId, user.rolId);
+			Objects.equals(roleId, user.roleId);
 	}
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, username, password, rolId);
+		return Objects.hash(id, username, password, roleId);
 	}
 
 	
@@ -52,7 +54,11 @@ public class User {
 	public String getUser() {
 		return username;
 	}
-	
+
+	public String getUsername() {
+		return username;
+	}
+
 	public void setUser(String username) {
 		this.username = username;
 	}
@@ -65,11 +71,11 @@ public class User {
 		this.password = password;
 	}
 	
-	public Long getRolId() {
-		return rolId;
+	public Long getRoleId() {
+		return roleId;
 	}
-	public void setRolId(Long rolId) {
-		this.rolId = rolId;
+	public void setRoleId(Long roleId) {
+		this.roleId = roleId;
 	}
 	
 	@Override
@@ -79,7 +85,7 @@ public class User {
 			"id=" + id +
 			", username='" + username + '\'' +
 			", password='" + password + '\'' +
-			", rolId='" + rolId + '\'';
+			", roleId=" + roleId;
 
 	}
 }

@@ -11,9 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.backmaqua.entities.customer.Customer;
 
 @Repository
-@RepositoryRestResource(collectionResourceRel = "customers",
-path = "customers")
- 
+@RepositoryRestResource(collectionResourceRel = "customers", path = "customers", exported = false)
 public interface CustomerCRUDRepository extends CrudRepository<Customer, Long>{
  
 } 

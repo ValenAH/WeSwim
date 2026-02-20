@@ -31,7 +31,10 @@ function AuthProvider({children}) {
         try {
             window.localStorage.setItem("maqua_user", JSON.stringify(data));
         } catch (_) {}
-        navigate("/planner");
+        const roleId = data.role_Id;
+        if (roleId === 1) navigate("/dashboard");
+        else if (roleId === 3) navigate("/profile");
+        else navigate("/planner");
     };
     const logout = () => {
         setUser(null);
@@ -56,15 +59,24 @@ function useAuth() {
 
 function PrivateRoute(props) {
     const auth = useAuth();
+    if (!auth.user) return <Navigate to="/login" />;
+    return props.children;
+}
 
-    if(!auth.user){
-        return <Navigate to="/login"/>;
+function RoleRoute({ children, allowedRoles }) {
+    const auth = useAuth();
+    if (!auth.user) return <Navigate to="/login" />;
+    const roleId = auth.user?.role_Id != null ? Number(auth.user.role_Id) : null;
+    if (allowedRoles == null || allowedRoles.length === 0 || (roleId != null && allowedRoles.includes(roleId))) {
+      return children;
     }
-    return props.children
+    if (roleId === 3) return <Navigate to="/profile" />;
+    return <Navigate to="/planner" />;
 }
 
 export {
     AuthProvider,
     useAuth,
-    PrivateRoute
+    PrivateRoute,
+    RoleRoute
 };

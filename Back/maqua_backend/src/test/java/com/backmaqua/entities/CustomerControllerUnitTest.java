@@ -7,6 +7,7 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,10 +24,8 @@ import com.backmaqua.controller.customer.CustomerController;
 import com.backmaqua.controller.user.UserController;
 import com.backmaqua.entities.customer.Customer;
 import com.backmaqua.entities.customer.Customers;
-import com.backmaqua.entities.teacher.Teacher;
 import com.backmaqua.entities.user.User;
 import com.backmaqua.repository.customer.CustomerCRUDRepository;
-import com.backmaqua.repository.teacher.TeacherCRUDRepository;
 import com.backmaqua.repository.user.UserCRUDRepository;
 
 @ExtendWith(MockitoExtension.class)
@@ -60,7 +59,7 @@ public class CustomerControllerUnitTest {
                customerRepositoryMock.save(any(Customer.class))).thenReturn(customer);
 		
 		// Entonces Realizo la prueba si es verdadera
-		Customer customerToAdd = new Customer((long) 0, "Daniel", "ddp@gmail.com", "Cedula", "1039865789", "Calle 5 a Sur", "3023698547",(long) 2,(long) 30,"maria");
+		Customer customerToAdd = new Customer(0L, "Daniel", "Perez", "ddp@gmail.com", "Cedula", "1039865789", "Calle 5 a Sur", "3023698547", 2L);
 		ResponseEntity<Object> responseEntity = customerController.addCustomer(customerToAdd);
 
 
@@ -75,8 +74,8 @@ public class CustomerControllerUnitTest {
 	@Test
 	public void testFindAll() {
 		// given
-		Customer customer1 = new Customer((long) 0, "Daniel", "ddp@gmail.com", "Cedula", "1039865789", "Calle 5 a Sur", "3023698547",(long) 2,(long) 30,"maria");
-		Customer customer2 = new Customer((long) 0, "Laura", "lhv@gmail.com", "Cedula", "1037698569", "Carrera 28 a Sur", "3115698549",(long) 3,(long) 30,"muriel");
+		Customer customer1 = new Customer(0L, "Daniel", "Perez", "ddp@gmail.com", "Cedula", "1039865789", "Calle 5 a Sur", "3023698547", 2L);
+		Customer customer2 = new Customer(0L, "Laura", "Hernandez", "lhv@gmail.com", "Cedula", "1037698569", "Carrera 28 a Sur", "3115698549", 3L);
 		List<Customer> list = new ArrayList<Customer>();
 		list.addAll(Arrays.asList(customer1, customer2));
 
@@ -106,15 +105,18 @@ public class CustomerControllerUnitTest {
 		customer.setId((long) 1);
 
 		when(customerRepositoryMock.save(any(Customer.class))).thenReturn(customer);
+		User user = new User();
+		user.setId(5L);
+		when(userRepositoryMock.findById(5L)).thenReturn(Optional.of(user));
 
-		// Entonces Realizo la prueba si es verdadera
-		Customer customerToAdd = new Customer((long) 0, "Viviana", "vvb@gmail.com", "Cedula", "95698578", "Carrera 30 a Sur", "312654987",(long) 4,(long) 30,"maria");
+		Customer customerToAdd = new Customer(0L, "Viviana", "Beltran", "vvb@gmail.com", "Cedula", "95698578", "Carrera 30 a Sur", "312654987", 4L);
 		ResponseEntity<Object> responseEntityCreate = customerController.addCustomer(customerToAdd);
-		
-		Customer customerToUpdate = new Customer((long) 0, "Juan", "juan@gmail.com", "Cedula", "436985698", "Calle 40 a Sur", "312654987",(long) 5,(long) 30,"maria");
+
+		Customer customerToUpdate = new Customer(0L, "Juan", "Garcia", "juan@gmail.com", "Cedula", "436985698", "Calle 40 a Sur", "312654987", 5L);
 		Customer responseEntityUpdate = customerController.updateCustomer(customerToUpdate);
-		
-		assertThat(responseEntityUpdate.equals(customerToUpdate));
+
+		assertThat(responseEntityUpdate).isNotNull();
+		assertThat(responseEntityUpdate.getName()).isEqualTo(customerToUpdate.getName());
 		
 	}
 
@@ -131,12 +133,12 @@ public class CustomerControllerUnitTest {
 		when(customerRepositoryMock.save(any(Customer.class))).thenReturn(customerBase);
 
 		// Entonces Realizo la prueba si es verdadera
-		Customer customer = new Customer((long) 0, "Jorge", "jmm@gmail.com", "Cedula", "42654951", "Carrera 18 b Sur", "302654956",(long) 5,(long) 30,"maria");
+		Customer customer = new Customer(0L, "Jorge", "Martinez", "jmm@gmail.com", "Cedula", "42654951", "Carrera 18 b Sur", "302654956", 5L);
 		ResponseEntity<Object> responseEntityCreate = customerController.addCustomer(customer);
 		
 		ResponseEntity<String> responseEntityUpdate = customerController.deleteCustomerApi(customer);
 				
-		assertThat(responseEntityUpdate.equals(  HttpStatus.OK ));
+		assertThat(responseEntityUpdate.getStatusCode()).isEqualTo(HttpStatus.OK);
 		
 	}
 	

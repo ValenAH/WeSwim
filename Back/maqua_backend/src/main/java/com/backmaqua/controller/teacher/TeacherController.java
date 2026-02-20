@@ -55,7 +55,7 @@ public class TeacherController {
 	        User user = new User();
 	        user.setUser(teacher.getname()); // Usar el nombre del profesor como nombre de usuario
 	        user.setPassword(teacher.getpassword()); // Define una contraseña segura aquí
-	        user.setRolId(teacherRoleId); // Puedes asignar un rol específico para profesores (por ejemplo, 1).
+	        user.setRoleId(teacherRoleId); // Puedes asignar un rol específico para profesores (por ejemplo, 1).
 
 	        // Guardar el usuario
 	        userRepository.save(user);
