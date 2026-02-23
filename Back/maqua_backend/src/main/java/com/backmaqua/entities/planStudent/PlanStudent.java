@@ -37,8 +37,8 @@ public class PlanStudent {
 		if (getClass() != obj.getClass())
 			return false;
 		PlanStudent other = (PlanStudent) obj;
-		return Objects.equals(id, other.id) && customerId == other.customerId
-				&& amount == other.amount && Objects.equals(planId, other.planId);
+		return Objects.equals(id, other.id) && Objects.equals(customerId, other.customerId)
+				&& Objects.equals(amount, other.amount) && Objects.equals(planId, other.planId);
 	}
 	
 	@Override
@@ -54,19 +54,19 @@ public class PlanStudent {
 		this.id = id;
 	}
 	
-	public Long getIdPaymentPlan() {
+	public Long getCustomerId() {
 		return customerId;
 	}
 
-	public void setIdPaymentPlan(Long idPaymentPlan) {
-		this.customerId = idPaymentPlan;
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
 	}
 	
 	public Double getAmount() {
 		return amount;
 	}
 
-	public void setCreationDate(Double amount) {
+	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
 	

@@ -139,7 +139,7 @@ import com.backmaqua.repository.teacher.TeacherCRUDRepository;
 		List<Long> planIds = plans.stream().map(com.backmaqua.entities.plan.Plan::getId).collect(Collectors.toList());
 		List<com.backmaqua.entities.planStudent.PlanStudent> planStudents = planStudentRepository.findByPlanIdIn(planIds);
 		List<Long> customerIds = planStudents.stream()
-				.map(ps -> ps.getIdPaymentPlan())
+				.map(ps -> ps.getCustomerId())
 				.distinct()
 				.collect(Collectors.toList());
 		for (Long customerId : customerIds) {

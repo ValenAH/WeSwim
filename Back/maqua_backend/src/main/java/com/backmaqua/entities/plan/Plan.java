@@ -1,5 +1,6 @@
 package com.backmaqua.entities.plan;
 
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.Objects;
 
@@ -20,6 +21,10 @@ public class Plan {
 	private Long teacherId;
 	private Date creationDate;
 	private Double totalAmount;
+	/** Hora de inicio pactada con el cliente (ej. 10:00). */
+	private LocalTime defaultStartTime;
+	/** Hora de fin pactada con el cliente (ej. 11:00). */
+	private LocalTime defaultEndTime;
 	
 	public Plan() {}
 	
@@ -45,12 +50,14 @@ public class Plan {
 			return false;
 		Plan other = (Plan) obj;
 		return Objects.equals(id, other.id) && Objects.equals(PaymentPlanId, other.PaymentPlanId)
-				&& Objects.equals(teacherId, other.teacherId) && Objects.equals(creationDate, other.creationDate) && Objects.equals(totalAmount, other.totalAmount);
+				&& Objects.equals(teacherId, other.teacherId) && Objects.equals(creationDate, other.creationDate)
+				&& Objects.equals(totalAmount, other.totalAmount) && Objects.equals(defaultStartTime, other.defaultStartTime)
+				&& Objects.equals(defaultEndTime, other.defaultEndTime);
 	}
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, PaymentPlanId, teacherId, creationDate, totalAmount);
+		return Objects.hash(id, PaymentPlanId, teacherId, creationDate, totalAmount, defaultStartTime, defaultEndTime);
 	}
 	
 	public Long getId() {
@@ -91,5 +98,21 @@ public class Plan {
 
 	public void setTotalAmount(double totalAmount) {
 		this.totalAmount = totalAmount;
+	}
+
+	public LocalTime getDefaultStartTime() {
+		return defaultStartTime;
+	}
+
+	public void setDefaultStartTime(LocalTime defaultStartTime) {
+		this.defaultStartTime = defaultStartTime;
+	}
+
+	public LocalTime getDefaultEndTime() {
+		return defaultEndTime;
+	}
+
+	public void setDefaultEndTime(LocalTime defaultEndTime) {
+		this.defaultEndTime = defaultEndTime;
 	}
 }
