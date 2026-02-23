@@ -14,10 +14,11 @@ const DAYS = [
   { value: 7, label: "Dom" },
 ];
 
-const RegisterClass = ({ closeModal, onSuccess, plans = [], teachers = [], customers = [], isAdmin = false, teacherId: currentTeacherId }) => {
+const RegisterClass = ({ closeModal, onSuccess, plans = [], teachers = [], customers = [], paymentPlans = [], apiPlan = "", isAdmin = false, teacherId: currentTeacherId }) => {
   const baseUrl = (environment.API_BACKEND || "").replace(/\/?$/, "");
   const apiPlanClass = `${baseUrl}/planClassAPI`;
   const apiPlanStudent = `${baseUrl}/planStudentAPI`;
+  const planApi = apiPlan || `${baseUrl}/planAPI`;
 
   const getPlanStudentList = (res) => {
     const data = res?.data ?? {};
@@ -54,12 +55,26 @@ const RegisterClass = ({ closeModal, onSuccess, plans = [], teachers = [], custo
   const [addStudentCustomerId, setAddStudentCustomerId] = useState("");
   const [addStudentError, setAddStudentError] = useState("");
   const [addStudentSubmitting, setAddStudentSubmitting] = useState(false);
+  const [selectedNewPaymentPlanId, setSelectedNewPaymentPlanId] = useState("");
+  const [showAddStudentForm, setShowAddStudentForm] = useState(false);
 
   const effectivePlanId = formState.planId ? Number(formState.planId) : null;
+  const currentPlan = plans.find((p) => Number(p.id) === Number(effectivePlanId));
+  const currentPaymentPlanId = currentPlan?.idPaymentPlan ?? currentPlan?.paymentPlanId ?? currentPlan?.PaymentPlanId;
+  const paymentPlan = paymentPlans.find((pp) => Number(pp.id) === Number(currentPaymentPlanId));
+  const maxStudents = paymentPlan?.peopleQuantity ?? null;
+  const newCountIfAdd = planStudents.length + 1;
+  const wouldExceedLimit = maxStudents != null && newCountIfAdd > maxStudents;
+  const paymentPlansForMorePeople =
+    wouldExceedLimit && paymentPlans.length > 0
+      ? paymentPlans.filter((pp) => (pp.peopleQuantity ?? 0) >= newCountIfAdd)
+      : [];
+  const canAddStudent = !wouldExceedLimit || selectedNewPaymentPlanId !== "";
 
   useEffect(() => {
     if (!effectivePlanId) {
       setPlanStudents([]);
+      setShowAddStudentForm(false);
       return;
     }
     setPlanStudentsLoading(true);
@@ -84,9 +99,37 @@ const RegisterClass = ({ closeModal, onSuccess, plans = [], teachers = [], custo
       setAddStudentError("Selecciona un alumno.");
       return;
     }
+    if (wouldExceedLimit && !selectedNewPaymentPlanId) {
+      setAddStudentError("Selecciona un plan de pago que permita más personas.");
+      return;
+    }
     setAddStudentError("");
     setAddStudentSubmitting(true);
     try {
+      if (wouldExceedLimit && selectedNewPaymentPlanId && planApi) {
+        const newPP = paymentPlans.find((pp) => Number(pp.id) === Number(selectedNewPaymentPlanId));
+        if (newPP && currentPlan) {
+          const payload = {
+            id: effectivePlanId,
+            idPaymentPlan: Number(selectedNewPaymentPlanId),
+            teacherId: currentPlan.teacherId ?? null,
+            creationDate: currentPlan.creationDate ?? new Date().toISOString(),
+            totalAmount: newPP.price ?? currentPlan.totalAmount,
+            place: currentPlan.place ?? null,
+          };
+          if (currentPlan.defaultStartTime != null)
+            payload.defaultStartTime =
+              String(currentPlan.defaultStartTime).length >= 5
+                ? String(currentPlan.defaultStartTime).slice(0, 5) + ":00"
+                : currentPlan.defaultStartTime;
+          if (currentPlan.defaultEndTime != null)
+            payload.defaultEndTime =
+              String(currentPlan.defaultEndTime).length >= 5
+                ? String(currentPlan.defaultEndTime).slice(0, 5) + ":00"
+                : currentPlan.defaultEndTime;
+          await axios.post(`${planApi}/updatePlan`, payload);
+        }
+      }
       await axios.post(`${apiPlanStudent}/addPlanStudent`, {
         planId: effectivePlanId,
         customerId: Number(addStudentCustomerId),
@@ -94,6 +137,8 @@ const RegisterClass = ({ closeModal, onSuccess, plans = [], teachers = [], custo
       const res = await axios.get(`${apiPlanStudent}/studentsByPlan`, { params: { planId: effectivePlanId } });
       setPlanStudents(getPlanStudentList(res));
       setAddStudentCustomerId("");
+      setSelectedNewPaymentPlanId("");
+      setShowAddStudentForm(false);
       onSuccess?.();
     } catch (err) {
       setAddStudentError(err?.response?.data?.message ?? "No se pudo agregar.");
@@ -357,7 +402,41 @@ const RegisterClass = ({ closeModal, onSuccess, plans = [], teachers = [], custo
                       </ul>
                     )}
                   </div>
+                  {!showAddStudentForm ? (
+                    <button
+                      type="button"
+                      className="register-class-form__btn-add register-class-form__btn-add--toggle"
+                      onClick={() => setShowAddStudentForm(true)}
+                    >
+                      Agregar alumno
+                    </button>
+                  ) : (
                   <form className="register-class-form__students-add" onSubmit={handleAddStudent}>
+                    {wouldExceedLimit && paymentPlansForMorePeople.length > 0 && (
+                      <div className="register-class-form__students-payment-change">
+                        <p className="register-class-form__students-payment-msg">
+                          Este plan es para {maxStudents} persona(s). Para agregar otro ({newCountIfAdd} en total), elige un plan de pago:
+                        </p>
+                        <select
+                          value={selectedNewPaymentPlanId}
+                          onChange={(e) => setSelectedNewPaymentPlanId(e.target.value)}
+                          className="register-class-form__students-payment-select"
+                        >
+                          <option value="">Selecciona plan de pago</option>
+                          {paymentPlansForMorePeople.map((pp) => (
+                            <option key={pp.id} value={pp.id}>
+                              {pp.peopleQuantity} persona(s), {pp.periodicity} vez/sem — $${Number(pp.price ?? 0).toLocaleString("es-CO")}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    )}
+                    {wouldExceedLimit && paymentPlansForMorePeople.length === 0 && (
+                      <p className="register-class-form__students-payment-no-option">
+                        No hay plan de pago para {newCountIfAdd} personas. Crea uno en Planes de pago.
+                      </p>
+                    )}
+                    {!(wouldExceedLimit && paymentPlansForMorePeople.length === 0) && (
                     <div className="register-class-form__students-add-row">
                       <select
                         value={addStudentCustomerId}
@@ -374,13 +453,20 @@ const RegisterClass = ({ closeModal, onSuccess, plans = [], teachers = [], custo
                       <button
                         type="submit"
                         className="register-class-form__btn-add"
-                        disabled={addStudentSubmitting || !addStudentCustomerId}
+                        disabled={
+                          addStudentSubmitting ||
+                          !addStudentCustomerId ||
+                          !canAddStudent ||
+                          (wouldExceedLimit && paymentPlansForMorePeople.length === 0)
+                        }
                       >
                         {addStudentSubmitting ? "..." : "Agregar"}
                       </button>
                     </div>
+                    )}
                     {addStudentError && <p className="register-class-form__students-error">{addStudentError}</p>}
                   </form>
+                  )}
                 </>
               )}
             </div>

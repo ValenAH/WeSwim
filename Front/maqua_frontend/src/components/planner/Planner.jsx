@@ -27,6 +27,7 @@ const Planner = () => {
   const [plans, setPlans] = useState([]);
   const [teachers, setTeachers] = useState([]);
   const [customers, setCustomers] = useState([]);
+  const [paymentPlans, setPaymentPlans] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filterTeacherId, setFilterTeacherId] = useState("");
 
@@ -151,6 +152,15 @@ const Planner = () => {
     }
   }, [auth.user?.role_Id, auth.user?.id, apiCustomer]);
 
+  useEffect(() => {
+    const apiPaymentPlan = `${baseUrl}/paymentPlans`;
+    axios.get(`${apiPaymentPlan}/GetPaymentPlans`).then((res) => {
+      const data = res?.data ?? {};
+      const list = data.paymentPlansList ?? data.paymentPlanList ?? (Array.isArray(data) ? data : []);
+      setPaymentPlans(Array.isArray(list) ? list : []);
+    }).catch(() => setPaymentPlans([]));
+  }, [baseUrl]);
+
   const onClassRegistered = () => {
     refreshClasses();
     setOpenRegisterModal(false);
@@ -246,6 +256,8 @@ const Planner = () => {
           closeModal={(v) => setOpenRegisterModal(!!v)}
           onSuccess={onClassRegistered}
           plans={plans}
+          paymentPlans={paymentPlans}
+          apiPlan={apiPlan}
           customers={customers}
           teachers={teachers}
           isAdmin={auth.user?.role_Id === 1}

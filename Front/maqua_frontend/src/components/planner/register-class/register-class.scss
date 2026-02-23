@@ -181,6 +181,41 @@
   color: #c62828;
 }
 
+.register-class-form__students-payment-change {
+  margin-bottom: 0.75rem;
+  padding: 0.75rem;
+  background: #fff8e1;
+  border-radius: 10px;
+  border: 1px solid #ffecb3;
+}
+
+.register-class-form__students-payment-msg {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.85rem;
+  color: #5d4e37;
+}
+
+.register-class-form__students-payment-select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #e0e4eb;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  background: white;
+  cursor: pointer;
+}
+
+.register-class-form__students-payment-select:focus {
+  outline: none;
+  border-color: var(--blue-secondary, #3DB8DF);
+}
+
+.register-class-form__students-payment-no-option {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.85rem;
+  color: #c62828;
+}
+
 .register-class-form__section {
   margin-bottom: 1.5rem;
 }
@@ -244,6 +279,16 @@
   &:hover:not(:disabled) {
     background: #2da3c9;
   }
+}
+
+.register-class-form__btn-add--toggle {
+  background: transparent !important;
+  color: var(--blue-secondary, #3DB8DF) !important;
+  border: 1px dashed var(--blue-secondary, #3DB8DF) !important;
+  margin-top: 0.5rem;
+}
+.register-class-form__btn-add--toggle:hover {
+  background: rgba(61, 184, 223, 0.08) !important;
 }
 
 .register-class-form__error {

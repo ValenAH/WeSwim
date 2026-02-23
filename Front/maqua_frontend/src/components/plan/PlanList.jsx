@@ -33,11 +33,13 @@ const formatDate = (d) => {
 const PlanList = () => {
   const baseUrl = (environment.API_BACKEND || "").replace(/\/?$/, "");
   const apiPlan = `${baseUrl}/planAPI`;
+  const apiPaymentPlan = `${baseUrl}/paymentPlans`;
   const apiTeacher = `${baseUrl}/teacherCustomAPI`;
   const apiCustomer = `${baseUrl}/CustomerAPI`;
   const navigate = useNavigate();
   const auth = useAuth();
   const [plans, setPlans] = useState([]);
+  const [paymentPlans, setPaymentPlans] = useState([]);
   const [teachers, setTeachers] = useState([]);
   const [customers, setCustomers] = useState([]);
   const [openStudentsPlanId, setOpenStudentsPlanId] = useState(null);
@@ -76,6 +78,28 @@ const PlanList = () => {
     };
     fetchPlans();
   }, [apiPlan]);
+
+  useEffect(() => {
+    const fetchPaymentPlans = async () => {
+      try {
+        const res = await axios.get(`${apiPaymentPlan}/GetPaymentPlans`);
+        const data = res?.data ?? {};
+        const list =
+          data.paymentPlansList ??
+          data.paymentPlanList ??
+          data.PaymentPlanList ??
+          (Array.isArray(data) ? data : []);
+        setPaymentPlans(Array.isArray(list) ? list : []);
+      } catch {
+        setPaymentPlans([]);
+      }
+    };
+    fetchPaymentPlans();
+  }, [apiPaymentPlan]);
+
+  const refreshPlans = () => {
+    axios.get(`${apiPlan}/GetPlans`).then((res) => setPlans(getListFromResponse(res))).catch(() => setPlans([]));
+  };
 
   useEffect(() => {
     const fetchCustomers = async () => {
@@ -209,10 +233,13 @@ const PlanList = () => {
           planId={openStudentsPlanId}
           planLabel={`Estudiantes del plan #${openStudentsPlanId}`}
           plans={plans}
+          paymentPlans={paymentPlans}
+          apiPlan={apiPlan}
           customers={customers}
           teachers={teachers}
           isAdmin={isAdmin}
           teacherId={teacherId}
+          onSuccess={refreshPlans}
         />
       )}
     </section>
