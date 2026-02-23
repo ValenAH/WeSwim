@@ -249,7 +249,12 @@ const RegisterClass = ({ closeModal, onSuccess, plans = [], teachers = [], custo
   const closeForm = () => closeModal(false);
 
   return (
-    <div className="register-class-overlay" onClick={closeForm}>
+    <div
+      className="register-class-overlay"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) closeForm();
+      }}
+    >
       <div className="register-class-card" onClick={(e) => e.stopPropagation()}>
         <div className="register-class-card__header">
           <h2 className="register-class-card__title">Registrar clase</h2>
@@ -411,7 +416,7 @@ const RegisterClass = ({ closeModal, onSuccess, plans = [], teachers = [], custo
                       Agregar alumno
                     </button>
                   ) : (
-                  <form className="register-class-form__students-add" onSubmit={handleAddStudent}>
+                  <div className="register-class-form__students-add">
                     {wouldExceedLimit && paymentPlansForMorePeople.length > 0 && (
                       <div className="register-class-form__students-payment-change">
                         <p className="register-class-form__students-payment-msg">
@@ -451,7 +456,7 @@ const RegisterClass = ({ closeModal, onSuccess, plans = [], teachers = [], custo
                         ))}
                       </select>
                       <button
-                        type="submit"
+                        type="button"
                         className="register-class-form__btn-add"
                         disabled={
                           addStudentSubmitting ||
@@ -459,13 +464,18 @@ const RegisterClass = ({ closeModal, onSuccess, plans = [], teachers = [], custo
                           !canAddStudent ||
                           (wouldExceedLimit && paymentPlansForMorePeople.length === 0)
                         }
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          handleAddStudent(e);
+                        }}
                       >
                         {addStudentSubmitting ? "..." : "Agregar"}
                       </button>
                     </div>
                     )}
                     {addStudentError && <p className="register-class-form__students-error">{addStudentError}</p>}
-                  </form>
+                  </div>
                   )}
                 </>
               )}
