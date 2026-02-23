@@ -12,4 +12,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 public interface PlanStudentCRUDRepository extends CrudRepository<PlanStudent, Long>{
 	java.util.List<PlanStudent> findByPlanIdIn(java.util.Collection<Long> planIds);
+	java.util.List<PlanStudent> findByPlanId(Long planId);
 }

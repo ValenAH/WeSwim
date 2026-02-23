@@ -25,6 +25,8 @@ public class Plan {
 	private LocalTime defaultStartTime;
 	/** Hora de fin pactada con el cliente (ej. 11:00). */
 	private LocalTime defaultEndTime;
+	/** Lugar donde se imparte la clase (ej. Piscina Centro). */
+	private String place;
 	
 	public Plan() {}
 	
@@ -52,12 +54,12 @@ public class Plan {
 		return Objects.equals(id, other.id) && Objects.equals(PaymentPlanId, other.PaymentPlanId)
 				&& Objects.equals(teacherId, other.teacherId) && Objects.equals(creationDate, other.creationDate)
 				&& Objects.equals(totalAmount, other.totalAmount) && Objects.equals(defaultStartTime, other.defaultStartTime)
-				&& Objects.equals(defaultEndTime, other.defaultEndTime);
+				&& Objects.equals(defaultEndTime, other.defaultEndTime) && Objects.equals(place, other.place);
 	}
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, PaymentPlanId, teacherId, creationDate, totalAmount, defaultStartTime, defaultEndTime);
+		return Objects.hash(id, PaymentPlanId, teacherId, creationDate, totalAmount, defaultStartTime, defaultEndTime, place);
 	}
 	
 	public Long getId() {
@@ -114,5 +116,13 @@ public class Plan {
 
 	public void setDefaultEndTime(LocalTime defaultEndTime) {
 		this.defaultEndTime = defaultEndTime;
+	}
+
+	public String getPlace() {
+		return place;
+	}
+
+	public void setPlace(String place) {
+		this.place = place;
 	}
 }

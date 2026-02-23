@@ -33,8 +33,11 @@ const Planner = () => {
   const baseUrl = (environment.API_BACKEND || "").replace(/\/?$/, "");
   const apiPlanClass = `${baseUrl}/planClassAPI`;
   const apiPlan = `${baseUrl}/planAPI`;
+  const apiPlanStudent = `${baseUrl}/planStudentAPI`;
   const apiTeacher = `${baseUrl}/teacherCustomAPI`;
   const apiCustomer = `${baseUrl}/CustomerAPI`;
+
+  const [planStudentsMap, setPlanStudentsMap] = useState({});
 
   const teacherId = useMemo(() => {
     if (auth.user?.role_Id !== 2) return null;
@@ -65,6 +68,40 @@ const Planner = () => {
     }
     return list;
   }, [planClasses, selectedDate, myPlanIds, auth.user?.role_Id, filterTeacherId, plans]);
+
+  const planIdsForDay = useMemo(
+    () => [...new Set(classesForSelectedDay.map((pc) => pc.planId))],
+    [classesForSelectedDay]
+  );
+
+  useEffect(() => {
+    if (planIdsForDay.length === 0) {
+      setPlanStudentsMap({});
+      return;
+    }
+    Promise.all(
+      planIdsForDay.map((planId) =>
+        axios.get(`${apiPlanStudent}/studentsByPlan`, { params: { planId } }).then((res) => {
+          const data = res?.data ?? {};
+          const list = data.planStudentList ?? data.planStudentsList ?? (Array.isArray(data) ? data : []);
+          return { planId, list: Array.isArray(list) ? list : [] };
+        })
+      )
+    )
+      .then((results) => {
+        const map = {};
+        results.forEach(({ planId, list }) => {
+          map[planId] = list;
+        });
+        setPlanStudentsMap(map);
+      })
+      .catch(() => setPlanStudentsMap({}));
+  }, [planIdsForDay, apiPlanStudent]);
+
+  const getCustomerName = (customerId) => {
+    const c = customers.find((x) => Number(x.id) === Number(customerId));
+    return c ? `${c.name ?? ""} ${c.lastname ?? ""}`.trim() || `Cliente #${customerId}` : `Cliente #${customerId}`;
+  };
 
   const refreshClasses = () => {
     axios.get(`${apiPlanClass}/GetPlanClasses`).then((res) => {
@@ -126,9 +163,11 @@ const Planner = () => {
           <div className="planner__left">
             <div className="planner__left-header">
               <h2 className="planner__title">Clases del día</h2>
-              <button type="button" className="planner__btn-register" onClick={() => setOpenRegisterModal(true)}>
-                Registrar clase
-              </button>
+              <div className="planner__left-header-actions">
+                <button type="button" className="planner__btn-register" onClick={() => setOpenRegisterModal(true)}>
+                  Registrar clase
+                </button>
+              </div>
             </div>
             <p className="planner__date-label">
               {selectedDate.toLocaleDateString("es-CO", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}
@@ -162,6 +201,12 @@ const Planner = () => {
                     const plan = plans.find((p) => p.id === pc.planId);
                     const teacher = plan ? teachers.find((t) => Number(t.id) === Number(plan.teacherId)) : null;
                     const teacherName = teacher?.name ?? (plan?.teacherId ? `Profesor ${plan.teacherId}` : "");
+                    const students = planStudentsMap[pc.planId] ?? [];
+                    const studentNames = students
+                      .map((ps) => getCustomerName(ps.customerId))
+                      .filter(Boolean)
+                      .join(", ");
+                    const place = plan?.place?.trim() || null;
                     return (
                       <li key={pc.id} className="planner__class-item">
                         <span className="planner__class-time">{formatTime(pc.classDate)}</span>
@@ -170,6 +215,12 @@ const Planner = () => {
                             <span className="planner__class-teacher">{teacherName}</span>
                           ) : null}
                           <span className="planner__class-plan">Plan #{pc.planId}</span>
+                          {studentNames ? (
+                            <span className="planner__class-students">{studentNames}</span>
+                          ) : null}
+                          {place ? (
+                            <span className="planner__class-place">{place}</span>
+                          ) : null}
                         </span>
                       </li>
                     );

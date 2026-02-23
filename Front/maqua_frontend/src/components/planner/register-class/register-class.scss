@@ -99,23 +99,90 @@
   }
 }
 
-.register-class-form__section {
-  margin-bottom: 1.5rem;
-}
-
 .register-class-form__section-label {
   display: block;
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   color: #0b1165;
   margin-bottom: 0.5rem;
+}
+
+.register-class-form__students {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e4eb;
+}
+
+.register-class-form__students-loading,
+.register-class-form__students-empty {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.register-class-form__students-list-wrap {
+  margin-bottom: 0.75rem;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #e0e4eb;
+  border-radius: 10px;
+  background: #f8f9fc;
+}
+
+.register-class-form__students-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .register-class-form__student-row {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.register-class-form__student-name {
+  flex: 1;
+  min-width: 0;
+}
+
+.register-class-form__students-add-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.register-class-form__students-add-select {
+  flex: 1;
+  min-width: 140px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #e0e4eb;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  background: white;
+
+  &:focus {
+    outline: none;
+    border-color: var(--blue-secondary, #3DB8DF);
+  }
+}
+
+.register-class-form__students-error {
+  margin: 0.35rem 0 0 0;
+  font-size: 0.85rem;
+  color: #c62828;
+}
+
+.register-class-form__section {
+  margin-bottom: 1.5rem;
 }
 
 .register-class-form__btn-remove {
@@ -157,9 +224,25 @@
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background: #e8eef5;
     border-color: var(--blue-secondary, #3DB8DF);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+.register-class-form__students-add .register-class-form__btn-add {
+  background: var(--blue-secondary, #3DB8DF);
+  color: white;
+  border-style: solid;
+  border-color: transparent;
+
+  &:hover:not(:disabled) {
+    background: #2da3c9;
   }
 }
 
@@ -167,6 +250,63 @@
   margin: 0 0 1rem 0;
   font-size: 0.9rem;
   color: #c62828;
+}
+
+.register-class-form__success {
+  margin: 0 0 1rem 0;
+  padding: 0.85rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1b5e20;
+  background: #e8f5e9;
+  border-radius: 10px;
+  border: 1px solid #a5d6a7;
+}
+
+.register-class-form__field--checkbox {
+  margin-bottom: 0.25rem;
+}
+
+.register-class-form__checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: #0b1165;
+  cursor: pointer;
+  input {
+    width: 1.1rem;
+    height: 1.1rem;
+    cursor: pointer;
+  }
+}
+
+.register-class-form__days-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #0b1165;
+  margin-bottom: 0.5rem;
+}
+
+.register-class-form__days {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.register-class-form__day-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+  input {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+  }
 }
 
 .register-class-form__actions {

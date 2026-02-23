@@ -68,13 +68,19 @@ const Header = () => {
                   <li key="teacher"><NavLink className="p-1" style={({ isActive }) => ({ borderBottom: isActive ? '2px solid white' : 'none' })} to="/teacher">Profesores</NavLink></li>
                   <li key="user"><NavLink className="p-1" style={({ isActive }) => ({ borderBottom: isActive ? '2px solid white' : 'none' })} to="/user">Usuarios</NavLink></li>
                   <li key="customer"><NavLink className="p-1" style={({ isActive }) => ({ borderBottom: isActive ? '2px solid white' : 'none' })} to="/customer">Clientes</NavLink></li>
+                  <li key="plan"><NavLink className="p-1" style={({ isActive }) => ({ borderBottom: isActive ? '2px solid white' : 'none' })} to="/plan">Planes</NavLink></li>
                   <li key="transaction"><NavLink className="p-1" style={({ isActive }) => ({ borderBottom: isActive ? '2px solid white' : 'none' })} to="/transaction">Ingresos</NavLink></li>
                 </>
               )}
               {auth.user && roleId === 2 && (
-                <li key="customer">
-                  <NavLink className="p-1" style={({ isActive }) => ({ borderBottom: isActive ? '2px solid white' : 'none' })} to="/customer">Mis alumnos</NavLink>
-                </li>
+                <>
+                  <li key="customer">
+                    <NavLink className="p-1" style={({ isActive }) => ({ borderBottom: isActive ? '2px solid white' : 'none' })} to="/customer">Mis alumnos</NavLink>
+                  </li>
+                  <li key="plan">
+                    <NavLink className="p-1" style={({ isActive }) => ({ borderBottom: isActive ? '2px solid white' : 'none' })} to="/plan">Planes</NavLink>
+                  </li>
+                </>
               )}
               {!auth.user && (
                 <li key="login">

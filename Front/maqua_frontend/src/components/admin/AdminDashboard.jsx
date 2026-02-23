@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { BsPeopleFill, BsPersonBadgeFill, BsCashStack } from "react-icons/bs";
+import { BsPeopleFill, BsPersonBadgeFill, BsCashStack, BsCalendar2Week } from "react-icons/bs";
 import "./AdminDashboard.scss";
 
 const cards = [
@@ -15,6 +15,12 @@ const cards = [
     description: "Administrar el equipo de profesores",
     icon: BsPersonBadgeFill,
     path: "/teacher",
+  },
+  {
+    title: "Planes",
+    description: "Crear y gestionar planes (profesor, precio, hora pactada)",
+    icon: BsCalendar2Week,
+    path: "/plan",
   },
   {
     title: "Transacciones",

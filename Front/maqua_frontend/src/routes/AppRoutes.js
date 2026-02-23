@@ -17,6 +17,8 @@ import Layout from "../containers/Layout/Layout";
 import Transaction from "../components/transactionhistory/Transaction";
 import { CustomerForm } from "../components/customer/CustomerForm";
 import {CustomerList} from "../components/customer/CustomerList";
+import { PlanList } from "../components/plan/PlanList";
+import { PlanForm } from "../components/plan/PlanForm";
 import AdminDashboard from "../components/admin/AdminDashboard";
 import { We } from "../components/website/we/we";
 import { Classes } from "../components/website/classes/classes";
@@ -44,6 +46,8 @@ const AppRoutes = () => {
                                 <Route path="/transaction" element={<RoleRoute allowedRoles={[1]}><Transaction/></RoleRoute>}/>
                                 <Route path="/customer" element={<RoleRoute allowedRoles={[1, 2]}><CustomerList/></RoleRoute>}/>
                                 <Route path="/customer/:id" element={<RoleRoute allowedRoles={[1, 2]}><CustomerForm/></RoleRoute>}/>
+                                <Route path="/plan" element={<RoleRoute allowedRoles={[1, 2]}><PlanList/></RoleRoute>}/>
+                                <Route path="/plan/:id" element={<RoleRoute allowedRoles={[1, 2]}><PlanForm/></RoleRoute>}/>
                                 <Route path="*" element={<NotFound/>}/>
                             </Routes>
                         </Layout>
