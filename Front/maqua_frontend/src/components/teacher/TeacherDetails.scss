@@ -1,0 +1,125 @@
+.teacher-details {
+  min-height: calc(100vh - 7vh);
+  background: linear-gradient(180deg, #e8eef5 0%, #f5f7fa 100%);
+  padding: 2rem 0;
+}
+
+.teacher-details__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.teacher-details__header {
+  margin-bottom: 1.5rem;
+}
+
+.teacher-details__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0;
+  background: transparent;
+  color: #0b1165;
+  border: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.teacher-details__card {
+  max-width: 720px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(11, 17, 101, 0.08);
+  padding: 2rem;
+}
+
+.teacher-details__title {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0b1165;
+  text-align: center;
+}
+
+.teacher-details__list {
+  margin: 0 0 2rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.teacher-details__row {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eee;
+  align-items: baseline;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+.teacher-details__row dt {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #0b1165;
+}
+
+.teacher-details__row dd {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.teacher-details__loading,
+.teacher-details__error {
+  margin: 0;
+  text-align: center;
+  color: #666;
+}
+
+.teacher-details__error {
+  color: #c62828;
+}
+
+.teacher-details__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding-top: 0.5rem;
+}
+
+.teacher-details__btn {
+  padding: 0.6rem 1.25rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+
+  &--primary {
+    background: var(--blue-secondary, #3DB8DF);
+    color: white;
+
+    &:hover {
+      background: #2da3c9;
+      transform: translateY(-1px);
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .teacher-details__row {
+    grid-template-columns: 1fr;
+  }
+}

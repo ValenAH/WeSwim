@@ -4,6 +4,7 @@ import {RegisterStudent} from "../components/auth/registration/register-student"
 import {RegisterTeacher} from "../components/auth/registration/register-teacher";
 import Profile from "../components/profile/profile";
 import { Teacherform } from "../components/teacher/Teacherform";
+import { TeacherDetails } from "../components/teacher/TeacherDetails";
 import {TeacherList} from "../components/teacher/TeacherList";
 import { UsersList } from "../components/user/UsersList";
 import Planner from "../components/planner/Planner";
@@ -35,6 +36,7 @@ const AppRoutes = () => {
                                 <Route path="/dashboard" element={<RoleRoute allowedRoles={[1]}><AdminDashboard/></RoleRoute>}/>
                                 <Route path="/planner" element={<RoleRoute allowedRoles={[1, 2]}><Planner/></RoleRoute>}/>
                                 <Route path="/teacher" element={<RoleRoute allowedRoles={[1]}><TeacherList/></RoleRoute>}/>
+                                <Route path="/teacher/:id/details" element={<RoleRoute allowedRoles={[1]}><TeacherDetails/></RoleRoute>}/>
                                 <Route path="/teacher/:id" element={<RoleRoute allowedRoles={[1]}><Teacherform/></RoleRoute>}/>
                                 <Route path="/user" element={<RoleRoute allowedRoles={[1]}><UsersList/></RoleRoute>} />
                                 <Route path="/user/:id" element={<RoleRoute allowedRoles={[1]}><UserForm/></RoleRoute>} />

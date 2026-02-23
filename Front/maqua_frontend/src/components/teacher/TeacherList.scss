@@ -1,36 +1,148 @@
-.table {
-    width: 100%; /* Hacer que la tabla ocupe el 100% del ancho de la pantalla */
-  max-width: 100%; /* Establecer un ancho máximo para la tabla */
-  overflow-x: auto; /* Agregar una barra de desplazamiento horizontal si la tabla es más ancha que la pantalla */
+.teacher-list {
+  min-height: calc(100vh - 7vh);
+  background: linear-gradient(180deg, #e8eef5 0%, #f5f7fa 100%);
+  padding: 2rem 0;
+}
+
+.teacher-list__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.teacher-list__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.teacher-list__title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0b1165;
+}
+
+.teacher-list__btn-new {
+  padding: 0.6rem 1.25rem;
+  background: var(--blue-secondary, #3DB8DF);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+
+  &:hover {
+    background: #2da3c9;
+    transform: translateY(-1px);
+  }
+}
+
+.teacher-list__card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(11, 17, 101, 0.08);
+  overflow: hidden;
+}
+
+.teacher-list__table-wrap {
+  overflow-x: auto;
+  max-height: calc(100vh - 18rem);
   overflow-y: auto;
-  white-space: nowrap; /* Evitar el ajuste de texto automático en las celdas */
-  border-collapse: collapse; /* Colapsar los bordes de las celdas para un aspecto más limpio */
 }
 
-.table thead {
-    background-color: #EAEAEA;
-    color: #424242;
-    font-size: 1rem;
-    text-transform: uppercase;
+.teacher-list__table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
 }
 
-.table th,
-.table td {
-    padding: 0.8rem;
+.teacher-list__table thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #0b1165;
+  color: white;
 }
 
-.table tbody tr:hover{
-    background-color: #eee;
+.teacher-list__table th {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.actions svg{
-    cursor: pointer;
+.teacher-list__table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #eee;
+  color: #333;
+  font-size: 0.9rem;
 }
 
-.delete-btn{
-    color: #e10d05;
+.teacher-list__table tbody tr {
+  transition: background 0.15s;
 }
 
-.edit-btn{
-    color: #0b1165;
+.teacher-list__table tbody tr:hover {
+  background: #f8f9fc;
+}
+
+.teacher-list__table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.teacher-list__actions {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.teacher-list__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  font-size: 1.1rem;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.teacher-list__action--view {
+  background: #e8f5e9;
+  color: #2e7d32;
+
+  &:hover {
+    background: #c8e6c9;
+  }
+}
+
+.teacher-list__action--edit {
+  background: #e8f4fc;
+  color: #0b1165;
+
+  &:hover {
+    background: #cce5f7;
+  }
+}
+
+.teacher-list__action--delete {
+  background: #ffebee;
+  color: #c62828;
+
+  &:hover {
+    background: #ffcdd2;
+  }
 }

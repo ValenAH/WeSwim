@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { IoIosCloseCircle } from "react-icons/io";
+import { IoIosArrowBack } from "react-icons/io";
 import axios from "axios";
 import { environment } from "../../environments/environment";
+import "./CustomerForm.scss";
 
 const CustomerForm = () => {
   const { id } = useParams();
@@ -18,6 +19,7 @@ const CustomerForm = () => {
     address: "",
     phone: "",
   });
+
   useEffect(() => {
     if (id === "new") return;
     const fetchCustomer = async () => {
@@ -29,9 +31,9 @@ const CustomerForm = () => {
         .catch((err) => console.log(err));
     };
     fetchCustomer();
-  }, [])
+  }, []);
 
-  const handlesubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (id === "new") {
       await axios
@@ -49,6 +51,7 @@ const CustomerForm = () => {
       return navigate("/customer");
     }
   };
+
   const handleChangeCustomer = (e) => {
     setFormState({
       ...formState,
@@ -56,106 +59,123 @@ const CustomerForm = () => {
     });
   };
 
+  const isNew = id === "new";
+  const formTitle = isNew ? "Crear cliente" : "Editar cliente";
+
   return (
-    <div className="d-flex justify-content-center align-items-center">
-      <div className="form position-relative m-5">
-        <div className="form__close position-absolute">
-          <IoIosCloseCircle
-            className="icon"
+    <section className="customer-form">
+      <div className="customer-form__container container">
+        <div className="customer-form__header">
+          <button
+            type="button"
+            className="customer-form__back"
             onClick={() => navigate("/customer")}
-          />
+            title="Volver al listado"
+          >
+            <IoIosArrowBack />
+            Volver
+          </button>
         </div>
-        <h5 className="text-center">
-          {id === "new" ? "Crear" : "Actualizar"} Cliente
-        </h5>
-        <form className="mt-3">
-          <div className="row">
-            <div className="form-group col-md-6 mb-3">
-              <label>Nombre</label>
-              <input
-                placeholder="Ingrese el nombre"
-                type="text"
-                name="name"
-                value={formState.name}
-                onChange={handleChangeCustomer}
-              />
+        <div className="customer-form__card">
+          <h2 className="customer-form__title">{formTitle}</h2>
+          <form className="customer-form__form" onSubmit={handleSubmit}>
+            <div className="customer-form__grid">
+              <div className="customer-form__field">
+                <label htmlFor="name">Nombre</label>
+                <input
+                  id="name"
+                  placeholder="Ingrese el nombre"
+                  type="text"
+                  name="name"
+                  value={formState.name}
+                  onChange={handleChangeCustomer}
+                />
+              </div>
+              <div className="customer-form__field">
+                <label htmlFor="lastname">Apellido</label>
+                <input
+                  id="lastname"
+                  placeholder="Ingrese el apellido"
+                  type="text"
+                  name="lastname"
+                  value={formState.lastname}
+                  onChange={handleChangeCustomer}
+                />
+              </div>
+              <div className="customer-form__field">
+                <label htmlFor="email">Correo</label>
+                <input
+                  id="email"
+                  placeholder="Ingrese un correo"
+                  type="email"
+                  name="email"
+                  value={formState.email}
+                  onChange={handleChangeCustomer}
+                />
+              </div>
+              <div className="customer-form__field">
+                <label htmlFor="documentTypeId">Tipo de documento</label>
+                <select
+                  id="documentTypeId"
+                  name="documentTypeId"
+                  value={formState.documentTypeId}
+                  onChange={handleChangeCustomer}
+                >
+                  <option value={0} hidden>
+                    Selecciona un tipo de documento
+                  </option>
+                  <option value={1}>Cédula</option>
+                  <option value={2}>Tarjeta de identidad</option>
+                  <option value={3}>Cédula de extranjería</option>
+                </select>
+              </div>
+              <div className="customer-form__field">
+                <label htmlFor="documentNumber">Nº documento</label>
+                <input
+                  id="documentNumber"
+                  placeholder="Ingrese un número de documento"
+                  type="number"
+                  name="documentNumber"
+                  value={formState.documentNumber}
+                  onChange={handleChangeCustomer}
+                />
+              </div>
+              <div className="customer-form__field">
+                <label htmlFor="address">Dirección</label>
+                <input
+                  id="address"
+                  placeholder="Ingrese una dirección"
+                  type="text"
+                  name="address"
+                  value={formState.address}
+                  onChange={handleChangeCustomer}
+                />
+              </div>
+              <div className="customer-form__field customer-form__field--full">
+                <label htmlFor="phone">Teléfono</label>
+                <input
+                  id="phone"
+                  placeholder="Ingrese un número de celular"
+                  type="tel"
+                  name="phone"
+                  value={formState.phone}
+                  onChange={handleChangeCustomer}
+                />
+              </div>
             </div>
-            <div className="form-group col-md-6 mb-3">
-              <label>Apellido</label>
-              <input
-                placeholder="Ingrese el apellido"
-                type="text"
-                name="lastname"
-                value={formState.lastname}
-                onChange={handleChangeCustomer}
-              />
+            <div className="customer-form__actions">
+              <button type="button" className="customer-form__btn customer-form__btn--secondary" onClick={() => navigate("/customer")}>
+                Cancelar
+              </button>
+              <button type="submit" className="customer-form__btn customer-form__btn--primary">
+                {isNew ? "Crear" : "Actualizar"}
+              </button>
             </div>
-            <div className="form-group col-md-6 mb-3">
-              <label>Correo</label>
-              <input
-                placeholder="Ingrese un correo"
-                type="text"
-                name="email"
-                value={formState.email}
-                onChange={handleChangeCustomer}
-              />
-            </div>
-            <div className="form-group col-md-6 mb-3">
-              <label>Document Type id</label>
-
-              <select
-                name="documentTypeId"
-                value={formState.documentTypeId}
-                onChange={handleChangeCustomer}
-              >
-                <option value={0} hidden>
-                  Selecciona un tipo de documento
-                </option>
-                <option value={1}>Cedula</option>
-                <option value={2}>Trajeta de Identidad</option>
-                <option value={3}>Cedula de Extranjeria</option>
-              </select>
-            </div>
-            <div className="form-group col-md-6 mb-3">
-              <label>Document Number</label>
-              <input
-                placeholder="Ingrese un numero de documento"
-                type="number"
-                name="documentNumber"
-                value={formState.documentNumber}
-                onChange={handleChangeCustomer}
-              />
-            </div>
-            <div className="form-group col-md-6 mb-3">
-              <label>Address</label>
-              <input
-                placeholder="Ingrese una dirección"
-                type="text"
-                name="address"
-                value={formState.address}
-                onChange={handleChangeCustomer}
-              />
-            </div>
-            <div className="form-group col-md-6 mb-3">
-              <label>Teléfono</label>
-              <input
-                placeholder="Ingrese un número de celular"
-                type="tel"
-                name="phone"
-                value={formState.phone}
-                onChange={handleChangeCustomer}
-              />
-            </div>
-          </div>
-
-          <div className="form-group col-12">
-            <button className="btn" onClick={handlesubmit}>
-              {id === "new" ? "Crear" : "Actualizar"}
-            </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
-export {CustomerForm} ;
+
+export { CustomerForm };
